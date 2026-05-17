@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import LanguageToggle from '@/components/ui/LanguageToggle';
 import { Menu, X, Instagram, Linkedin, Github } from 'lucide-react';
@@ -12,6 +12,12 @@ const BehanceIcon = ({ className }) => (
         <path d="m43.9 46.1c1.4-2.2 2.2-4.7 2.1-7.5-.1-7.4-6.3-13.2-13.6-13.2h-20.7c-1 0-1.7.8-1.7 1.7v45.2c0 1 .8 1.7 1.7 1.7h23c8.5 0 15.6-6.8 15.6-15.4 0-5.1-2.5-9.7-6.4-12.5zm-24.9-11.7h13.5c2.4 0 4.4 2 4.4 4.4s-2 4.4-4.4 4.4h-13.5zm16 30.7h-16v-12.8h16c3.5 0 6.4 2.9 6.4 6.4s-2.9 6.4-6.4 6.4z" />
         <path d="m89.9 55.5c0-10.5-8.3-19.1-18.5-19.1s-18.5 8.6-18.5 19.1 8.3 19.1 18.5 19.1c6.2 0 12-3.2 15.4-8.5.4-.7.8-1.4 1.2-2.1.3-.5-.1-1.1-.7-1.1h-9.1c-.2 0-.4.1-.5.2-1.7 1.7-3.8 2.5-6.2 2.5-4.5 0-8.3-3.4-9.3-7.9h26c1 0 1.8-.8 1.8-1.8zm-18.5-10.1c3.3 0 6.2 1.8 7.9 4.6h-15.9c1.7-2.7 4.7-4.6 8-4.6z" />
         <path d="m79.1 34.2h-16.5c-.8 0-1.4-.6-1.4-1.4v-4.1c0-.8.6-1.4 1.4-1.4h16.4c.8 0 1.4.6 1.4 1.4v4.1c.1.7-.6 1.4-1.3 1.4z" />
+    </svg>
+);
+
+const MediumIcon = ({ className }) => (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
     </svg>
 );
 
@@ -41,12 +47,26 @@ const socialLinks = [
         icon: Github,
         hoverColor: 'hover:text-slate-900 dark:hover:text-white',
     },
+    {
+        label: 'Medium',
+        href: 'https://medium.com/@matheusrmesquita',
+        icon: MediumIcon,
+        hoverColor: 'hover:text-slate-900 dark:hover:text-white',
+    },
 ];
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const { t } = useLanguage();
+    const location = useLocation();
+    
+    const isActive = (path) => {
+        if (path === '/') {
+            return location.pathname === '/';
+        }
+        return location.pathname.startsWith(path);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -70,8 +90,10 @@ const Navbar = () => {
 
                 {/* Desktop Nav (Center - 5 cols) */}
                 <div className="hidden md:flex col-span-5 items-center justify-center gap-8 font-medium text-slate-900 dark:text-white">
-                    <Link to="/" className="hover:text-[#38889F] transition-colors">{t('nav.home')}</Link>
-                    <Link to="/sobre" className="hover:text-[#38889F] transition-colors">{t('nav.about')}</Link>
+                    <Link to="/" className={`transition-colors ${isActive('/') ? 'text-[#38889F]' : 'hover:text-[#38889F]'}`}>{t('nav.home')}</Link>
+                    <Link to="/sobre" className={`transition-colors ${isActive('/sobre') ? 'text-[#38889F]' : 'hover:text-[#38889F]'}`}>{t('nav.about')}</Link>
+                    <Link to="/projetos" className={`transition-colors ${isActive('/projetos') ? 'text-[#38889F]' : 'hover:text-[#38889F]'}`}>{t('nav.projects')}</Link>
+                    <Link to="/artigos" className={`transition-colors ${isActive('/artigos') ? 'text-[#38889F]' : 'hover:text-[#38889F]'}`}>{t('nav.articles')}</Link>
                 </div>
 
                 {/* Desktop Actions (Right - 4 cols) */}
@@ -119,8 +141,10 @@ const Navbar = () => {
             {/* Mobile Nav */}
             <div className={`md:hidden absolute top-full w-full left-0 transition-all duration-300 origin-top ${isOpen ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0 pointer-events-none'}`}>
                 <div className="flex flex-col px-6 py-6 gap-4 font-medium backdrop-blur-3xl bg-white/95 dark:bg-zinc-950/95 shadow-2xl">
-                    <Link to="/" onClick={() => setIsOpen(false)} className="hover:text-[#38889F] transition-colors text-slate-900 dark:text-white p-2">{t('nav.home')}</Link>
-                    <Link to="/sobre" onClick={() => setIsOpen(false)} className="hover:text-[#38889F] transition-colors text-slate-900 dark:text-white p-2">{t('nav.about')}</Link>
+                    <Link to="/" onClick={() => setIsOpen(false)} className={`transition-colors p-2 ${isActive('/') ? 'text-[#38889F]' : 'text-slate-900 dark:text-white hover:text-[#38889F]'}`}>{t('nav.home')}</Link>
+                    <Link to="/sobre" onClick={() => setIsOpen(false)} className={`transition-colors p-2 ${isActive('/sobre') ? 'text-[#38889F]' : 'text-slate-900 dark:text-white hover:text-[#38889F]'}`}>{t('nav.about')}</Link>
+                    <Link to="/projetos" onClick={() => setIsOpen(false)} className={`transition-colors p-2 ${isActive('/projetos') ? 'text-[#38889F]' : 'text-slate-900 dark:text-white hover:text-[#38889F]'}`}>{t('nav.projects')}</Link>
+                    <Link to="/artigos" onClick={() => setIsOpen(false)} className={`transition-colors p-2 ${isActive('/artigos') ? 'text-[#38889F]' : 'text-slate-900 dark:text-white hover:text-[#38889F]'}`}>{t('nav.articles')}</Link>
                     <a
                         href="https://wa.me/5561982863674?text=Ol%C3%A1%2C%20Matheus%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20%F0%9F%9A%80"
                         target="_blank"

@@ -37,6 +37,7 @@ const ProjectDetails = () => {
     const aesthetics = language === 'en' ? (project.aesthetics_en || project.aesthetics) : project.aesthetics;
 
     return (
+        <>
         <article className="min-h-screen bg-white dark:bg-[#0f0f11] text-slate-600 dark:text-slate-400 font-sans selection:bg-[#38889F]/30 pb-24">
 
             {/* Nav Auxiliar - Voltar */}
@@ -50,7 +51,7 @@ const ProjectDetails = () => {
             <header className="pt-16 pb-20 px-6 max-w-5xl mx-auto text-center">
                 <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
                     <div className="flex flex-wrap justify-center gap-3 mb-8">
-                        {project.tags?.map((tag, idx) => (
+                        {project.tags?.filter(t => t !== "Landing Page").map((tag, idx) => (
                             <span key={idx} className="px-5 py-2 bg-[#38889F]/10 text-[#38889F] rounded-full text-sm font-bold border border-[#38889F]/10">
                                 {tag}
                             </span>
@@ -127,7 +128,7 @@ const ProjectDetails = () => {
                                 />
                             </div>
                         ))
-                    ) : (project.gallery === undefined && project.image) ? (
+                    ) : project.image ? (
                         <div className="w-full relative group">
                             <div className="absolute -inset-4 bg-gradient-to-r from-[#38889F]/10 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-1000 -z-10 rounded-[16px]"></div>
                             <img
@@ -173,6 +174,24 @@ const ProjectDetails = () => {
             </section>
 
         </article>
+
+        {/* Botão flutuante do Framer - Aparece apenas se houver framerLink */}
+        {project.framerLink && (
+            <div className="fixed bottom-6 right-24 z-[9998] flex items-center">
+                <motion.a
+                    href={project.framerLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 px-6 h-14 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-white/10 rounded-[16px] shadow-2xl hover:border-[#38889F] hover:text-[#38889F] text-slate-700 dark:text-white transition-colors font-bold"
+                >
+                    <ExternalLink className="w-5 h-5" />
+                    <span>Ver no Framer</span>
+                </motion.a>
+            </div>
+        )}
+        </>
     );
 };
 

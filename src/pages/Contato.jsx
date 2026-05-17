@@ -73,7 +73,7 @@ const Contato = () => {
                 {/* Botão envia para o WhatsApp */}
                 <button type="submit" className="w-full">
                     <InteractiveHoverButton
-                        text="Enviar pelo WhatsApp 💬"
+                        text={t('contact.whatsappButton')}
                         className="w-full py-4 bg-[#25D366] border-[#25D366] text-white shadow-lg shadow-[#25D366]/20"
                     />
                 </button>

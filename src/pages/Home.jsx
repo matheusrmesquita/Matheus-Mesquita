@@ -2,26 +2,19 @@ import React, { useState, useEffect } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { projects } from '../data/projects';
-import { ArrowRight, Mail, X, LayoutGrid } from 'lucide-react';
+import { ArrowRight, Mail, X, LayoutGrid, ChevronLeft, ChevronRight } from 'lucide-react';
 import profileImage from '../assets/1758815017641.png';
 import figmaLogo from '../assets/Figma.png';
 import framerLogo from '../assets/framer_logo_icon_169149.webp';
 import { EtheralShadow } from '@/components/ui/EtheralShadow';
 import { useLanguage } from '@/context/LanguageContext';
+import { projects } from '@/data/projects';
 import { InteractiveHoverButton } from '@/components/ui/InteractiveHoverButton';
+import ArticlesSection from '@/components/sections/ArticlesSection';
 
 const Home = () => {
     const [selectedProject, setSelectedProject] = useState(null);
     const { t, language } = useLanguage();
-
-    const openModal = (project) => {
-        setSelectedProject(project);
-    };
-
-    const closeModal = () => {
-        setSelectedProject(null);
-    };
 
     useEffect(() => {
         if (selectedProject !== null) {
@@ -133,50 +126,46 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Seção de Projetos - Master Grid */}
+            {/* Seção de Projetos - Grid Simples (6 projetos mais recentes) */}
             <section id="projects" className="scroll-mt-32 mx-4 md:mx-8 lg:mx-[150px]">
-                <div className="grid grid-cols-12 gap-6 mb-12">
+                <div className="grid grid-cols-12 gap-6 mb-8 md:mb-12 items-end">
                     <div className="col-span-12 md:col-span-8">
                         <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-slate-900 dark:text-white">{t('projects.title')}</h2>
                         <p className="text-slate-600 dark:text-slate-400 text-xl font-medium">{t('projects.subtitle')}</p>
                     </div>
                 </div>
 
-                {/* Sub-grid para os cards dentro das 12 colunas mestre */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-                    {projects.map((project, index) => {
-                        const title = language === 'en' ? project.title_en : project.title;
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+                    {projects.slice(0, 6).map((project, index) => {
+                        const projectTitle = language === 'en' ? project.title_en : project.title;
+                        const displayTags = project.tags?.filter(t => t !== "Landing Page") || [];
 
-                        // Shared card style format
                         const cardContent = (
                             <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-white/5 rounded-[16px] p-4 h-full flex flex-col transition-all duration-500 hover:border-[#38889F] hover:shadow-2xl hover:shadow-[#38889F]/10 group/card relative overflow-hidden">
-                                {/* Imagem Cover Tumb */}
                                 <div className="w-full aspect-[4/3] rounded-[14px] overflow-hidden mb-5 relative bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/5">
                                     <img
                                         src={project.image}
-                                        alt={title}
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110"
+                                        alt={projectTitle}
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110 pointer-events-none"
                                     />
-                                    {/* Overlay sutil na imagem */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                                 </div>
 
                                 <div className="flex-grow flex flex-col">
                                     <div className="mb-6">
                                         <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover/card:text-[#38889F] transition-colors leading-tight mb-4">
-                                            {title}
+                                            {projectTitle}
                                         </h3>
 
-                                        {/* Tags */}
                                         <div className="flex flex-wrap gap-2">
-                                            {project.tags?.slice(0, 3).map((tag, i) => (
+                                            {displayTags.slice(0, 3).map((tag, i) => (
                                                 <span key={i} className="px-3 py-1 text-[11px] font-semibold tracking-wider uppercase bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-slate-400 rounded-full border border-slate-200 dark:border-white/5">
                                                     {tag}
                                                 </span>
                                             ))}
-                                            {project.tags?.length > 3 && (
+                                            {displayTags.length > 3 && (
                                                 <span className="px-3 py-1 text-[11px] font-semibold tracking-wider uppercase bg-slate-50 dark:bg-zinc-900/50 text-slate-500 dark:text-slate-500 rounded-full border border-slate-200 dark:border-white/5">
-                                                    +{project.tags.length - 3}
+                                                    +{displayTags.length - 3}
                                                 </span>
                                             )}
                                         </div>
@@ -198,7 +187,7 @@ const Home = () => {
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                transition={{ duration: 0.4, delay: index * 0.05 }}
                                 className="h-full"
                             >
                                 <Link to={`/projetos/${project.id}`} className="group block h-full w-full outline-none focus-visible:ring-4 focus-visible:ring-[#38889F] rounded-[16px]">
@@ -208,7 +197,20 @@ const Home = () => {
                         );
                     })}
                 </div>
+
+                {/* Ver todos os projetos Button */}
+                {projects.length > 6 && (
+                    <div className="mt-12 flex justify-center">
+                        <Link to="/projetos" className="inline-flex items-center gap-2 px-8 py-4 bg-slate-100 dark:bg-zinc-800 hover:bg-[#38889F] hover:text-white text-slate-900 dark:text-white font-bold rounded-full transition-all duration-300 border border-slate-200 dark:border-white/10 hover:border-[#38889F] group/btn">
+                            {t('projects.viewAll')}
+                            <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+                        </Link>
+                    </div>
+                )}
             </section>
+
+            {/* Seção de Artigos */}
+            <ArticlesSection />
 
             {/* CTA Section (Footer CTA) - Master Grid wrapper */}
             <section className="mx-4 md:mx-8 lg:mx-[150px] mt-24">

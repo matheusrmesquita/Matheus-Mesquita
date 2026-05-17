@@ -3,6 +3,8 @@ export const translations = {
         nav: {
             home: "Início",
             about: "Sobre",
+            projects: "Projetos",
+            articles: "Artigos",
             contact: "Contate-me",
         },
         hero: {
@@ -18,6 +20,7 @@ export const translations = {
             subtitle: "Design estratégico aplicado em soluções reais, de portais complexos a fluxos de conversão.",
             viewMore: "Ver mais",
             cardBtn: "Ver Case",
+            viewAll: "Ver todos os projetos",
         },
         cta: {
             title: "Design feito para<br class='hidden md:block' /> gerar resultado",
@@ -25,9 +28,9 @@ export const translations = {
             button: "Iniciar Contato Profissional",
         },
         projectDetails: {
-            back: "Voltar aos Projetos",
+            back: "Voltar para a Home",
             notFound: "Projeto não encontrado",
-            backToPortfolio: "Voltar ao Portfólio",
+            backToPortfolio: "Voltar para a Home",
             context: "O Contexto",
             process: "O Processo",
             technique: "A Técnica",
@@ -36,6 +39,17 @@ export const translations = {
             ctaTitle: "Pronto para elevar seu produto?",
             ctaDesc: "Vamos conversar sobre metodologias, processos de design e engenharia avançada.",
             ctaButton: "Iniciar Contato",
+        },
+        articles: {
+            title: "Artigos & Reflexões",
+            subtitle: "Mergulhos profundos em engenharia de UX, IA aplicada a produtos digitais e a complexidade do design estratégico.",
+            readMore: "Ler artigo completo",
+        },
+        search: {
+            placeholder: "Buscar projetos ou artigos por título ou contexto...",
+            clear: "Limpar busca",
+            noProjects: "Nenhum projeto encontrado.",
+            noArticles: "Nenhum artigo encontrado.",
         },
         about: {
             title: "Sou Matheus,",
@@ -68,6 +82,7 @@ export const translations = {
             placeholderEmail: "john@empresa.com",
             placeholderMessage: "Descreva o gargalo de conversão ou desafio de arquitetura...",
             button: "Iniciar Conversa Técnica",
+            whatsappButton: "Send via WhatsApp 💬",
         },
         footer: {
             rights: "© {year} Matheus Mesquita.",
@@ -77,6 +92,8 @@ export const translations = {
         nav: {
             home: "Home",
             about: "About",
+            projects: "Projects",
+            articles: "Articles",
             contact: "Contact me",
         },
         hero: {
@@ -92,6 +109,7 @@ export const translations = {
             subtitle: "Strategic design applied to real solutions, from complex portals to conversion flows.",
             viewMore: "View more",
             cardBtn: "View Case",
+            viewAll: "View all projects",
         },
         cta: {
             title: "Design built to<br class='hidden md:block' /> generate results",
@@ -99,9 +117,9 @@ export const translations = {
             button: "Start Professional Contact",
         },
         projectDetails: {
-            back: "Back to Projects",
+            back: "Back to Home",
             notFound: "Project not found",
-            backToPortfolio: "Back to Portfolio",
+            backToPortfolio: "Back to Home",
             context: "The Context",
             process: "The Process",
             technique: "The Technique",
@@ -110,6 +128,17 @@ export const translations = {
             ctaTitle: "Ready to elevate your product?",
             ctaDesc: "Let's talk about methodologies, design processes, and advanced engineering.",
             ctaButton: "Start Contact",
+        },
+        articles: {
+            title: "Articles & Thoughts",
+            subtitle: "Deep dives into UX engineering, AI applied to digital products, and the fine lines of strategic design.",
+            readMore: "Read full article",
+        },
+        search: {
+            placeholder: "Search projects or articles by title or context...",
+            clear: "Clear search",
+            noProjects: "No projects found.",
+            noArticles: "No articles found.",
         },
         about: {
             title: "I'm Matheus,",
@@ -142,6 +171,7 @@ export const translations = {
             placeholderEmail: "john@company.com",
             placeholderMessage: "Describe the conversion bottleneck or architecture challenge...",
             button: "Start Technical Conversation",
+            whatsappButton: "Send via WhatsApp 💬",
         },
         footer: {
             rights: "© {year} Matheus Mesquita.",

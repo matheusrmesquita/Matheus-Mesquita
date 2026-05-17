@@ -5,7 +5,11 @@ import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import Sobre from './pages/Sobre';
 import Contato from './pages/Contato';
+import Projects from './pages/Projects';
+import Articles from './pages/Articles';
 import ProjectDetails from './pages/ProjectDetails';
+import ArticleSearch from './pages/ArticleSearch';
+import ArticleEducation from './pages/ArticleEducation';
 import { LanguageProvider } from './context/LanguageContext';
 import WhatsAppFloat from './components/ui/WhatsAppFloat';
 
@@ -22,7 +26,11 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/sobre" element={<Sobre />} />
               <Route path="/contato" element={<Contato />} />
+              <Route path="/projetos" element={<Projects />} />
               <Route path="/projetos/:id" element={<ProjectDetails />} />
+              <Route path="/artigos" element={<Articles />} />
+              <Route path="/artigos/busca" element={<ArticleSearch />} />
+              <Route path="/artigos/dxp-educacao" element={<ArticleEducation />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
