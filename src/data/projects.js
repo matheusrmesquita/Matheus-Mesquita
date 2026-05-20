@@ -45,8 +45,29 @@ import sevCan13 from '../assets/Sev can13.webp';
 import sevCan14 from '../assets/Sev can14.webp';
 import sevCan15 from '../assets/Sev can15.webp';
 import sevCan16 from '../assets/Sev can516.webp';
+import jotakaCard from '../assets/jotaka.png';
+import jotakaReservas from '../assets/Jotaka resevas.png';
+import jotakaCapa from '../assets/CAPA card jotaka.jpg';
 
 export const projects = [
+    {
+        id: 14,
+        type: 'project',
+        date: '2026-05-19',
+        title: "Jotaka Cozinha e Bar",
+        title_en: "Jotaka Restaurant and Bar",
+        role: "UX/UI Design / Estratégia Digital / Sistemas",
+        role_en: "UX/UI Design / Digital Strategy / Systems",
+        context: "Atuei na reestruturação digital de um restaurante que enfrentava um problema muito comum em operações que cresceram rápido: a marca existia fisicamente, mas digitalmente tudo funcionava de forma desconectada. O site era extremamente limitado, funcionando quase como um repositório estático de cardápio. O Instagram não seguia um padrão visual consistente, os materiais impressos tinham outra linguagem, e não existia uma conexão real entre experiência física, comunicação digital e operação interna. O desafio inicial não era apenas “fazer um site novo” ou “melhorar o Instagram”. O projeto precisava consolidar a marca como um ecossistema único, criando consistência visual, operacional e estratégica entre diferentes plataformas.",
+        context_en: "I worked on the digital restructuring of a restaurant facing a very common problem in fast-growing operations: the brand existed physically, but digitally everything functioned in a disconnected way. The website was extremely limited, functioning almost as a static menu repository. Instagram did not follow a consistent visual pattern, printed materials had another language, and there was no real connection between physical experience, digital communication, and internal operations. The initial challenge wasn't just to “make a new website” or “improve Instagram”. The project needed to consolidate the brand as a single ecosystem, creating visual, operational, and strategic consistency across different platforms.",
+        process: "O projeto foi conduzido em etapas estratégicas. A primeira focou na consolidação da marca, estruturando o Instagram e materiais impressos. A segunda focou no cardápio digital, estabilizando mudanças operacionais para criar uma experiência digital estruturada. A terceira tratou da padronização entre o site e o ecossistema digital, alinhando identidade visual, tipografia e hierarquia para criar coerência entre canais.",
+        process_en: "The project was conducted in strategic stages. The first focused on brand consolidation, structuring Instagram and printed materials. The second focused on the digital menu, stabilizing operational changes to create a structured digital experience. The third dealt with standardization between the website and the digital ecosystem, aligning visual identity, typography, and hierarchy to create consistency across channels.",
+        technique: "Além da reformulação visual no Framer, o projeto envolveu a criação de um sistema interno de gestão de reservas para centralizar dados, organizar mesas e relacionar reservas ao faturamento. Também estruturamos relatórios periódicos (Meta Ads, Google Meu Negócio, etc.) para análise contínua, transformando a presença digital em uma estrutura realmente funcional e integrada para o negócio.",
+        technique_en: "In addition to the visual redesign in Framer, the project involved creating an internal reservation management system to centralize data, organize tables, and link reservations to billing. We also structured periodic reports (Meta Ads, Google My Business, etc.) for continuous analysis, transforming the digital presence into a truly functional and integrated structure for the business.",
+        tags: ["2026", "Framer", "UX Design", "Branding", "Sistemas"],
+        image: jotakaCapa,
+        gallery: [jotakaCard, jotakaReservas]
+    },
     {
         id: 13,
         type: 'project',
