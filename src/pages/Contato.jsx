@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLanguage } from '@/context/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { InteractiveHoverButton } from '@/components/ui/InteractiveHoverButton';
 
 const WA_NUMBER = '5561982863674';
@@ -21,7 +21,8 @@ const Contato = () => {
     };
 
     return (
-        <div className="py-12 mx-4 md:mx-8 lg:mx-[150px] animate-in fade-in duration-500">
+        <div className="brand-section brand-section-block animate-in fade-in duration-500">
+            <div className="brand-container">
             <div className="max-w-2xl mx-auto text-center mb-12">
                 <h1 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white">{t('contact.title')}</h1>
                 <p className="text-xl text-slate-600 dark:text-slate-400">{t('contact.subtitle')}</p>
@@ -29,7 +30,7 @@ const Contato = () => {
 
             <form
                 onSubmit={handleSubmit}
-                className="max-w-xl mx-auto bg-white/50 dark:bg-black/20 border border-slate-200 dark:border-white/10 p-8 md:p-10 rounded-[16px] space-y-6"
+                className="max-w-xl mx-auto bg-brand-gray/60 backdrop-blur-md border border-white/5 p-8 md:p-10 rounded-[16px] space-y-6 shadow-2xl"
             >
                 <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-bold text-slate-700 dark:text-slate-300">{t('contact.labelName')}</label>
@@ -39,7 +40,7 @@ const Contato = () => {
                         required
                         value={form.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-[14px] bg-white/50 dark:bg-black/50 border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-[#38889F]/50 transition-all font-medium text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600"
+                        className="w-full px-4 py-3 rounded-[14px] bg-brand-black border border-white/10 focus:outline-none focus:ring-2 focus:ring-brand-glow/50 transition-all font-medium text-white placeholder:text-slate-600"
                         placeholder={t('contact.placeholderName')}
                     />
                 </div>
@@ -52,7 +53,7 @@ const Contato = () => {
                         required
                         value={form.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-[14px] bg-white/50 dark:bg-black/50 border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-[#38889F]/50 transition-all font-medium text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600"
+                        className="w-full px-4 py-3 rounded-[14px] bg-brand-black border border-white/10 focus:outline-none focus:ring-2 focus:ring-brand-glow/50 transition-all font-medium text-white placeholder:text-slate-600"
                         placeholder={t('contact.placeholderEmail')}
                     />
                 </div>
@@ -65,7 +66,7 @@ const Contato = () => {
                         required
                         value={form.message}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-[14px] bg-white/50 dark:bg-black/50 border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-[#38889F]/50 transition-all font-medium resize-none text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600"
+                        className="w-full px-4 py-3 rounded-[14px] bg-brand-black border border-white/10 focus:outline-none focus:ring-2 focus:ring-brand-glow/50 transition-all font-medium resize-none text-white placeholder:text-slate-600"
                         placeholder={t('contact.placeholderMessage')}
                     />
                 </div>
@@ -78,6 +79,7 @@ const Contato = () => {
                     />
                 </button>
             </form>
+            </div>
         </div>
     );
 };

@@ -1,13 +1,13 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/utils";
 
 const InteractiveHoverButton = React.forwardRef(({ text = "Button", className, ...props }, ref) => {
     return (
         <button
             ref={ref}
             className={cn(
-                "group relative w-auto min-w-32 cursor-pointer overflow-hidden rounded-full border bg-background p-3 px-8 text-center font-semibold transition-all duration-300",
+                "interactive-hover-button group relative w-auto min-w-32 cursor-pointer overflow-hidden rounded-full border bg-background p-3 px-8 text-center font-semibold transition-all duration-300",
                 className
             )}
             {...props}

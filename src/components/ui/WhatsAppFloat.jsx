@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 
@@ -8,6 +8,17 @@ const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${WA_DEFAULT_MSG}`;
 
 const WhatsAppFloat = () => {
     const [showTooltip, setShowTooltip] = useState(false);
+    const [canHover, setCanHover] = useState(false);
+
+    useEffect(() => {
+        const media = window.matchMedia('(hover: hover) and (pointer: fine)');
+        const updateCanHover = () => setCanHover(media.matches);
+
+        updateCanHover();
+        media.addEventListener('change', updateCanHover);
+
+        return () => media.removeEventListener('change', updateCanHover);
+    }, []);
 
     return (
         <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-3">
@@ -41,9 +52,9 @@ const WhatsAppFloat = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Fale comigo pelo WhatsApp"
-                onMouseEnter={() => setShowTooltip(true)}
-                onMouseLeave={() => setShowTooltip(false)}
-                whileHover={{ scale: 1.1 }}
+                onMouseEnter={() => canHover && setShowTooltip(true)}
+                onMouseLeave={() => canHover && setShowTooltip(false)}
+                whileHover={canHover ? { scale: 1.1 } : undefined}
                 whileTap={{ scale: 0.95 }}
                 className="relative w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl shadow-[#25D366]/40"
             >

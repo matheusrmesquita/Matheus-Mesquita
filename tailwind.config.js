@@ -1,3 +1,5 @@
+import typography from '@tailwindcss/typography'
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -8,7 +10,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Ubuntu', 'sans-serif'],
+        sans: ['Satoshi', 'General Sans', 'Ubuntu', 'sans-serif'],
       },
       colors: {
         background: "hsl(var(--background))",
@@ -20,11 +22,16 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        // Nova cor primaria selecionada (Laranja) - mantendo para compatibilidade se necessário
         brand: {
           400: '#fb923c', // orange-400
           500: '#f97316', // orange-500
           600: '#ea580c', // orange-600
+          black: '#050505',
+          gray: '#111111',
+          glow: '#FF5A1F',
+          orange: '#FF6B00',
+          amber: '#CC4A00',
+          offwhite: '#F5F5F5',
         },
         // Cores do Gradiente para o Background da Foto
         'grad-red': '#511b15',
@@ -36,6 +43,6 @@ export default {
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
+    typography,
   ],
 }

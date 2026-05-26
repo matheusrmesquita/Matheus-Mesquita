@@ -1,20 +1,20 @@
 import React from 'react';
-import { useLanguage } from '../../context/LanguageContext';
+import { Link } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
     const { t } = useLanguage();
 
     return (
-        <footer className="w-full border-t border-slate-200 dark:border-white/10 py-8 mt-12 transition-colors">
-            <div className="mx-4 md:mx-8 lg:mx-[150px] flex flex-col md:flex-row justify-between items-center gap-4">
-                <p className="text-slate-500 dark:text-slate-400 text-sm font-medium">
+        <footer className="brand-section w-full border-t border-white/5 bg-zinc-950/40 py-8 md:py-10 transition-colors mt-24">
+            <div className="brand-container flex flex-col md:flex-row justify-between items-center gap-6 flex-wrap">
+                <Link to="/" className="text-white font-bold text-[0.9375rem] tracking-tighter hover:text-brand-glow transition-colors">
+                    BRAND
+                </Link>
+                
+                <p className="text-zinc-600 text-xs font-medium tracking-wide">
                     {t('footer.rights').replace('{year}', new Date().getFullYear())}
                 </p>
-                <div className="flex gap-6 text-sm font-medium text-slate-500 dark:text-slate-400">
-                    <a href="https://www.linkedin.com/in/matheusrmesquita/" target="_blank" rel="noopener noreferrer" className="hover:text-[#38889F] transition-colors">LinkedIn</a>
-                    <a href="https://www.behance.net/matheusrmesquita" target="_blank" rel="noopener noreferrer" className="hover:text-[#38889F] transition-colors">Behance</a>
-                    <a href="https://github.com/matheusrmesquita" target="_blank" rel="noopener noreferrer" className="hover:text-[#38889F] transition-colors">GitHub</a>
-                </div>
             </div>
         </footer>
     );

@@ -18,8 +18,8 @@ const FilterBar = ({ yearTags, categoryTags, selectedTags, toggleTag, clearFilte
                             onClick={() => toggleTag(tag)}
                             className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors border ${
                                 isSelected 
-                                    ? 'bg-[#38889F] text-white border-[#38889F]' 
-                                    : 'bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-white/5 hover:border-[#38889F]'
+                                    ? 'bg-brand-glow text-white border-brand-glow' 
+                                    : 'bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-white/5 hover:border-brand-glow'
                             }`}
                         >
                             {tag}
@@ -42,8 +42,8 @@ const FilterBar = ({ yearTags, categoryTags, selectedTags, toggleTag, clearFilte
                             onClick={() => toggleTag(tag)}
                             className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors border ${
                                 isSelected 
-                                    ? 'bg-[#38889F] text-white border-[#38889F]' 
-                                    : 'bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-white/5 hover:border-[#38889F]'
+                                    ? 'bg-brand-glow text-white border-brand-glow' 
+                                    : 'bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-white/5 hover:border-brand-glow'
                             }`}
                         >
                             {tag}

@@ -1,195 +1,314 @@
-import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { projects } from '@/data/projects';
-import { ArrowLeft, ExternalLink, LayoutTemplate, Zap, MonitorSmartphone, MonitorPlay, Sparkles, Lightbulb, Palette } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { useParams, Link, Navigate } from 'react-router-dom';
+import { ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useLanguage } from '@/context/LanguageContext';
-import { InteractiveHoverButton } from '@/components/ui/InteractiveHoverButton';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { ProjectCover } from '@/utils/projectCovers';
+import { supabase } from '@/lib/supabase';
+
+/* ─── Componente de entrada com fade-up ─── */
+const FadeUp = ({ children, delay = 0, className = '' }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 22 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] }}
+        className={className}
+    >
+        {children}
+    </motion.div>
+);
+
+/* ─── Bloco de conteúdo textual ─── */
+const ContentBlock = ({ index, title, body, featured = false }) => {
+    if (!body) return null;
+    return (
+        <div className={`pd-block ${featured ? 'pd-block-featured' : ''}`}>
+            <span className="pd-block-num">{String(index).padStart(2, '0')}</span>
+            <h3 className="pd-block-title">{title}</h3>
+            <p className="pd-block-body">{body}</p>
+        </div>
+    );
+};
 
 const ProjectDetails = () => {
     const { id } = useParams();
     const { t, language } = useLanguage();
-    const project = projects.find(p => p.id === parseInt(id));
+    const [project, setProject] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    // Scroll top on mount
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, []);
+        supabase.from('projects').select('*').eq('slug', id).eq('status', 'published').single()
+            .then(({ data }) => {
+                setProject(data ? { ...data, gallery: data.gallery_urls || [], framerLink: data.framer_link, figmaLink: data.figma_link } : null);
+                setLoading(false);
+            });
+    }, [id]);
 
-    if (!project) {
-        return (
-            <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-zinc-950 text-slate-900 dark:text-white">
-                <h2 className="text-3xl font-bold mb-6">{t('projectDetails.notFound')}</h2>
-                <Link to="/#projects">
-                    <InteractiveHoverButton text={t('projectDetails.backToPortfolio')} className="bg-[#38889F] border-[#38889F] text-white" />
-                </Link>
-            </div>
-        );
-    }
+    if (loading) return null;
+    if (!project) return <Navigate to="/projetos" replace />;
 
-    const title = language === 'en' ? (project.title_en || project.title) : project.title;
-    const role = language === 'en' ? (project.role_en || project.role) : project.role;
-    const context = language === 'en' ? (project.context_en || project.context) : project.context;
-    const process = language === 'en' ? (project.process_en || project.process) : project.process;
-    const technique = language === 'en' ? (project.technique_en || project.technique) : project.technique;
-    const highlight = language === 'en' ? (project.highlight_en || project.highlight) : project.highlight;
-    const solution = language === 'en' ? (project.solution_en || project.solution) : project.solution;
+    /* ─── Localização dos campos ─── */
+    const title      = language === 'en' ? (project.title_en   || project.title)     : project.title;
+    const role       = language === 'en' ? (project.role_en    || project.role)      : project.role;
+    const context    = language === 'en' ? (project.context_en || project.context)   : project.context;
+    const process    = language === 'en' ? (project.process_en || project.process)   : project.process;
+    const technique  = language === 'en' ? (project.technique_en || project.technique) : project.technique;
+    const highlight  = language === 'en' ? (project.highlight_en || project.highlight) : project.highlight;
+    const solution   = language === 'en' ? (project.solution_en  || project.solution)  : project.solution;
     const aesthetics = language === 'en' ? (project.aesthetics_en || project.aesthetics) : project.aesthetics;
+
+    /* ─── Capa conceitual ─── */
+    const coverClass = project.cover_type || 'cover-orbita';
+    const letter     = project.cover_letter || project.title?.charAt(0).toUpperCase() || 'A';
+    const year       = (project.tags || []).find(t => /^\d{4}$/.test(t)) || new Date(project.created_at || Date.now()).getFullYear().toString();
+    const tags       = (project.tags || []).filter(t => !/^\d{4}$/.test(t)).slice(0, 2);
+
+    /* ─── Labels i18n ─── */
+    const labels = {
+        context:    language === 'en' ? 'Strategy'          : 'Estratégia',
+        highlight:  language === 'en' ? 'Objective'         : 'Objetivo',
+        solution:   language === 'en' ? 'Implementation'    : 'Execução',
+        process:    language === 'en' ? 'Growth Plan'       : 'Plano de Crescimento',
+        aesthetics: language === 'en' ? 'Brand Presence'    : 'Presença de Marca',
+        technique:  language === 'en' ? 'Performance & ROI' : 'Performance & ROI',
+        gallery:    language === 'en' ? 'Campaign Assets'   : 'Ativos de Campanha',
+        prototype:  language === 'en' ? 'Results & Data'    : 'Resultados & Dados',
+        protoDesc:  language === 'en'
+            ? 'Check the metrics and conversion data generated by this project.'
+            : 'Confira as métricas e dados de conversão gerados por este projeto.',
+        ctaLabel:   language === 'en' ? 'Scale Now'         : 'Escalar Agora',
+        ctaTitle:   language === 'en' ? 'Ready to scale your business?' : 'Pronto para escalar seu negócio?',
+        ctaSub:     language === 'en'
+            ? 'Tell us about your acquisition goals and let\'s build your growth engine.'
+            : 'Conte-nos sobre seus objetivos de aquisição e vamos construir sua máquina de crescimento.',
+        ctaBtn:     language === 'en' ? 'Talk to Specialist' : 'Falar com Especialista',
+        backLabel:  language === 'en' ? 'All Cases'         : 'Todos os cases',
+        framerBtn:  language === 'en' ? 'View Strategy'     : 'Ver Estratégia',
+    };
+
+    /* ─── Blocos de conteúdo disponíveis ─── */
+    const blocks = [
+        { key: 'highlight',  label: labels.highlight,  body: highlight  },
+        { key: 'solution',   label: labels.solution,   body: solution   },
+        { key: 'process',    label: labels.process,    body: process    },
+        { key: 'aesthetics', label: labels.aesthetics, body: aesthetics },
+        { key: 'technique',  label: labels.technique,  body: technique  },
+    ].filter(b => b.body);
+
+    const mediaItems = project.gallery?.length > 0 ? project.gallery : [];
 
     return (
         <>
-        <article className="min-h-screen bg-white dark:bg-[#0f0f11] text-slate-600 dark:text-slate-400 font-sans selection:bg-[#38889F]/30 pb-24">
+        <article className="pd-article">
 
-            {/* Nav Auxiliar - Voltar */}
-            <div className="max-w-5xl mx-auto px-6 pt-12">
-                <Link to="/#projects" className="inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors font-medium group text-lg">
-                    <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" /> {t('projectDetails.back')}
-                </Link>
-            </div>
+            {/* ══════════════════════════════════════════════
+                SEÇÃO 1 — Hero Cinematográfica
+            ══════════════════════════════════════════════ */}
+            <section className="pd-hero">
 
-            {/* HEADER GIGANTE (TITLE & TAGS) */}
-            <header className="pt-16 pb-20 px-6 max-w-5xl mx-auto text-center">
-                <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                    <div className="flex flex-wrap justify-center gap-3 mb-8">
-                        {project.tags?.filter(t => t !== "Landing Page").map((tag, idx) => (
-                            <span key={idx} className="px-5 py-2 bg-[#38889F]/10 text-[#38889F] rounded-full text-sm font-bold border border-[#38889F]/10">
-                                {tag}
-                            </span>
-                        ))}
-                    </div>
-                    <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-8 leading-[1.1]">{title}</h1>
-                    {role && (
-                        <p className="text-xl md:text-2xl text-slate-500 dark:text-slate-400 font-medium max-w-2xl mx-auto">{role}</p>
+                {/* Capa conceitual (mesma dos cards de projeto) */}
+                <ProjectCover coverClass={coverClass} letter={letter} />
+
+                {/* Overlay escuro */}
+                <div className="pd-hero-overlay" />
+
+                {/* Glow laranja cinematográfico */}
+                <div className="pd-hero-glow" />
+
+                {/* Conteúdo do hero */}
+                <div className="pd-hero-content">
+
+                    {/* Link de voltar */}
+                    <FadeUp delay={0}>
+                        <Link to="/projetos" className="pd-hero-back">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                            {labels.backLabel}
+                        </Link>
+                    </FadeUp>
+
+                    {/* Label de categoria */}
+                    <FadeUp delay={0.1}>
+                        <span className="pd-label">
+                            {role || 'Case'}
+                        </span>
+                    </FadeUp>
+
+                    {/* Título principal */}
+                    <FadeUp delay={0.2}>
+                        <h1 className="pd-hero-title">{title}</h1>
+                    </FadeUp>
+
+                    {/* Tags como pílulas */}
+                    {tags.length > 0 && (
+                        <FadeUp delay={0.3}>
+                            <div className="pd-hero-tags">
+                                {tags.map((tag, i) => (
+                                    <span key={i} className="pd-hero-tag">{tag}</span>
+                                ))}
+                                <span className="pd-hero-tag">{year}</span>
+                            </div>
+                        </FadeUp>
                     )}
-                </motion.div>
-            </header>
 
-            {/* MAIN CONTENT BLOCK (TEXTS) */}
-            <section className="px-6 pb-24 max-w-4xl mx-auto space-y-16">
-
-                {context && (
-                    <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start border-t border-slate-100 dark:border-white/5 pt-12">
-                        <h3 className="text-slate-900 dark:text-white text-2xl font-bold w-full md:w-1/3 flex items-center gap-3"><LayoutTemplate className="text-[#38889F]" /> {t('projectDetails.context')}</h3>
-                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed md:w-2/3">{context}</p>
-                    </div>
-                )}
-
-                {highlight && (
-                    <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start border-t border-slate-100 dark:border-white/5 pt-12">
-                        <h3 className="text-slate-900 dark:text-white text-2xl font-bold w-full md:w-1/3 flex items-center gap-3"><Sparkles className="text-[#38889F]" /> {language === 'en' ? 'Highlight' : 'O Destaque'}</h3>
-                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed md:w-2/3">{highlight}</p>
-                    </div>
-                )}
-
-                {solution && (
-                    <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start border-t border-slate-100 dark:border-white/5 pt-12">
-                        <h3 className="text-slate-900 dark:text-white text-2xl font-bold w-full md:w-1/3 flex items-center gap-3"><Lightbulb className="text-[#38889F]" /> {language === 'en' ? 'The Solution' : 'A Solução'}</h3>
-                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed md:w-2/3">{solution}</p>
-                    </div>
-                )}
-
-                {process && (
-                    <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start border-t border-slate-100 dark:border-white/5 pt-12">
-                        <h3 className="text-slate-900 dark:text-white text-2xl font-bold w-full md:w-1/3 flex items-center gap-3"><Zap className="text-[#38889F]" /> {t('projectDetails.process')}</h3>
-                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed md:w-2/3">{process}</p>
-                    </div>
-                )}
-
-                {aesthetics && (
-                    <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start border-t border-slate-100 dark:border-white/5 pt-12">
-                        <h3 className="text-slate-900 dark:text-white text-2xl font-bold w-full md:w-1/3 flex items-center gap-3"><Palette className="text-[#38889F]" /> {language === 'en' ? 'The Aesthetics' : 'A Estética'}</h3>
-                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed md:w-2/3">{aesthetics}</p>
-                    </div>
-                )}
-
-                {technique && (
-                    <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start border-t border-slate-100 dark:border-white/5 pt-12">
-                        <h3 className="text-slate-900 dark:text-white text-2xl font-bold w-full md:w-1/3 flex items-center gap-3"><MonitorSmartphone className="text-[#38889F]" /> {t('projectDetails.technique')}</h3>
-                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed md:w-2/3">{technique}</p>
-                    </div>
-                )}
-
-            </section>
-
-            {/* GALLERY & MEDIA PRESENTATION AREA */}
-            <section className="w-full bg-slate-50 dark:bg-[#0a0a0c] pt-20 border-t border-slate-100 dark:border-white/5">
-                <div className="max-w-7xl mx-auto px-4 flex flex-col items-center space-y-24 pb-24">
-
-                    {/* Media Iteration */}
-                    {project.gallery?.length > 0 ? (
-                        project.gallery.map((media, idx) => (
-                            <div key={idx} className="w-full relative group">
-                                <div className="absolute -inset-4 bg-gradient-to-r from-[#38889F]/10 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-1000 -z-10 rounded-[16px]"></div>
-                                <img
-                                    src={media}
-                                    alt={`${title} - Visualização ${idx + 1}`}
-                                    className="w-full h-auto rounded-[14px] shadow-2xl border border-slate-200 dark:border-white/10"
-                                    loading={idx === 0 ? "eager" : "lazy"}
-                                />
-                            </div>
-                        ))
-                    ) : project.image ? (
-                        <div className="w-full relative group">
-                            <div className="absolute -inset-4 bg-gradient-to-r from-[#38889F]/10 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-1000 -z-10 rounded-[16px]"></div>
-                            <img
-                                src={project.image}
-                                alt={`Capa ${title}`}
-                                className="w-full h-auto rounded-[14px] shadow-2xl border border-slate-200 dark:border-white/10"
-                            />
-                        </div>
-                    ) : null}
-
-                    {/* FIGMA / PROTOTYPE IFRAME */}
-                    {project.figmaLink && (
-                        <div className="w-full pt-12 border-t border-slate-100 dark:border-white/5 mx-6 max-w-6xl">
-                            <div className="mb-12 text-center">
-                                <h3 className="text-3xl text-slate-900 dark:text-white font-bold flex items-center justify-center gap-3"><MonitorPlay className="text-[#38889F]" /> {t('projectDetails.prototype')}</h3>
-                                <p className="text-slate-600 dark:text-slate-500 mt-4 font-medium">{t('projectDetails.prototypeDesc')}</p>
-                            </div>
-                            <div className="w-full h-[80vh] bg-white dark:bg-[#1e1e1e] rounded-[16px] overflow-hidden border border-slate-200 dark:border-white/10 shadow-2xl p-2 md:p-4">
-                                <iframe
-                                    style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
-                                    width="100%"
-                                    height="100%"
-                                    className="w-full h-full rounded-[14px]"
-                                    src={project.figmaLink}
-                                    allowFullScreen
-                                />
-                            </div>
-                        </div>
-                    )}
                 </div>
             </section>
 
-            {/* FOOTER CTA */}
-            <section className="mt-32 max-w-4xl mx-auto px-6 text-center">
-                <h2 className="text-4xl text-slate-900 dark:text-white font-bold mb-6">{t('projectDetails.ctaTitle')}</h2>
-                <p className="text-xl text-slate-600 dark:text-slate-400 mb-10 font-medium">{t('projectDetails.ctaDesc')}</p>
-                <Link to="/contato">
-                    <InteractiveHoverButton
-                        text={t('projectDetails.ctaButton')}
-                        className="bg-slate-900 text-white dark:bg-white dark:text-zinc-950 border-none px-10 py-5 text-lg"
-                    />
-                </Link>
-            </section>
+            {/* ══════════════════════════════════════════════
+                SEÇÃO 2 — Contexto / Briefing
+            ══════════════════════════════════════════════ */}
+            {context && (
+                <motion.div
+                    className="pd-section"
+                    initial={{ opacity: 0, y: 28 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-80px' }}
+                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                >
+                    <div className="pd-context-grid">
+                        {/* Número decorativo em stroke */}
+                        <span className="pd-index-num" aria-hidden="true">01</span>
+
+                        {/* Texto editorial */}
+                        <div className="pd-context-text">
+                            <span className="pd-label">{labels.context}</span>
+                            <p className="pd-context-body">{context}</p>
+                        </div>
+                    </div>
+                </motion.div>
+            )}
+
+            {/* ══════════════════════════════════════════════
+                SEÇÃO 3 — Execução / Performance / ROI
+            ══════════════════════════════════════════════ */}
+            {blocks.length > 0 && (
+                <motion.div
+                    className="pd-section"
+                    initial={{ opacity: 0, y: 28 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-80px' }}
+                    transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                >
+                    <div className="pd-blocks-grid">
+                        {blocks.map((block, i) => (
+                            <ContentBlock
+                                key={block.key}
+                                index={i + 2}
+                                title={block.label}
+                                body={block.body}
+                                featured={i === 0}
+                            />
+                        ))}
+                    </div>
+                </motion.div>
+            )}
+
+            {/* ══════════════════════════════════════════════
+                SEÇÃO 4 — Showcase Visual (Galeria)
+            ══════════════════════════════════════════════ */}
+            {mediaItems.length > 0 && (
+                <div className="pd-section-wide">
+                    <div className="pd-gallery-header">
+                        <span className="pd-label">{labels.gallery}</span>
+                    </div>
+                    <div className="pd-gallery">
+                        {mediaItems.map((media, idx) => (
+                            <motion.div
+                                key={idx}
+                                className="pd-gallery-item"
+                                initial={{ opacity: 0, y: 24 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-60px' }}
+                                transition={{ duration: 0.85, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                            >
+                                <div className="pd-gallery-glow" />
+                                <img
+                                    src={media}
+                                    alt={`${title} ${idx + 1}`}
+                                    className="pd-gallery-img"
+                                    loading={idx === 0 ? 'eager' : 'lazy'}
+                                />
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {/* ══════════════════════════════════════════════
+                SEÇÃO 4b — Protótipo Figma (se houver)
+            ══════════════════════════════════════════════ */}
+            {project.figmaLink && (
+                <motion.div
+                    className="pd-figma-wrap"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-60px' }}
+                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                >
+                    <div className="pd-figma-header">
+                        <span className="pd-label">{labels.prototype}</span>
+                        <h2 className="pd-figma-title">{labels.prototype}</h2>
+                        <p className="pd-figma-desc">{labels.protoDesc}</p>
+                    </div>
+                    <div className="pd-figma-container">
+                        <iframe
+                            src={project.figmaLink}
+                            width="100%"
+                            height="100%"
+                            style={{ border: 'none', display: 'block' }}
+                            allowFullScreen
+                            title={`Protótipo ${title}`}
+                        />
+                    </div>
+                </motion.div>
+            )}
+
+            {/* ══════════════════════════════════════════════
+                SEÇÃO 5 — CTA Strip Institucional
+            ══════════════════════════════════════════════ */}
+            <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            >
+                <div className="pd-cta-strip">
+                    <div className="pd-cta-text">
+                        <span className="pd-cta-label">{labels.ctaLabel}</span>
+                        <h2 className="pd-cta-title">{labels.ctaTitle}</h2>
+                        <p className="pd-cta-sub">{labels.ctaSub}</p>
+                    </div>
+                    <Link to="/contato" className="pd-btn-primary">
+                        {labels.ctaBtn}
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </Link>
+                </div>
+            </motion.div>
 
         </article>
 
-        {/* Botão flutuante do Framer - Aparece apenas se houver framerLink */}
+        {/* ─── Botão flutuante Framer ─── */}
         {project.framerLink && (
-            <div className="fixed bottom-6 right-24 z-[9998] flex items-center">
-                <motion.a
+            <motion.div
+                style={{ position: 'fixed', bottom: '1.5rem', right: '6rem', zIndex: 9998 }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.5 }}
+            >
+                <a
                     href={project.framerLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-6 h-14 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-white/10 rounded-[16px] shadow-2xl hover:border-[#38889F] hover:text-[#38889F] text-slate-700 dark:text-white transition-colors font-bold"
+                    className="pd-framer-btn"
                 >
-                    <ExternalLink className="w-5 h-5" />
-                    <span>Ver no Framer</span>
-                </motion.a>
-            </div>
+                    <ExternalLink size={16} />
+                    {labels.framerBtn}
+                </a>
+            </motion.div>
         )}
         </>
     );

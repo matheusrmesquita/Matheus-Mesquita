@@ -17,7 +17,7 @@ const useInstanceId = () => {
 
 export function EtheralShadow({
     sizing = 'fill',
-    color = 'rgba(56, 136, 159, 1)', // Adaptado para #38889F (Teal)
+    color = 'rgba(255, 90, 31, 0.7)', // Adaptado para #FF5A1F (Laranja Glow)
     animation = { scale: 100, speed: 90 },
     noise = { opacity: 1, scale: 1.2 },
     style,
