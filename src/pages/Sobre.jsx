@@ -24,10 +24,14 @@ const Sobre = () => {
             <div className="mb-16 max-w-4xl">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.1] tracking-tight text-slate-900 dark:text-white">
                     {t('about.title')}
-                    <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-400">
-                        {t('about.titleHighlight')}
-                    </span>
+                    {t('about.titleHighlight') && (
+                        <>
+                            <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-400">
+                                {t('about.titleHighlight')}
+                            </span>
+                        </>
+                    )}
                 </h1>
                 <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
                     {t('about.description')}
