@@ -53,7 +53,6 @@ export const translations = {
         },
         about: {
             title: "Sou Matheus.",
-            titleHighlight: "",
             description: "Atuo da análise de requisitos à concepção do produto, da ideação ao handoff, combinando estratégia de produto, pesquisa com usuários e Inteligência Artificial para criar interfaces que geram resultado real.",
             backgroundTitle: "Background & Gestão",
             backgroundItem1Label: "Gestão de Pessoas & Processos",
@@ -142,7 +141,6 @@ export const translations = {
         },
         about: {
             title: "I'm Matheus.",
-            titleHighlight: "",
             description: "I work from requirements analysis to product conception, from ideation to handoff, combining product strategy, user research, and Artificial Intelligence to build interfaces that generate real results.",
             backgroundTitle: "Background & Management",
             backgroundItem1Label: "People & Process Management",
