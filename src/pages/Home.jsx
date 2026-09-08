@@ -14,6 +14,11 @@ import ArticlesSection from '@/components/sections/ArticlesSection';
 import ProjectCard from '@/components/ui/ProjectCard';
 import TypewriterTitle from '@/components/ui/TypewriterTitle';
 
+// Projetos em destaque na Home (curadoria manual, não "mais recentes") — ordem do mais
+// recente pro mais antigo. Os 4 primeiros aparecem no mobile; os 2 últimos (Landing Pages
+// Vesali e Athex) só entram a partir do md, onde a grade já tem espaço pra 6 cards.
+const FEATURED_HOME_PROJECT_IDS = [14, 5, 12, 4, 1, 6];
+
 // Revelação por índice ao rolar — mesmo padrão usado no resto do site (Sobre, ArticlesSection)
 const reveal = (i = 0) => ({
     initial: { opacity: 0, y: 20 },
@@ -63,6 +68,9 @@ const heroSlides = {
 const Home = () => {
     const [selectedProject, setSelectedProject] = useState(null);
     const { t, language } = useLanguage();
+    const featuredProjects = FEATURED_HOME_PROJECT_IDS
+        .map((id) => projects.find((p) => p.id === id))
+        .filter(Boolean);
 
     useEffect(() => {
         if (selectedProject !== null) {
@@ -281,7 +289,7 @@ const Home = () => {
                 </div>
             </div>
 
-            {/* Seção de Projetos - Grid Simples (6 projetos mais recentes) */}
+            {/* Seção de Projetos - Grid Simples (destaques selecionados) */}
             <section id="projects" className="scroll-mt-32 mx-4 md:mx-8 lg:mx-[150px]">
                 <div className="grid grid-cols-12 gap-6 mb-8 md:mb-12 items-end">
                     <div className="col-span-12 md:col-span-8">
@@ -291,13 +299,14 @@ const Home = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.slice(0, 6).map((project, index) => (
+                    {featuredProjects.map((project, index) => (
                         <motion.div
                             key={project.id}
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.4, delay: index * 0.05 }}
+                            className={index >= 4 ? 'hidden md:block' : ''}
                         >
                             <ProjectCard project={project} language={language} ctaLabel={t('projects.cardBtn')} />
                         </motion.div>
@@ -305,7 +314,7 @@ const Home = () => {
                 </div>
 
                 {/* Ver todos os projetos Button */}
-                {projects.length > 6 && (
+                {projects.length > featuredProjects.length && (
                     <div className="mt-12 flex justify-center">
                         <Link to="/projetos" className="inline-flex items-center gap-2 px-8 py-4 bg-slate-100 dark:bg-zinc-800 hover:bg-[#38889F] hover:text-white text-slate-900 dark:text-white font-bold rounded transition-all duration-300 border border-slate-200 dark:border-white/10 hover:border-[#38889F] group/btn">
                             {t('projects.viewAll')}
