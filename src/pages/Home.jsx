@@ -337,7 +337,7 @@ const Home = () => {
                     noise={{ opacity: 1, scale: 1.2 }}
                 />
 
-                <div className="relative z-10 w-full mx-4 md:mx-8 lg:mx-[150px]">
+                <div className="relative z-10 self-stretch mx-4 md:mx-8 lg:mx-[150px]">
                     <motion.p {...reveal(0)} className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-slate-400 mb-6 select-none">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#38889F]"></span>
                         {t('hero.eyebrow')}
