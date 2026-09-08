@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom';
 
 import { articles } from '@/data/articles';
 import ArticleCard from '@/components/ui/ArticleCard';
+import { useLanguage } from '@/context/LanguageContext';
 
 const ArticlesSection = () => {
+    const { language } = useLanguage();
     return (
         <section className="mx-4 md:mx-8 lg:mx-[150px] mt-24 scroll-mt-32" id="artigos">
             <div className="grid grid-cols-12 gap-6 mb-12">
@@ -30,7 +32,7 @@ const ArticlesSection = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                     >
-                        <ArticleCard article={article} index={index} />
+                        <ArticleCard article={article} index={index} language={language} />
                     </motion.div>
                 ))}
             </div>

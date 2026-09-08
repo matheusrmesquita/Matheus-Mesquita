@@ -102,7 +102,7 @@ const Articles = () => {
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.5, delay: index * 0.1 }}
                                     >
-                                        <ArticleCard article={article} index={index} ctaLabel={t('articles.readMore')} />
+                                        <ArticleCard article={article} index={index} language={language} ctaLabel={t('articles.readMore')} />
                                     </motion.div>
                                 ))}
                             </div>

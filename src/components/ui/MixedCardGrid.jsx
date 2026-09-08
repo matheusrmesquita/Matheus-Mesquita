@@ -52,7 +52,7 @@ const MixedCardGrid = ({ items, language, t }) => {
                                     Artigo
                                 </span>
                             </div>
-                            <ArticleCard article={item} index={index} ctaLabel={t('articles.readMore') || 'Ler artigo completo'} />
+                            <ArticleCard article={item} index={index} language={language} ctaLabel={t('articles.readMore') || 'Ler artigo completo'} />
                         </motion.div>
                     );
                 }
