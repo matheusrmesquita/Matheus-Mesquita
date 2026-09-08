@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { BookOpen, ArrowRight, Search } from 'lucide-react';
+import { BookOpen, Search } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import FilterBar from '@/components/ui/FilterBar';
 import MixedCardGrid from '@/components/ui/MixedCardGrid';
+import ArticleCard from '@/components/ui/ArticleCard';
 import { useFilteredContent } from '@/hooks/useFilteredContent';
 
 const Articles = () => {
@@ -36,7 +36,7 @@ const Articles = () => {
     };
 
     return (
-        <div className="animate-in fade-in duration-700 pb-24 pt-32">
+        <div className="animate-in fade-in duration-700 pb-24 pt-16 md:pt-32">
             <section className="mx-4 md:mx-8 lg:mx-[150px]">
                 <div className="grid grid-cols-12 gap-6 mb-12 items-end">
                     <div className="col-span-12 md:col-span-8">
@@ -93,7 +93,7 @@ const Articles = () => {
                                 <p className="text-xl text-slate-500 dark:text-slate-400">{t('search.noArticles')}</p>
                             </div>
                         ) : (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {filteredArticles.map((article, index) => (
                                     <motion.div
                                         key={article.id}
@@ -101,38 +101,8 @@ const Articles = () => {
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                                        className="h-full"
                                     >
-                                        <Link 
-                                            to={article.slug}
-                                            className="group flex flex-col justify-between h-full bg-white dark:bg-zinc-900 border border-slate-200 dark:border-white/5 rounded-[20px] p-8 transition-all duration-500 hover:border-[#38889F]/50 hover:shadow-2xl hover:shadow-[#38889F]/10 overflow-hidden relative"
-                                        >
-                                            {/* Hover Gradient Overlay */}
-                                            <div className="absolute inset-0 bg-gradient-to-br from-[#38889F]/0 to-[#38889F]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-                                            <div>
-                                                <div className="flex gap-2 mb-6">
-                                                    {article.tags?.map(tag => (
-                                                        <span key={tag} className="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-slate-400 font-semibold text-[11px] tracking-wider uppercase group-hover:bg-[#38889F]/10 group-hover:text-[#38889F] transition-colors border border-slate-200 dark:border-white/5">
-                                                            {tag}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                                
-                                                <h3 className="text-2xl font-bold text-slate-900 dark:text-white leading-tight mb-4 group-hover:text-[#38889F] transition-colors">
-                                                    {article.title}
-                                                </h3>
-
-                                                <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed mb-8">
-                                                    {article.excerpt}
-                                                </p>
-                                            </div>
-
-                                            <div className="flex items-center gap-2 text-[#38889F] font-bold text-sm mt-auto group-hover:translate-x-2 transition-transform duration-300 w-max">
-                                                {t('articles.readMore')}
-                                                <ArrowRight className="w-4 h-4" />
-                                            </div>
-                                        </Link>
+                                        <ArticleCard article={article} index={index} ctaLabel={t('articles.readMore')} />
                                     </motion.div>
                                 ))}
                             </div>

@@ -21,7 +21,7 @@ function App() {
         <div className="min-h-screen flex flex-col font-sans transition-colors duration-300">
           <Navbar />
 
-          <main className="flex-grow pt-24 pb-12 w-full">
+          <main className="flex-grow flex flex-col pt-20 md:pt-24 w-full">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/sobre" element={<Sobre />} />

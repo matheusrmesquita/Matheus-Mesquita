@@ -8,6 +8,7 @@ export const translations = {
             contact: "Contate-me",
         },
         hero: {
+            eyebrow: "UX Engineering",
             greeting: "Crio fluxos complexos a",
             role: "interfaces de ",
             roleHighlight: "alta conversão.",
@@ -54,6 +55,11 @@ export const translations = {
         about: {
             title: "Sou Matheus.",
             description: "Atuo da análise de requisitos à concepção do produto, da ideação ao handoff, combinando estratégia de produto, pesquisa com usuários e Inteligência Artificial para criar interfaces que geram resultado real.",
+            role: "UX Engineer",
+            intro: "Trabalho com digital há um bom tempo e minha base vem do design gráfico e do marketing, mas hoje meu foco total é UX/UI. Acredito que um design só é bom de verdade quando é fácil de usar e traz resultado real, seja para uma empresa pequena ou para um grande portal do governo.",
+            daily: "No dia a dia, atuo do levantamento de requisitos e da pesquisa com usuários (entrevistas e testes de usabilidade) ao mapeamento de jornadas, arquitetura da informação e wireframes. Desenvolvo interfaces intuitivas, responsivas e acessíveis, com design systems e componentes reutilizáveis para um handoff eficiente, apoiado por Inteligência Artificial que já entrega código aproveitável pelo time de desenvolvimento. Também atuo em migração de dados (WordPress para Liferay) e no desenvolvimento de portais, sistemas e sites nesse ecossistema, sempre propondo melhorias estratégicas de UX/UI para empresas e órgãos governamentais.",
+            closing: "Trabalho com metodologias ágeis e estou sempre de olho nas tendências da área, sempre cuidando para que tudo seja acessível e intuitivo.",
+            connect: "Vamos nos conectar",
             backgroundTitle: "Background & Gestão",
             backgroundItem1Label: "Gestão de Pessoas & Processos",
             backgroundItem1: "Experiência com Unico People e Success Factors para operações de RH, gestores e fluxos de onboarding em ambientes corporativos.",
@@ -96,6 +102,7 @@ export const translations = {
             contact: "Contact me",
         },
         hero: {
+            eyebrow: "UX Engineering",
             greeting: "I create complex flows to",
             role: "interfaces of ",
             roleHighlight: "high conversion.",
@@ -142,6 +149,11 @@ export const translations = {
         about: {
             title: "I'm Matheus.",
             description: "I work from requirements analysis to product conception, from ideation to handoff, combining product strategy, user research, and Artificial Intelligence to build interfaces that generate real results.",
+            role: "UX Engineer",
+            intro: "I've worked in digital for a good while, with a background in graphic design and marketing, but today my full focus is UX/UI. I believe design is only truly good when it's easy to use and brings real results, whether for a small business or a large government portal.",
+            daily: "Day to day, I work from requirements gathering and user research (interviews and usability testing) to journey mapping, information architecture, and wireframes. I develop intuitive, responsive, and accessible interfaces, with design systems and reusable components for an efficient handoff, supported by Artificial Intelligence that already delivers code the development team can use. I also work on data migration (WordPress to Liferay) and on developing portals, systems, and websites within that ecosystem, always proposing strategic UX/UI improvements for companies and government agencies.",
+            closing: "I work with agile methodologies and keep an eye on the field's trends, always making sure everything is accessible and intuitive.",
+            connect: "Let's connect",
             backgroundTitle: "Background & Management",
             backgroundItem1Label: "People & Process Management",
             backgroundItem1: "Experience with Unico People and Success Factors for HR operations, management, and onboarding flows in corporate environments.",
