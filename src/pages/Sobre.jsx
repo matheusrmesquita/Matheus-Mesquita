@@ -46,9 +46,9 @@ const Sobre = () => {
                             <p>{t('about.closing')}</p>
                         </motion.div>
 
-                        <motion.div {...reveal(3)} className="flex flex-wrap items-center gap-8 mt-10">
-                            <a href="https://wa.me/5561982863674?text=Ol%C3%A1%2C%20Matheus%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20%F0%9F%9A%80" target="_blank" rel="noopener noreferrer">
-                                <InteractiveHoverButton text={t('hero.ctaWork')} className="bg-[#38889F] border-[#38889F] text-white" />
+                        <motion.div {...reveal(3)} className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-8 mt-10">
+                            <a href="https://wa.me/5561982863674?text=Ol%C3%A1%2C%20Matheus%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20%F0%9F%9A%80" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                                <InteractiveHoverButton text={t('hero.ctaWork')} className="w-full sm:w-auto bg-[#38889F] border-[#38889F] text-white" />
                             </a>
                             <div>
                                 <p className="text-xs uppercase tracking-widest text-slate-500 mb-2">{t('about.connect')}</p>

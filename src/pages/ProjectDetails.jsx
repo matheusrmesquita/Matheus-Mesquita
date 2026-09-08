@@ -18,10 +18,10 @@ const ProjectDetails = () => {
 
     if (!project) {
         return (
-            <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-zinc-950 text-slate-900 dark:text-white">
-                <h2 className="text-3xl font-bold mb-6">{t('projectDetails.notFound')}</h2>
-                <Link to="/#projects">
-                    <InteractiveHoverButton text={t('projectDetails.backToPortfolio')} className="bg-[#38889F] border-[#38889F] text-white" />
+            <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-white dark:bg-zinc-950 text-slate-900 dark:text-white">
+                <h2 className="text-3xl font-bold mb-6 text-center">{t('projectDetails.notFound')}</h2>
+                <Link to="/#projects" className="w-full sm:w-auto">
+                    <InteractiveHoverButton text={t('projectDetails.backToPortfolio')} className="w-full sm:w-auto bg-[#38889F] border-[#38889F] text-white" />
                 </Link>
             </div>
         );
@@ -165,10 +165,10 @@ const ProjectDetails = () => {
             <section className="mt-32 max-w-4xl mx-auto px-6 text-center">
                 <h2 className="text-4xl text-slate-900 dark:text-white font-bold mb-6">{t('projectDetails.ctaTitle')}</h2>
                 <p className="text-xl text-slate-600 dark:text-slate-400 mb-10 font-medium">{t('projectDetails.ctaDesc')}</p>
-                <Link to="/contato">
+                <Link to="/contato" className="w-full sm:w-auto inline-block">
                     <InteractiveHoverButton
                         text={t('projectDetails.ctaButton')}
-                        className="bg-slate-900 text-white dark:bg-white dark:text-zinc-950 border-none px-10 py-5 text-lg"
+                        className="w-full sm:w-auto bg-slate-900 text-white dark:bg-white dark:text-zinc-950 border-none px-10 py-5 text-lg"
                     />
                 </Link>
             </section>
