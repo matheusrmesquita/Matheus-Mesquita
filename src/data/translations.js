@@ -9,10 +9,6 @@ export const translations = {
         },
         hero: {
             eyebrow: "UX Engineering",
-            greeting: "Crio fluxos complexos a",
-            role: "interfaces de ",
-            roleHighlight: "alta conversão.",
-            description: "Utilizo o poder da Inteligência Artificial para prototipar e estruturar interfaces de alta fidelidade e front-end ágil, garantindo que a tecnologia sirva sempre à melhor experiência do usuário e ao resultado do negócio.",
             ctaWork: "Bora conversar?",
             ctaPortfolio: "Ver Projetos",
         },
@@ -103,10 +99,6 @@ export const translations = {
         },
         hero: {
             eyebrow: "UX Engineering",
-            greeting: "I create complex flows to",
-            role: "interfaces of ",
-            roleHighlight: "high conversion.",
-            description: "I'm Matheus, a UX Engineer with a background in Graphic Design and Marketing. I harness the power of Artificial Intelligence to prototype and structure high-fidelity interfaces and agile front-end, ensuring technology always serves the best user experience and business outcomes.",
             ctaWork: "Let's Talk?",
             ctaPortfolio: "View Projects",
         },
