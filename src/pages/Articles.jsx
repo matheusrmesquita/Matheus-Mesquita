@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, Search } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
@@ -11,10 +11,6 @@ const Articles = () => {
     const { t, language } = useLanguage();
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedTags, setSelectedTags] = useState([]);
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
 
     const {
         yearTags,

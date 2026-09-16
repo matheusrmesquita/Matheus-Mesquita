@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { projects } from '@/data/projects';
 import { ArrowLeft, ExternalLink, LayoutTemplate, Zap, MonitorSmartphone, MonitorPlay, Sparkles, Lightbulb, Palette } from 'lucide-react';
@@ -10,11 +10,6 @@ const ProjectDetails = () => {
     const { id } = useParams();
     const { t, language } = useLanguage();
     const project = projects.find(p => p.id === parseInt(id));
-
-    // Scroll top on mount
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
 
     if (!project) {
         return (

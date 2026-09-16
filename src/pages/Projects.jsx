@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 import { Search } from 'lucide-react';
@@ -11,10 +11,6 @@ const Projects = () => {
     const { t, language } = useLanguage();
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedTags, setSelectedTags] = useState([]);
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
 
     const {
         yearTags,
