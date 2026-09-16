@@ -1,50 +1,64 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, BookOpen, Compass, Search, HelpCircle, AlertCircle, Cpu, ClipboardList } from 'lucide-react';
+import { ArrowLeft, BookOpen, Compass, Search, HelpCircle, AlertCircle, Cpu, ClipboardList, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
 import { articleSearchContent } from '@/data/articleSearchContent';
+import ArticleTOC from '@/components/ui/ArticleTOC';
 
 const ArticleSearch = () => {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     const { language } = useLanguage();
     const c = articleSearchContent[language] || articleSearchContent.pt;
 
+    const tocLabel = language === 'en' ? 'In this article' : 'Neste artigo';
+    const sections = [
+        { id: 's1', label: c.s1title },
+        { id: 's2', label: c.s2title },
+        { id: 's3', label: c.s3title },
+        { id: 's4', label: c.s4title },
+        { id: 's5', label: c.s5title },
+    ];
+
     return (
-        <motion.div 
+        <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
             className="pt-24 pb-24 mx-4 md:mx-8 lg:mx-[150px] min-h-screen"
         >
-            <div className="max-w-4xl mx-auto">
-                
+            <div className="max-w-6xl mx-auto">
+
                 {/* Back Button */}
-                <Link 
-                    to="/#artigos" 
+                <Link
+                    to="/#artigos"
                     className="inline-flex items-center gap-2 text-slate-500 hover:text-[#38889F] transition-colors mb-8 font-medium group"
                 >
                     <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                     {c.back}
                 </Link>
 
+              <div className="flex flex-col lg:flex-row lg:items-start gap-x-12">
+              <ArticleTOC sections={sections} label={tocLabel} />
+              <div className="min-w-0 flex-1 max-w-4xl">
+
                 {/* Article Header */}
                 <header className="mb-12">
                     <div className="flex flex-wrap gap-3 mb-6">
-                        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#38889F]/10 text-[#38889F] font-semibold text-sm tracking-wide uppercase w-max">
+                        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#38889F]/10 text-[#2B6D80] dark:text-[#5FB4CC] font-semibold text-sm tracking-wide uppercase w-max">
                             <BookOpen className="w-4 h-4" />
                             {c.tag1}
                         </span>
-                        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#38889F]/10 text-[#38889F] font-semibold text-sm tracking-wide uppercase w-max">
+                        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#38889F]/10 text-[#2B6D80] dark:text-[#5FB4CC] font-semibold text-sm tracking-wide uppercase w-max">
                             {c.tag2}
                         </span>
-                        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#38889F]/10 text-[#38889F] font-semibold text-sm tracking-wide uppercase w-max">
+                        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#38889F]/10 text-[#2B6D80] dark:text-[#5FB4CC] font-semibold text-sm tracking-wide uppercase w-max">
                             <Search className="w-4 h-4" />
                             {c.tag3}
+                        </span>
+                        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#38889F]/10 text-[#2B6D80] dark:text-[#5FB4CC] font-semibold text-sm tracking-wide uppercase w-max">
+                            <Lock className="w-4 h-4" />
+                            {language === 'en' ? 'Confidential Client' : 'Cliente Confidencial'}
                         </span>
                     </div>
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-[1.1] mb-6 text-balance">
@@ -102,7 +116,7 @@ const ArticleSearch = () => {
                     </blockquote>
 
                     {/* SEÇÃO 1 */}
-                    <section className="space-y-7 pt-20 border-t border-slate-100 dark:border-slate-800">
+                    <section id="s1" className="space-y-7 pt-20 border-t border-slate-100 dark:border-slate-800">
                         <div className="flex items-center gap-3">
                             <Compass className="w-7 h-7 text-[#38889F]" />
                             <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white m-0">
@@ -175,7 +189,7 @@ const ArticleSearch = () => {
                     </section>
 
                     {/* SEÇÃO 2 */}
-                    <section className="space-y-7 pt-20 border-t border-slate-100 dark:border-slate-800">
+                    <section id="s2" className="space-y-7 pt-20 border-t border-slate-100 dark:border-slate-800">
                         <div className="flex items-center gap-3">
                             <AlertCircle className="w-7 h-7 text-[#38889F]" />
                             <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white m-0">
@@ -198,17 +212,17 @@ const ArticleSearch = () => {
                         {/* Bloco de 3 colunas de limitações */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
                             <div className="border border-slate-200 dark:border-slate-800 p-5 rounded-xl">
-                                <span className="block text-2xl font-extrabold text-[#38889F] mb-1">{c.col1label}</span>
+                                <span className="block text-2xl font-extrabold text-[#2B6D80] dark:text-[#5FB4CC] mb-1">{c.col1label}</span>
                                 <span className="text-sm font-bold text-slate-800 dark:text-slate-200">{c.col1sub}</span>
                                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 font-medium">{c.col1desc}</p>
                             </div>
                             <div className="border border-slate-200 dark:border-slate-800 p-5 rounded-xl">
-                                <span className="block text-2xl font-extrabold text-[#38889F] mb-1">{c.col2label}</span>
+                                <span className="block text-2xl font-extrabold text-[#2B6D80] dark:text-[#5FB4CC] mb-1">{c.col2label}</span>
                                 <span className="text-sm font-bold text-slate-800 dark:text-slate-200">{c.col2sub}</span>
                                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 font-medium">{c.col2desc}</p>
                             </div>
                             <div className="border border-slate-200 dark:border-slate-800 p-5 rounded-xl">
-                                <span className="block text-2xl font-extrabold text-[#38889F] mb-1">{c.col3label}</span>
+                                <span className="block text-2xl font-extrabold text-[#2B6D80] dark:text-[#5FB4CC] mb-1">{c.col3label}</span>
                                 <span className="text-sm font-bold text-slate-800 dark:text-slate-200">{c.col3sub}</span>
                                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 font-medium">{c.col3desc}</p>
                             </div>
@@ -224,7 +238,7 @@ const ArticleSearch = () => {
 
                         {/* Pivot Point */}
                         <div className="border-y border-slate-200 dark:border-slate-800 py-8 my-8 text-center">
-                            <span className="text-xs uppercase tracking-widest text-[#38889F] font-bold block mb-2">{c.pivotLabel}</span>
+                            <span className="text-xs uppercase tracking-widest text-[#2B6D80] dark:text-[#5FB4CC] font-bold block mb-2">{c.pivotLabel}</span>
                             <p className="text-xl md:text-2xl font-extrabold text-slate-900 dark:text-white italic max-w-2xl mx-auto leading-normal">
                                 {c.pivot}
                             </p>
@@ -236,7 +250,7 @@ const ArticleSearch = () => {
                     </section>
 
                     {/* SEÇÃO 3 */}
-                    <section className="space-y-7 pt-20 border-t border-slate-100 dark:border-slate-800">
+                    <section id="s3" className="space-y-7 pt-20 border-t border-slate-100 dark:border-slate-800">
                         <div className="flex items-center gap-3">
                             <Cpu className="w-7 h-7 text-[#38889F]" />
                             <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white m-0">
@@ -284,7 +298,7 @@ const ArticleSearch = () => {
                     </section>
 
                     {/* SEÇÃO 4 */}
-                    <section className="space-y-7 pt-20 border-t border-slate-100 dark:border-slate-800">
+                    <section id="s4" className="space-y-7 pt-20 border-t border-slate-100 dark:border-slate-800">
                         <div className="flex items-center gap-3">
                             <ClipboardList className="w-7 h-7 text-[#38889F]" />
                             <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white m-0">
@@ -301,7 +315,7 @@ const ArticleSearch = () => {
 
                         {/* Destaque de definição */}
                         <div className="bg-slate-50 dark:bg-slate-900/20 border-l-4 border-[#38889F] p-5 my-6 rounded-r-xl">
-                            <span className="text-xs uppercase text-[#38889F] font-bold block mb-1">{c.newProposalLabel}</span>
+                            <span className="text-xs uppercase text-[#2B6D80] dark:text-[#5FB4CC] font-bold block mb-1">{c.newProposalLabel}</span>
                             <p className="text-xl font-bold text-slate-900 dark:text-white m-0">
                                 {c.newProposal}
                             </p>
@@ -339,7 +353,7 @@ const ArticleSearch = () => {
                     </section>
 
                     {/* SEÇÃO 5 */}
-                    <section className="space-y-7 pt-20 border-t border-slate-100 dark:border-slate-800">
+                    <section id="s5" className="space-y-7 pt-20 border-t border-slate-100 dark:border-slate-800">
                         <div className="flex items-center gap-3">
                             <BookOpen className="w-7 h-7 text-[#38889F]" />
                             <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white m-0">
@@ -355,7 +369,7 @@ const ArticleSearch = () => {
                         <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s5p6}</p>
 
                         <div className="bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl text-center my-6">
-                            <p className="text-xl font-extrabold text-[#38889F] m-0">{c.conclusionQuote1}</p>
+                            <p className="text-xl font-extrabold text-[#2B6D80] dark:text-[#5FB4CC] m-0">{c.conclusionQuote1}</p>
                             <p className="text-lg font-bold text-slate-900 dark:text-white mt-3 mb-0">{c.conclusionQuote2}</p>
                         </div>
 
@@ -367,7 +381,7 @@ const ArticleSearch = () => {
 
                         {/* Callout Final e Conclusão */}
                         <div className="bg-[#38889F]/10 dark:bg-[#38889F]/5 border-l-4 border-[#38889F] p-8 rounded-r-2xl my-10">
-                            <span className="text-xs uppercase tracking-widest text-[#38889F] font-bold block mb-2">{c.finalLabel}</span>
+                            <span className="text-xs uppercase tracking-widest text-[#2B6D80] dark:text-[#5FB4CC] font-bold block mb-2">{c.finalLabel}</span>
                             <p className="text-xl md:text-2xl font-extrabold text-slate-900 dark:text-white leading-relaxed m-0 italic text-pretty">
                                 {c.finalQuote}
                             </p>
@@ -375,7 +389,10 @@ const ArticleSearch = () => {
                     </section>
 
                 </article>
-                
+
+              </div>
+              </div>
+
             </div>
         </motion.div>
     );

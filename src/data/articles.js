@@ -1,5 +1,16 @@
 export const articles = [
     {
+        id: 'congresso',
+        type: 'article',
+        date: '2026-09-15',
+        title: 'Do briefing à implementação: como estruturei a experiência de um congresso em menos de dois meses',
+        title_en: 'From briefing to implementation: how I structured a congress experience in under two months',
+        excerpt: 'Alguns projetos começam com um problema de interface. Outros começam com uma quantidade enorme de informações, regras e exceções que ainda precisam ser transformadas em produto. Conheça o processo por trás da experiência digital de um congresso presencial.',
+        excerpt_en: 'Some projects start with an interface problem. Others start with a huge amount of information, rules and exceptions that still need to be turned into a product. See the process behind the digital experience of an in-person congress.',
+        tags: ['2026', 'Product Design', 'UX Design', 'AI Design'],
+        slug: '/artigos/congresso'
+    },
+    {
         id: 'busca',
         type: 'article',
         date: '2026-05-16',
