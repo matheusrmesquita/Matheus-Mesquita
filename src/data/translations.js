@@ -72,6 +72,9 @@ export const translations = {
             methodologyItem3: "Criação de componentes reutilizáveis e bibliotecas documentadas (Design Systems) para escalar o desenvolvimento.",
             methodologyItem4Label: "Validação Científica",
             methodologyItem4: "Condução de pesquisas com usuários, testes de usabilidade e análise de heurísticas de Nielsen para eliminar atrito cognitivo.",
+            educationTitle: "Formação e Treinamentos",
+            educationSubtitle: "Cursos e MBAs que sustentam minha atuação em UX/UI, Design Systems e IA aplicada ao design.",
+            educationOngoing: "Em andamento",
         },
         contact: {
             title: "Tem um projeto em mente?",
@@ -162,6 +165,9 @@ export const translations = {
             methodologyItem3: "Creation of reusable components and documented libraries (Design Systems) to scale development.",
             methodologyItem4Label: "Scientific Validation",
             methodologyItem4: "Conducting user research, usability testing, and Nielsen heuristics analysis to eliminate cognitive friction.",
+            educationTitle: "Education & Training",
+            educationSubtitle: "Courses and MBAs behind my work in UX/UI, Design Systems, and AI applied to design.",
+            educationOngoing: "Ongoing",
         },
         contact: {
             title: "Have a project in mind?",

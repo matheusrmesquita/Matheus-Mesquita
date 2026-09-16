@@ -11,6 +11,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { projects } from '@/data/projects';
 import { InteractiveHoverButton } from '@/components/ui/InteractiveHoverButton';
 import ArticlesSection from '@/components/sections/ArticlesSection';
+import ServicesSection from '@/components/sections/ServicesSection';
 import ProjectCard from '@/components/ui/ProjectCard';
 import TypewriterTitle from '@/components/ui/TypewriterTitle';
 
@@ -131,6 +132,7 @@ const Home = () => {
                         alt=""
                         aria-hidden="true"
                         draggable={false}
+                        fetchPriority="high"
                         className="absolute inset-0 w-full h-full object-cover object-[center_45%] opacity-90"
                     />
                     {/* Fade no topo pra se misturar com o fundo escuro — só nos ~15% finais, pra não "apagar" a cabeça */}
@@ -231,6 +233,7 @@ const Home = () => {
                             alt=""
                             aria-hidden="true"
                             draggable={false}
+                            fetchPriority="high"
                             className="absolute inset-0 w-full h-full object-cover object-[center_20%] opacity-90"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-transparent from-0% via-transparent via-85% to-black to-100%"></div>
@@ -326,6 +329,9 @@ const Home = () => {
 
             {/* Seção de Artigos */}
             <ArticlesSection />
+
+            {/* Seção de Serviços */}
+            <ServicesSection />
 
             {/* CTA Section (Footer CTA) — atmosfera da Brand (grão, glow, EtheralShadow),
                 cores do portfólio. Conteúdo estático por enquanto — a ser reestruturada. */}

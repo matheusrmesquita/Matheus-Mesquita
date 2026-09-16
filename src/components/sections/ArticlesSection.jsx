@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import { articles } from '@/data/articles';
@@ -13,12 +13,7 @@ const ArticlesSection = () => {
         <section className="mx-4 md:mx-8 lg:mx-[150px] mt-24 scroll-mt-32" id="artigos">
             <div className="grid grid-cols-12 gap-6 mb-12">
                 <div className="col-span-12 md:col-span-8">
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 bg-[#38889F]/10 rounded-2xl flex items-center justify-center">
-                            <BookOpen className="w-6 h-6 text-[#38889F]" />
-                        </div>
-                        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">Artigos de Projetos</h2>
-                    </div>
+                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">Artigos de Projetos</h2>
                     <p className="text-slate-600 dark:text-slate-400 text-xl font-medium">Reflexões e estudos de caso sobre design e arquitetura da informação.</p>
                 </div>
             </div>
