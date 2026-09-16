@@ -1,4 +1,4 @@
-import workshopCard from '../assets/Landing Page workshop Livre do operacional.png';
+import workshopCard from '../assets/Landing Page workshop Livre do operacional.webp';
 import workshopCardNew from '../assets/CAPA card Empresa Livre do Operacional.jpg';
 import aurea1 from '../assets/aurea 2 (1).jpg';
 import aurea2 from '../assets/aurea 2 (3).jpg';
@@ -7,8 +7,8 @@ import aurea4 from '../assets/aurea 4.png';
 import aurea5 from '../assets/aurea 5 (2).png';
 import aurea6 from '../assets/aurea 5.png';
 import maxCard from '../assets/Max - card.png';
-import maxGif1 from '../assets/Max 1.gif';
-import maxImg from '../assets/MAX Total 2.png';
+import maxGif1 from '../assets/Max 1.webp';
+import maxImg from '../assets/MAX Total 2.webp';
 import athexCard from '../assets/Athex - card.png';
 import athex2 from '../assets/Athex (2).png';
 import athex3 from '../assets/Athex 3.png';
@@ -16,16 +16,16 @@ import athex1 from '../assets/Athex 1.png';
 import cocaCard from '../assets/Coca - card.png';
 import cocaImg from '../assets/cocacola.png';
 import comVesaliCard from '../assets/Comunidade vesali- card.png';
-import comVesaliGif1 from '../assets/comunidade vesali 1.gif';
-import comVesaliGif2 from '../assets/comunidade vesali 2.gif';
-import comVesaliImg3 from '../assets/3.png';
+import comVesaliGif1 from '../assets/comunidade vesali 1.webp';
+import comVesaliGif2 from '../assets/comunidade vesali 2.webp';
+import comVesaliImg3 from '../assets/3.webp';
 import vesaliCard from '../assets/Ladingpages Vesali - card.png';
 import metaconCard from '../assets/Metacon - card.png';
-import metaconImg from '../assets/MEtacom total.png';
+import metaconImg from '../assets/MEtacom total.webp';
 import sevCanCard from '../assets/servico candando - card.png';
-import sistemaCard from '../assets/Sitemas de gestao - card.gif';
+import sistemaCard from '../assets/Sitemas de gestao - card.webp';
 import flowPortalImg from '../assets/FlowPortal.png';
-import clinicaCard from '../assets/Clinica bem estar.png';
+import clinicaCard from '../assets/Clinica bem estar.webp';
 import clinicaCapa from '../assets/CAPA card Bem estar clinica.jpg';
 
 // Imports Serviço Candango
@@ -45,7 +45,7 @@ import sevCan13 from '../assets/Sev can13.webp';
 import sevCan14 from '../assets/Sev can14.webp';
 import sevCan15 from '../assets/Sev can15.webp';
 import sevCan16 from '../assets/Sev can516.webp';
-import jotakaCard from '../assets/jotaka.png';
+import jotakaCard from '../assets/jotaka.webp';
 import jotakaReservas from '../assets/Jotaka resevas.png';
 import jotakaCapa from '../assets/CAPA card jotaka.jpg';
 
@@ -62,9 +62,9 @@ export const projects = [
         context_en: "I worked on the digital restructuring of a restaurant facing a very common problem in fast-growing operations: the brand existed physically, but digitally everything functioned in a disconnected way. The website was extremely limited, functioning almost as a static menu repository. Instagram did not follow a consistent visual pattern, printed materials had another language, and there was no real connection between physical experience, digital communication, and internal operations. The initial challenge wasn't just to “make a new website” or “improve Instagram”. The project needed to consolidate the brand as a single ecosystem, creating visual, operational, and strategic consistency across different platforms.",
         process: "O projeto foi conduzido em etapas estratégicas. A primeira focou na consolidação da marca, estruturando o Instagram e materiais impressos. A segunda focou no cardápio digital, estabilizando mudanças operacionais para criar uma experiência digital estruturada. A terceira tratou da padronização entre o site e o ecossistema digital, alinhando identidade visual, tipografia e hierarquia para criar coerência entre canais.",
         process_en: "The project was conducted in strategic stages. The first focused on brand consolidation, structuring Instagram and printed materials. The second focused on the digital menu, stabilizing operational changes to create a structured digital experience. The third dealt with standardization between the website and the digital ecosystem, aligning visual identity, typography, and hierarchy to create consistency across channels.",
-        technique: "Além da reformulação visual no Framer, o projeto envolveu a criação de um sistema interno de gestão de reservas para centralizar dados, organizar mesas e relacionar reservas ao faturamento. Também estruturamos relatórios periódicos (Meta Ads, Google Meu Negócio, etc.) para análise contínua, transformando a presença digital em uma estrutura realmente funcional e integrada para o negócio.",
-        technique_en: "In addition to the visual redesign in Framer, the project involved creating an internal reservation management system to centralize data, organize tables, and link reservations to billing. We also structured periodic reports (Meta Ads, Google My Business, etc.) for continuous analysis, transforming the digital presence into a truly functional and integrated structure for the business.",
-        tags: ["2026", "Framer", "UX Design", "Branding", "Sistemas"],
+        technique: "Além da reformulação visual completa do site, o projeto envolveu a criação de um sistema interno de gestão de reservas para centralizar dados, organizar mesas e relacionar reservas ao faturamento. Também estruturamos relatórios periódicos (Meta Ads, Google Meu Negócio, etc.) para análise contínua, transformando a presença digital em uma estrutura realmente funcional e integrada para o negócio.",
+        technique_en: "In addition to the complete visual redesign of the website, the project involved creating an internal reservation management system to centralize data, organize tables, and link reservations to billing. We also structured periodic reports (Meta Ads, Google My Business, etc.) for continuous analysis, transforming the digital presence into a truly functional and integrated structure for the business.",
+        tags: ["2026", "UX Design", "Branding", "Sistemas"],
         image: jotakaCapa,
         gallery: [jotakaCard, jotakaReservas]
     },

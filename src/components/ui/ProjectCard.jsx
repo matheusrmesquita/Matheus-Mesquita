@@ -30,6 +30,8 @@ const ProjectCard = ({ project, language, ctaLabel = 'Ver projeto', className = 
                     src={project.image}
                     alt={title}
                     className="w-full h-full object-cover pointer-events-none"
+                    loading="lazy"
+                    decoding="async"
                 />
             </div>
             <div className="proj-cover-noise"></div>
