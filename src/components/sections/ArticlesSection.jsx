@@ -14,7 +14,7 @@ const ArticlesSection = () => {
             <div className="grid grid-cols-12 gap-6 mb-12">
                 <div className="col-span-12 md:col-span-8">
                     <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">Artigos de Projetos</h2>
-                    <p className="text-slate-600 dark:text-slate-400 text-xl font-medium">Reflexões e estudos de caso sobre design e arquitetura da informação.</p>
+                    <p className="text-slate-600 dark:text-slate-400 text-xl font-medium">Reflexões e estudos de caso de projetos reais sobre design e arquitetura da informação.</p>
                 </div>
             </div>
 

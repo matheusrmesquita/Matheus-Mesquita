@@ -16,9 +16,9 @@ import ProjectCard from '@/components/ui/ProjectCard';
 import TypewriterTitle from '@/components/ui/TypewriterTitle';
 
 // Projetos em destaque na Home (curadoria manual, não "mais recentes") — ordem do mais
-// recente pro mais antigo. Os 4 primeiros aparecem no mobile; os 2 últimos (Landing Pages
-// Vesali e Athex) só entram a partir do md, onde a grade já tem espaço pra 6 cards.
-const FEATURED_HOME_PROJECT_IDS = [14, 5, 12, 4, 1, 6];
+// recente pro mais antigo. Os 4 primeiros aparecem no mobile; os 2 últimos entram a
+// partir do md, onde a grade já tem espaço para 6 cards.
+const FEATURED_HOME_PROJECT_IDS = [15, 14, 5, 12, 4, 1];
 
 // Revelação por índice ao rolar — mesmo padrão usado no resto do site (Sobre, ArticlesSection)
 const reveal = (i = 0) => ({

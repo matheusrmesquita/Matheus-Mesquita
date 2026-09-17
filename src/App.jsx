@@ -18,6 +18,8 @@ const ProjectDetails = lazy(() => import('./pages/ProjectDetails'));
 const ArticleSearch = lazy(() => import('./pages/ArticleSearch'));
 const ArticleEducation = lazy(() => import('./pages/ArticleEducation'));
 const ArticleCongresso = lazy(() => import('./pages/ArticleCongresso'));
+const RotinaeCase = lazy(() => import('./pages/RotinaeCase'));
+const SelectedProjects = lazy(() => import('./pages/SelectedProjects'));
 
 function App() {
   return (
@@ -28,13 +30,15 @@ function App() {
         <div className="min-h-screen flex flex-col font-sans transition-colors duration-300">
           <Navbar />
 
-          <main className="flex-grow flex flex-col pt-20 md:pt-24 w-full">
+          <main className="flex-grow flex flex-col pt-20 md:pt-16 w-full">
             <Suspense fallback={null}>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/sobre" element={<Sobre />} />
                 <Route path="/contato" element={<Contato />} />
                 <Route path="/projetos" element={<Projects />} />
+                <Route path="/cases-selecionados" element={<SelectedProjects />} />
+                <Route path="/projetos/rotinae" element={<RotinaeCase />} />
                 <Route path="/projetos/:id" element={<ProjectDetails />} />
                 <Route path="/artigos" element={<Articles />} />
                 <Route path="/artigos/busca" element={<ArticleSearch />} />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, Search } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import FilterBar from '@/components/ui/FilterBar';
 import MixedCardGrid from '@/components/ui/MixedCardGrid';
@@ -36,14 +36,9 @@ const Articles = () => {
             <section className="mx-4 md:mx-8 lg:mx-[150px]">
                 <div className="grid grid-cols-12 gap-6 mb-12 items-end">
                     <div className="col-span-12 md:col-span-8">
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="w-12 h-12 bg-[#38889F]/10 rounded-2xl flex items-center justify-center">
-                                <BookOpen className="w-6 h-6 text-[#38889F]" />
-                            </div>
-                            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
-                                {t('articles.title') || 'Todos os Artigos'}
-                            </h1>
-                        </div>
+                        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
+                            {t('articles.title') || 'Todos os Artigos'}
+                        </h1>
                         <p className="text-slate-600 dark:text-slate-400 text-xl font-medium">
                             {t('articles.subtitle') || 'Explore o acervo completo de reflexões e estudos de caso.'}
                         </p>

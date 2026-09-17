@@ -27,7 +27,7 @@ const Navbar = () => {
     }, []);
 
     return (
-        <nav className={`fixed w-full top-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-2xl shadow-sm py-2' : 'bg-transparent py-4'}`}>
+        <nav className={`fixed w-full top-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-2xl shadow-sm py-2' : 'bg-transparent py-4 md:py-2'}`}>
             {/* Master Grid — colunas simétricas (4/4/4) para o menu ficar centralizado de verdade */}
             <div className="mx-4 md:mx-8 lg:mx-[150px] grid grid-cols-12 gap-6 items-center">
 
@@ -44,6 +44,7 @@ const Navbar = () => {
                     <Link to="/sobre" className={`transition-colors ${isActive('/sobre') ? 'text-[#38889F]' : 'hover:text-[#38889F]'}`}>{t('nav.about')}</Link>
                     <Link to="/projetos" className={`transition-colors ${isActive('/projetos') ? 'text-[#38889F]' : 'hover:text-[#38889F]'}`}>{t('nav.projects')}</Link>
                     <Link to="/artigos" className={`transition-colors ${isActive('/artigos') ? 'text-[#38889F]' : 'hover:text-[#38889F]'}`}>{t('nav.articles')}</Link>
+                    <Link to="/cases-selecionados" className={`transition-colors ${isActive('/cases-selecionados') ? 'text-[#38889F]' : 'hover:text-[#38889F]'}`}>{t('nav.selectedCases')}</Link>
                 </div>
 
                 {/* Desktop Actions (Right - 4 cols) */}
@@ -78,6 +79,7 @@ const Navbar = () => {
                     <Link to="/sobre" onClick={() => setIsOpen(false)} className={`transition-colors p-2 ${isActive('/sobre') ? 'text-[#38889F]' : 'text-slate-900 dark:text-white hover:text-[#38889F]'}`}>{t('nav.about')}</Link>
                     <Link to="/projetos" onClick={() => setIsOpen(false)} className={`transition-colors p-2 ${isActive('/projetos') ? 'text-[#38889F]' : 'text-slate-900 dark:text-white hover:text-[#38889F]'}`}>{t('nav.projects')}</Link>
                     <Link to="/artigos" onClick={() => setIsOpen(false)} className={`transition-colors p-2 ${isActive('/artigos') ? 'text-[#38889F]' : 'text-slate-900 dark:text-white hover:text-[#38889F]'}`}>{t('nav.articles')}</Link>
+                    <Link to="/cases-selecionados" onClick={() => setIsOpen(false)} className={`transition-colors p-2 ${isActive('/cases-selecionados') ? 'text-[#38889F]' : 'text-slate-900 dark:text-white hover:text-[#38889F]'}`}>{t('nav.selectedCases')}</Link>
                     <a
                         href="https://wa.me/5561982863674?text=Ol%C3%A1%2C%20Matheus%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20%F0%9F%9A%80"
                         target="_blank"

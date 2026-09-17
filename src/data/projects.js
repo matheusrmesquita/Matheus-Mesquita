@@ -51,6 +51,20 @@ import jotakaCapa from '../assets/CAPA card jotaka.jpg';
 
 export const projects = [
     {
+        id: 15,
+        type: 'project',
+        date: '2026-08-02',
+        title: "Rotinaê",
+        title_en: "Rotinaê",
+        role: "Product Design / UX/UI / Produto próprio",
+        role_en: "Product Design / UX/UI / Own Product",
+        context: "Da hipótese de uma agenda para adestradores a uma plataforma escalável de gestão de atendimentos, clientes e financeiro. Um produto próprio concebido, estruturado e acompanhado até um MVP funcional e publicado.",
+        context_en: "From the hypothesis of a scheduling tool for dog trainers to a scalable platform for managing appointments, clients, and finances. An original product conceived, structured, and developed into a functional, published MVP.",
+        tags: ["2026", "Product Design", "UX/UI", "IA"],
+        image: "/rotinae/case-cover.webp",
+        path: "/projetos/rotinae"
+    },
+    {
         id: 14,
         type: 'project',
         date: '2026-05-19',

@@ -20,7 +20,7 @@ const ProjectCard = ({ project, language, ctaLabel = 'Ver projeto', className = 
 
     return (
         <Link
-            to={`/projetos/${project.id}`}
+            to={project.path || `/projetos/${project.id}`}
             className={`proj-card group block outline-none focus-visible:ring-4 focus-visible:ring-[#38889F] ${className}`}
             role="article"
             aria-label={`Projeto ${title}`}
