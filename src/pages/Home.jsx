@@ -178,12 +178,6 @@ const Home = () => {
                 {/* Layout Principal da Hero (Chapéu + Ícones Flutuantes + Texto) — tudo alinhado à esquerda */}
                 <div className="relative z-10 self-stretch flex flex-col items-start mx-4 md:mx-8 xl:mx-[150px] mt-4 mb-12">
 
-                    {/* Chapéu (eyebrow) */}
-                    <p className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-slate-400 mb-6 select-none">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#38889F]"></span>
-                        {t('hero.eyebrow')}
-                    </p>
-
                     {/* Linha: Texto (esquerda) + Ícones Flutuantes (direita, centralizados ao texto) */}
                     <div className="w-full flex flex-col lg:flex-row items-center lg:items-center justify-between gap-10 lg:gap-6">
 
@@ -194,6 +188,11 @@ const Home = () => {
                             transition={{ duration: 0.8, delay: 0.2 }}
                             className="relative z-10 w-full max-w-md lg:max-w-sm xl:max-w-xl 2xl:max-w-4xl space-y-3 md:space-y-5 flex flex-col items-start text-left"
                         >
+                            <p className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-slate-400 select-none">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#38889F]"></span>
+                                {t('hero.eyebrow')}
+                            </p>
+
                             <motion.h1
                                 key={`hero-headline-${language}-${heroSlideIndex}`}
                                 initial={{ opacity: 0, y: 20 }}
