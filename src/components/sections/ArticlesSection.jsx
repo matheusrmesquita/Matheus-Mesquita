@@ -10,7 +10,7 @@ import { useLanguage } from '@/context/LanguageContext';
 const ArticlesSection = () => {
     const { language } = useLanguage();
     return (
-        <section className="mx-4 md:mx-8 lg:mx-[150px] mt-24 scroll-mt-32" id="artigos">
+        <section className="mx-4 md:mx-8 xl:mx-[150px] mt-24 scroll-mt-32" id="artigos">
             <div className="grid grid-cols-12 gap-6 mb-12">
                 <div className="col-span-12 md:col-span-8">
                     <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">Artigos de Projetos</h2>
@@ -18,7 +18,7 @@ const ArticlesSection = () => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                 {articles.slice(0, 3).map((article, index) => (
                     <motion.div
                         key={article.id}

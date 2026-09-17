@@ -29,17 +29,17 @@ const Navbar = () => {
     return (
         <nav className={`fixed w-full top-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-2xl shadow-sm py-2' : 'bg-transparent py-4 md:py-2'}`}>
             {/* Master Grid — colunas simétricas (4/4/4) para o menu ficar centralizado de verdade */}
-            <div className="mx-4 md:mx-8 lg:mx-[150px] grid grid-cols-12 gap-6 items-center">
+            <div className="mx-4 md:mx-8 xl:mx-[150px] grid grid-cols-12 gap-6 items-center">
 
                 {/* Logo */}
-                <div className="col-span-8 md:col-span-4 flex justify-start items-center">
+                <div className="col-span-8 xl:col-span-4 flex justify-start items-center">
                     <Link to="/" className="font-bold text-2xl tracking-tighter flex items-center gap-1">
                         <span className="text-slate-900 dark:text-white">Matheus Mesquita</span>
                     </Link>
                 </div>
 
                 {/* Desktop Nav (Centralizado) */}
-                <div className="hidden md:flex col-span-4 items-center justify-center gap-2 lg:gap-2 xl:gap-8 font-medium text-sm lg:text-[13px] xl:text-base text-slate-900 dark:text-white whitespace-nowrap">
+                <div className="hidden xl:flex col-span-4 items-center justify-center gap-2 2xl:gap-6 font-medium text-[13px] 2xl:text-sm text-slate-900 dark:text-white whitespace-nowrap">
                     <Link to="/" className={`transition-colors ${isActive('/') ? 'text-[#38889F]' : 'hover:text-[#38889F]'}`}>{t('nav.home')}</Link>
                     <Link to="/sobre" className={`transition-colors ${isActive('/sobre') ? 'text-[#38889F]' : 'hover:text-[#38889F]'}`}>{t('nav.about')}</Link>
                     <Link to="/projetos" className={`transition-colors ${isActive('/projetos') ? 'text-[#38889F]' : 'hover:text-[#38889F]'}`}>{t('nav.projects')}</Link>
@@ -48,7 +48,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Desktop Actions (Right - 4 cols) */}
-                <div className="hidden md:flex col-span-4 justify-end items-center gap-1">
+                <div className="hidden xl:flex col-span-4 justify-end items-center gap-1">
                     {/* Controls */}
                     <div className="flex items-center gap-1">
                         <LanguageToggle />
@@ -64,7 +64,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile Menu Button */}
-                <div className="flex md:hidden col-span-4 justify-end items-center gap-4">
+                <div className="flex xl:hidden col-span-4 justify-end items-center gap-4">
                     <LanguageToggle />
                     <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-slate-900 dark:text-white">
                         {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -73,7 +73,7 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Nav */}
-            <div className={`md:hidden absolute top-full w-full left-0 transition-all duration-300 origin-top ${isOpen ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0 pointer-events-none'}`}>
+            <div className={`xl:hidden absolute top-full w-full left-0 transition-all duration-300 origin-top ${isOpen ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0 pointer-events-none'}`}>
                 <div className="flex flex-col px-6 py-6 gap-4 font-medium backdrop-blur-3xl bg-white/95 dark:bg-zinc-950/95 shadow-2xl">
                     <Link to="/" onClick={() => setIsOpen(false)} className={`transition-colors p-2 ${isActive('/') ? 'text-[#38889F]' : 'text-slate-900 dark:text-white hover:text-[#38889F]'}`}>{t('nav.home')}</Link>
                     <Link to="/sobre" onClick={() => setIsOpen(false)} className={`transition-colors p-2 ${isActive('/sobre') ? 'text-[#38889F]' : 'text-slate-900 dark:text-white hover:text-[#38889F]'}`}>{t('nav.about')}</Link>

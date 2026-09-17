@@ -22,7 +22,7 @@ const GovArea = () => {
 
     if (!isAuthenticated) {
         return (
-            <div className="min-h-[70vh] flex flex-col items-center justify-center mx-4 md:mx-8 lg:mx-[150px] animate-in fade-in duration-500">
+            <div className="min-h-[70vh] flex flex-col items-center justify-center mx-4 md:mx-8 xl:mx-[150px] animate-in fade-in duration-500">
                 <div className="glass p-8 md:p-12 rounded-3xl w-full max-w-md bg-white/50 dark:bg-black/40 shadow-2xl relative overflow-hidden">
                     {/* Efeito de brilho de fundo (Gov Theme) */}
                     <div className="absolute -top-32 -left-32 w-64 h-64 bg-amber-500/20 blur-[100px] rounded-full point-events-none"></div>
@@ -62,7 +62,7 @@ const GovArea = () => {
     }
 
     return (
-        <div className="mx-4 md:mx-8 lg:mx-[150px] animate-in slide-in-from-bottom-4 duration-500">
+        <div className="mx-4 md:mx-8 xl:mx-[150px] animate-in slide-in-from-bottom-4 duration-500">
             <div className="flex items-center gap-3 mb-8">
                 <ShieldCheck className="w-8 h-8 text-amber-500" />
                 <h1 className="text-3xl md:text-4xl font-bold">Portal Confidencial</h1>

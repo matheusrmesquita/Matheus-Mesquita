@@ -21,7 +21,7 @@ const Contato = () => {
     };
 
     return (
-        <div className="py-12 mx-4 md:mx-8 lg:mx-[150px] animate-in fade-in duration-500">
+        <div className="py-12 mx-4 md:mx-8 xl:mx-[150px] animate-in fade-in duration-500">
             <div className="max-w-2xl mx-auto text-center mb-12">
                 <h1 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white">{t('contact.title')}</h1>
                 <p className="text-xl text-slate-600 dark:text-slate-400">{t('contact.subtitle')}</p>

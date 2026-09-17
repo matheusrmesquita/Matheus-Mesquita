@@ -54,13 +54,13 @@ const Sobre = () => {
             {/* Grid de fundo sutil — mesma técnica da Hero, só no lado esquerdo, do topo até o fim do texto */}
             <div className="absolute left-0 top-0 w-full sm:w-[65%] md:w-[55%] h-[60%] sm:h-[55%] md:h-[50%] bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_100%_100%_at_0%_0%,#000_55%,transparent_100%)] z-0 pointer-events-none"></div>
 
-            <div className="relative z-10 mx-4 md:mx-8 lg:mx-[150px] pt-10 md:pt-14 flex-1 flex flex-col">
+            <div className="relative z-10 mx-4 md:mx-8 xl:mx-[150px] pt-10 md:pt-14 flex-1 flex flex-col">
                 {/* overflow-hidden escopado só nesta grade: o topo dela já cai exatamente onde o
                     padding-top do <main> (App.jsx) termina, então nada que suba (ex: a foto com
                     -top negativo) consegue vazar por cima do header. Ficava no container da página
                     inteira antes, o que também clipava a seção de Formação lá embaixo e quebrava a
                     detecção de "entrou na tela" das animações dela. */}
-                <div className="relative grid lg:grid-cols-2 gap-10 lg:gap-16 flex-1 overflow-hidden">
+                <div className="relative grid xl:grid-cols-2 gap-10 xl:gap-16 flex-1 overflow-hidden">
 
                     {/* Coluna esquerda — texto corrido, no espírito da referência */}
                     <div>
@@ -89,7 +89,7 @@ const Sobre = () => {
                         </motion.div>
                     </div>
 
-                    {/* Coluna direita — foto grande. Em lg, sai do fluxo do grid (absolute) para poder
+                    {/* Coluna direita — foto grande. Em xl, sai do fluxo do grid (absolute) para poder
                         subir mais perto do header mantendo o fundo sempre colado na mesma linha do rodapé.
                         O overflow-hidden da div raiz da página corta qualquer parte que suba além da navbar. */}
                     <motion.div
@@ -97,7 +97,7 @@ const Sobre = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true, margin: '-60px' }}
                         transition={{ duration: 0.6 }}
-                        className="relative w-full max-w-lg mx-auto lg:mx-0 aspect-[3/4] lg:aspect-auto lg:absolute lg:-top-16 xl:-top-24 lg:bottom-0 lg:right-8 xl:right-12 min-[1920px]:right-[calc(25%-17rem)] lg:w-[calc(50%-4rem)] lg:max-w-lg rounded-2xl overflow-hidden"
+                        className="relative w-full max-w-lg mx-auto xl:mx-0 aspect-[3/4] xl:aspect-auto xl:absolute xl:-top-24 xl:bottom-0 xl:right-12 min-[1920px]:right-[calc(25%-17rem)] xl:w-[calc(50%-4rem)] xl:max-w-lg rounded-2xl overflow-hidden"
                     >
                         <img
                             src={sobreFoto}
@@ -149,7 +149,7 @@ const Sobre = () => {
 
                     <AnimatedContainer
                         delay={0.2}
-                        className="grid grid-cols-1 divide-x divide-y divide-dashed divide-white/10 border border-dashed border-white/10 sm:grid-cols-2 lg:grid-cols-3"
+                        className="grid grid-cols-1 divide-x divide-y divide-dashed divide-white/10 border border-dashed border-white/10 sm:grid-cols-2 xl:grid-cols-3"
                     >
                         {education.map((item) => (
                             <FeatureCard

@@ -90,7 +90,7 @@ const ArticleCongresso = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
-            className="pt-24 pb-24 mx-4 md:mx-8 lg:mx-[150px] min-h-screen"
+            className="pt-24 pb-24 mx-4 md:mx-8 xl:mx-[150px] min-h-screen"
         >
             <div className="max-w-6xl mx-auto">
 

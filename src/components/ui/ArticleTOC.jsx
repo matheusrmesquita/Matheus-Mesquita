@@ -65,7 +65,7 @@ const ArticleTOC = ({ sections, label = 'Neste artigo' }) => {
             </details>
 
             {/* Desktop: sidebar sticky */}
-            <aside className="hidden lg:block sticky top-28 self-start w-56 shrink-0">
+            <aside className="hidden xl:block sticky top-28 self-start w-56 shrink-0">
                 <span className="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-4 block">
                     {label}
                 </span>

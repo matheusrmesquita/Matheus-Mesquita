@@ -15,7 +15,7 @@ const MixedCardGrid = ({ items, language, t }) => {
     }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {items.map((item, index) => {
                 if (item.type === 'project') {
                     return (

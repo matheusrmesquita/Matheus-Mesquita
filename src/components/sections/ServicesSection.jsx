@@ -38,7 +38,7 @@ const ServicesSection = () => {
     const c = SERVICES[language] || SERVICES.pt;
 
     return (
-        <section className="mx-4 md:mx-8 lg:mx-[150px] mt-24 scroll-mt-32" id="servicos">
+        <section className="mx-4 md:mx-8 xl:mx-[150px] mt-24 scroll-mt-32" id="servicos">
             <div className="text-center max-w-2xl mx-auto mb-12">
                 <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">{c.eyebrow}</h2>
                 <p className="text-slate-600 dark:text-slate-400 text-xl font-medium">{c.subtitle}</p>
@@ -46,7 +46,7 @@ const ServicesSection = () => {
 
             <AnimatedContainer
                 delay={0.2}
-                className="grid grid-cols-1 divide-x divide-y divide-dashed divide-slate-200 dark:divide-white/10 border border-dashed border-slate-200 dark:border-white/10 sm:grid-cols-2 lg:grid-cols-3"
+                className="grid grid-cols-1 divide-x divide-y divide-dashed divide-slate-200 dark:divide-white/10 border border-dashed border-slate-200 dark:border-white/10 sm:grid-cols-2 xl:grid-cols-3"
             >
                 {c.items.map((item) => (
                     <FeatureCard

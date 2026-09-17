@@ -33,7 +33,7 @@ const Projects = () => {
 
     return (
         <div className="animate-in fade-in duration-700 pb-24 pt-16 md:pt-32">
-            <section className="mx-4 md:mx-8 lg:mx-[150px]">
+            <section className="mx-4 md:mx-8 xl:mx-[150px]">
                 <div className="grid grid-cols-12 gap-6 mb-12 items-end">
                     <div className="col-span-12 md:col-span-8">
                         <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
@@ -84,7 +84,7 @@ const Projects = () => {
                                 <p className="text-xl text-slate-500 dark:text-slate-400">{t('search.noProjects')}</p>
                             </div>
                         ) : (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                                 {filteredProjects.map((project, index) => (
                                     <motion.div
                                         key={project.id}

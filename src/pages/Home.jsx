@@ -126,7 +126,7 @@ const Home = () => {
 
                 {/* Foto de fundo — atrás dos ícones flutuantes e atrás da luz de fundo, proporcional à Hero
                     (largura E altura explícitas, sem "auto", pra não colapsar em nenhum navegador) */}
-                <div className="hidden lg:block absolute right-0 sm:right-2 md:right-6 lg:right-[40px] xl:right-[80px] top-0 bottom-0 w-[85vw] sm:w-[68vw] md:w-[56vw] lg:w-[34vw] xl:w-[42vw] 2xl:w-[46vw] max-w-[780px] z-0 pointer-events-none select-none">
+                <div className="hidden xl:block absolute right-0 sm:right-2 md:right-6 xl:right-[80px] top-0 bottom-0 w-[85vw] sm:w-[68vw] md:w-[56vw] xl:w-[42vw] 2xl:w-[46vw] max-w-[780px] z-0 pointer-events-none select-none">
                     <img
                         src={heroPortrait}
                         alt=""
@@ -176,7 +176,7 @@ const Home = () => {
                 <div className="absolute bottom-[15%] right-[8%] w-[28%] h-[38%] bg-[radial-gradient(ellipse,rgba(56,136,159,0.10)_0%,transparent_65%)] pointer-events-none animate-glow-breath-accent z-[5]"></div>
 
                 {/* Layout Principal da Hero (Chapéu + Ícones Flutuantes + Texto) — tudo alinhado à esquerda */}
-                <div className="relative z-10 self-stretch flex flex-col items-start mx-4 md:mx-8 lg:mx-[150px] mt-4 mb-12">
+                <div className="relative z-10 self-stretch flex flex-col items-start mx-4 md:mx-8 xl:mx-[150px] mt-4 mb-12">
 
                     {/* Chapéu (eyebrow) */}
                     <p className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-slate-400 mb-6 select-none">
@@ -293,7 +293,7 @@ const Home = () => {
             </div>
 
             {/* Seção de Projetos - Grid Simples (destaques selecionados) */}
-            <section id="projects" className="scroll-mt-32 mx-4 md:mx-8 lg:mx-[150px]">
+            <section id="projects" className="scroll-mt-32 mx-4 md:mx-8 xl:mx-[150px]">
                 <div className="grid grid-cols-12 gap-6 mb-8 md:mb-12 items-end">
                     <div className="col-span-12 md:col-span-8">
                         <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-slate-900 dark:text-white">{t('projects.title')}</h2>
@@ -301,7 +301,7 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                     {featuredProjects.map((project, index) => (
                         <motion.div
                             key={project.id}
@@ -352,7 +352,7 @@ const Home = () => {
                     noise={{ opacity: 1, scale: 1.2 }}
                 />
 
-                <div className="relative z-10 self-stretch mx-4 md:mx-8 lg:mx-[150px]">
+                <div className="relative z-10 self-stretch mx-4 md:mx-8 xl:mx-[150px]">
                     <motion.p {...reveal(0)} className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-slate-400 mb-6 select-none">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#38889F]"></span>
                         {t('hero.eyebrow')}
