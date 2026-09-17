@@ -289,8 +289,6 @@ function RotinaeCase() {
                         <span>{t('rotinaeCase.s6.planLabel')}</span>
                         <strong>{t('rotinaeCase.s6.planPrice')}<small>{t('rotinaeCase.s6.planPeriod')}</small></strong>
                         <p>{t('rotinaeCase.s6.planDesc')}</p>
-                        <hr />
-                        <p className="rotinae-validation">{t('rotinaeCase.s6.planValidation')}</p>
                     </Reveal>
                 </div>
             </section>

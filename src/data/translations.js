@@ -227,7 +227,6 @@ export const translations = {
                 planPrice: "R$ 29",
                 planPeriod: "/mês",
                 planDesc: "Premium com período experimental de 30 dias.",
-                planValidation: "O registro de “3 agendamentos por semana” do briefing precisa de confirmação histórica; a documentação versionada indica outro limite para o plano gratuito.",
             },
             s7: {
                 label: "07 · UX, UI E PRODUTO",
@@ -493,7 +492,6 @@ export const translations = {
                 planPrice: "$29",
                 planPeriod: "/mo",
                 planDesc: "Premium with a 30-day trial period.",
-                planValidation: "The briefing's “3 bookings per week” needs historical confirmation; the versioned documentation points to a different limit for the free plan.",
             },
             s7: {
                 label: "07 · UX, UI, AND PRODUCT",

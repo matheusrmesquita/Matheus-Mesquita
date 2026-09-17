@@ -142,8 +142,6 @@
 .rotinae-plan-card > span { color: #d9ceff; font-size: 8px; letter-spacing: .12em; font-weight: 900; }
 .rotinae-plan-card > strong { display: block; margin: 22px 0 10px; font-size: 39px; }
 .rotinae-plan-card > strong small { font-size: 13px; }
-.rotinae-plan-card hr { margin: 22px 0; border: 0; border-top: 1px solid rgba(255,255,255,.2); }
-.rotinae-plan-card .rotinae-validation { align-items: flex-start; color: #ded5ff; font-size: 10px; font-weight: 500; line-height: 1.55; }
 
 .rotinae-experience { padding-block: 120px; color: #fff; background: var(--rt-purple-900); }
 .rotinae-experience-grid { display: grid; grid-template-columns: 1fr .8fr; gap: 100px; align-items: center; }
