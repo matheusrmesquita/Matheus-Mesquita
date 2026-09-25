@@ -189,6 +189,13 @@
             rgba(5,5,5,0.45) 45%,
             rgba(5,5,5,0.0) 75%);
     }
+    /* No hover a descrição sobe; escurece mais a área para manter contraste (WCAG AA) */
+    .proj-card:hover .proj-overlay {
+        background: linear-gradient(to top,
+            rgba(5,5,5,0.97) 0%,
+            rgba(5,5,5,0.85) 55%,
+            rgba(5,5,5,0.2) 90%);
+    }
 
     .proj-meta {
         display: flex;
@@ -224,12 +231,12 @@
         font-size: clamp(0.6875rem, 1.2vw, 0.75rem);
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: rgba(245,245,245,0.5);
+        color: rgba(245,245,245,0.72);
     }
     .proj-year {
         font-size: clamp(0.6875rem, 1.2vw, 0.75rem);
         letter-spacing: 0.1em;
-        color: rgba(245,245,245,0.3);
+        color: rgba(245,245,245,0.6);
         font-variant-numeric: tabular-nums;
         font-family: ui-monospace, 'JetBrains Mono', Menlo, monospace;
         flex-shrink: 0;
@@ -251,7 +258,7 @@
     }
     .proj-desc {
         font-size: clamp(0.8125rem, 1.6vw, 0.9375rem);
-        color: rgba(245,245,245,0.55);
+        color: rgba(245,245,245,0.88);
         line-height: 1.6;
         margin-bottom: 0.875rem;
         text-align: left;
