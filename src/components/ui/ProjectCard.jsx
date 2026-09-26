@@ -26,13 +26,27 @@ const ProjectCard = ({ project, language, ctaLabel = 'Ver projeto', className = 
             aria-label={`Projeto ${title}`}
         >
             <div className="proj-cover">
-                <img
-                    src={project.image}
-                    alt={title}
-                    className="w-full h-full object-cover pointer-events-none"
-                    loading="lazy"
-                    decoding="async"
-                />
+                {project.video ? (
+                    <video
+                        src={project.video}
+                        poster={project.image}
+                        className="w-full h-full object-cover pointer-events-none"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        aria-label={title}
+                    />
+                ) : (
+                    <img
+                        src={project.image}
+                        alt={title}
+                        className="w-full h-full object-cover pointer-events-none"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                )}
             </div>
             <div className="proj-cover-noise"></div>
 

@@ -48,8 +48,25 @@ import sevCan16 from '../assets/Sev can516.webp';
 import jotakaCard from '../assets/jotaka.webp';
 import jotakaReservas from '../assets/Jotaka resevas.png';
 import jotakaCapa from '../assets/CAPA card jotaka.jpg';
+import wolverineCapa from '../assets/CAPA card Wolverine.jpg';
 
 export const projects = [
+    {
+        id: 16,
+        type: 'project',
+        date: '2026-09-26',
+        title: "Marvel's Wolverine: Experiência Conceitual",
+        title_en: "Marvel's Wolverine: Concept Experience",
+        role: "UI Design / Motion / Frontend",
+        role_en: "UI Design / Motion / Frontend",
+        context: "Estudo de caso desenvolvido para testar e aprimorar habilidades em direção visual, narrativa e experiência digital. A proposta foi criar uma landing page de alto padrão, explorando transições cinematográficas, animações durante o scroll, edição de vídeo e uma sequência de seções que torna a navegação mais imersiva e desperta o interesse pelo jogo. A versão mobile também foi trabalhada com o mesmo cuidado, com vídeos, composição e animações adaptados para telas menores. Para sentir a experiência completa, recomendo acessar a página e percorrer cada seção pelo scroll.",
+        context_en: "A case study developed to test and refine skills in visual direction, storytelling, and digital experience. The goal was to create a high-end landing page, exploring cinematic transitions, scroll-driven animations, video editing, and a sequence of sections that makes navigation more immersive and sparks interest in the game. The mobile version was crafted with the same care, with videos, composition, and animations adapted for smaller screens. To feel the full experience, I recommend visiting the page and scrolling through each section.",
+        tags: ["2026", "UI Design", "Motion", "IA"],
+        image: wolverineCapa,
+        video: "/wolverine/claws.mp4",
+        siteLink: "https://wolverine-beta.vercel.app/",
+        gallery: []
+    },
     {
         id: 15,
         type: 'project',

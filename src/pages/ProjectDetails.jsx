@@ -110,8 +110,44 @@ const ProjectDetails = () => {
             <section className="w-full bg-slate-50 dark:bg-[#0a0a0c] pt-20 border-t border-slate-100 dark:border-white/5">
                 <div className="max-w-7xl mx-auto px-4 flex flex-col items-center space-y-24 pb-24">
 
-                    {/* Media Iteration */}
-                    {project.gallery?.length > 0 ? (
+                    {/* Site publicado: prévia ao vivo, o bloco inteiro é um link para o site */}
+                    {project.siteLink ? (
+                        <a
+                            href={project.siteLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`${language === 'en' ? 'Visit site' : 'Visitar site'} ${title}`}
+                            className="w-full relative group block rounded-[16px] overflow-hidden border border-slate-200 dark:border-white/10 shadow-2xl bg-white dark:bg-[#1e1e1e] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-[#38889F] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#38889F]"
+                        >
+                            <div className="flex items-center gap-3 px-4 h-11 border-b border-slate-200 dark:border-white/10">
+                                <span className="flex gap-1.5" aria-hidden="true">
+                                    <span className="w-3 h-3 rounded-full bg-red-400"></span>
+                                    <span className="w-3 h-3 rounded-full bg-yellow-400"></span>
+                                    <span className="w-3 h-3 rounded-full bg-green-400"></span>
+                                </span>
+                                <span className="flex-1 truncate text-sm text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-white/5 rounded-md px-3 py-1">
+                                    {project.siteLink.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+                                </span>
+                                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-[#38889F] transition-colors" aria-hidden="true" />
+                            </div>
+                            <div className="relative h-[70vh]">
+                                {/* pointer-events-none: o clique vai para o link, não para o iframe */}
+                                <iframe
+                                    src={project.siteLink}
+                                    title={title}
+                                    loading="lazy"
+                                    tabIndex={-1}
+                                    className="w-full h-full pointer-events-none"
+                                />
+                                <div className="absolute inset-0 flex items-end md:items-center justify-center p-6 bg-black/0 group-hover:bg-black/40 transition-colors duration-300">
+                                    <span className="inline-flex items-center gap-2 px-6 h-14 rounded-[16px] bg-[#38889F] text-white font-bold shadow-2xl transition-transform duration-300 group-hover:scale-105">
+                                        {language === 'en' ? 'Visit site' : 'Visitar site'}
+                                        <ExternalLink className="w-5 h-5" aria-hidden="true" />
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    ) : project.gallery?.length > 0 ? (
                         project.gallery.map((media, idx) => (
                             <div key={idx} className="w-full relative group">
                                 <div className="absolute -inset-4 bg-gradient-to-r from-[#38889F]/10 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-1000 -z-10 rounded-[16px]"></div>
@@ -170,11 +206,11 @@ const ProjectDetails = () => {
 
         </article>
 
-        {/* Botão flutuante do Framer - Aparece apenas se houver framerLink */}
-        {project.framerLink && (
+        {/* Botão flutuante do link externo - Framer ou site publicado */}
+        {(project.framerLink || project.siteLink) && (
             <div className="fixed bottom-6 right-24 z-[9998] flex items-center">
                 <motion.a
-                    href={project.framerLink}
+                    href={project.framerLink || project.siteLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
@@ -182,7 +218,7 @@ const ProjectDetails = () => {
                     className="flex items-center gap-2 px-6 h-14 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-white/10 rounded-[16px] shadow-2xl hover:border-[#38889F] hover:text-[#38889F] text-slate-700 dark:text-white transition-colors font-bold"
                 >
                     <ExternalLink className="w-5 h-5" />
-                    <span>Ver no Framer</span>
+                    <span>{project.framerLink ? 'Ver no Framer' : 'Ver site'}</span>
                 </motion.a>
             </div>
         )}
