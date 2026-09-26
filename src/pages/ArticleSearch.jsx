@@ -67,7 +67,7 @@ const ArticleSearch = () => {
                 </header>
 
                 {/* Article Body */}
-                <article className="prose prose-lg dark:prose-invert max-w-none text-slate-700 dark:text-slate-350 space-y-8 leading-[1.9]">
+                <article className="prose prose-lg dark:prose-invert max-w-none text-slate-700 dark:text-slate-200 space-y-8 leading-[1.9]">
                     
                     {/* Introdução com destaque elegante */}
                     <div className="border-l-4 border-[#38889F] pl-6 py-2 my-8">
@@ -79,11 +79,11 @@ const ArticleSearch = () => {
                         </p>
                     </div>
 
-                    <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                    <p className="text-lg md:text-xl text-pretty font-medium">
                         <strong>{c.p1}</strong>
                     </p>
 
-                    <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                    <p className="text-lg md:text-xl text-pretty font-medium">
                         {c.p2}
                     </p>
 
@@ -94,19 +94,19 @@ const ArticleSearch = () => {
                         </p>
                     </div>
 
-                    <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                    <p className="text-lg md:text-xl text-pretty font-medium">
                         {c.p3}
                     </p>
 
-                    <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                    <p className="text-lg md:text-xl text-pretty font-medium">
                         {c.p4}
                     </p>
 
-                    <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                    <p className="text-lg md:text-xl text-pretty font-medium">
                         {c.p5}
                     </p>
 
-                    <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                    <p className="text-lg md:text-xl text-pretty font-medium">
                         {c.p6}
                     </p>
 
@@ -124,23 +124,23 @@ const ArticleSearch = () => {
                             </h2>
                         </div>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                        <p className="text-lg md:text-xl text-pretty font-medium">
                             {c.s1p1}
                         </p>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                        <p className="text-lg md:text-xl text-pretty font-medium">
                             {c.s1p2}
                         </p>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                        <p className="text-lg md:text-xl text-pretty font-medium">
                             {c.s1p3}
                         </p>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                        <p className="text-lg md:text-xl text-pretty font-medium">
                             {c.s1p4}
                         </p>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                        <p className="text-lg md:text-xl text-pretty font-medium">
                             {c.s1p5}
                         </p>
 
@@ -155,11 +155,11 @@ const ArticleSearch = () => {
                             </p>
                         </div>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                        <p className="text-lg md:text-xl text-pretty font-medium">
                             {c.s1p6}
                         </p>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                        <p className="text-lg md:text-xl text-pretty font-medium">
                             {c.s1p7}
                         </p>
 
@@ -183,7 +183,7 @@ const ArticleSearch = () => {
                             </div>
                         </div>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                        <p className="text-lg md:text-xl text-pretty font-medium">
                             {c.s1p8}
                         </p>
                     </section>
@@ -197,15 +197,15 @@ const ArticleSearch = () => {
                             </h2>
                         </div>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                        <p className="text-lg md:text-xl text-pretty font-medium">
                             {c.s2p1}
                         </p>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                        <p className="text-lg md:text-xl text-pretty font-medium">
                             {c.s2p2}
                         </p>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                        <p className="text-lg md:text-xl text-pretty font-medium">
                             {c.s2p3}
                         </p>
 
@@ -228,11 +228,11 @@ const ArticleSearch = () => {
                             </div>
                         </div>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                        <p className="text-lg md:text-xl text-pretty font-medium">
                             {c.s2p4}
                         </p>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                        <p className="text-lg md:text-xl text-pretty font-medium">
                             {c.s2p5}
                         </p>
 
@@ -244,7 +244,7 @@ const ArticleSearch = () => {
                             </p>
                         </div>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                        <p className="text-lg md:text-xl text-pretty font-medium">
                             {c.s2p6}
                         </p>
                     </section>
@@ -258,14 +258,14 @@ const ArticleSearch = () => {
                             </h2>
                         </div>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s3p1}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s3p2}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s3p3}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s3p4}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s3p5}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s3p6}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s3p7}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s3p8}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s3p1}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s3p2}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s3p3}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s3p4}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s3p5}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s3p6}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s3p7}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s3p8}</p>
 
                         {/* Citação em destaque */}
                         <div className="border-l-4 border-[#38889F] bg-slate-50 dark:bg-slate-900/30 p-6 rounded-r-xl my-6">
@@ -274,9 +274,9 @@ const ArticleSearch = () => {
                             </p>
                         </div>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s3p9}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s3p10}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s3p11}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s3p9}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s3p10}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s3p11}</p>
 
                         {/* Card do papel da IA no fluxo de notícias */}
                         <div className="bg-[#38889F]/5 border border-[#38889F]/20 rounded-2xl p-6 my-8">
@@ -284,7 +284,7 @@ const ArticleSearch = () => {
                                 <Cpu className="w-5 h-5 text-[#38889F]" />
                                 {c.aiCardTitle}
                             </h4>
-                            <p className="text-base text-slate-700 dark:text-slate-350 m-0">
+                            <p className="text-base text-slate-700 dark:text-slate-400 m-0">
                                 {c.aiCardDesc}
                             </p>
                             <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-800">
@@ -294,7 +294,7 @@ const ArticleSearch = () => {
                             </div>
                         </div>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s3p12}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s3p12}</p>
                     </section>
 
                     {/* SEÇÃO 4 */}
@@ -306,12 +306,12 @@ const ArticleSearch = () => {
                             </h2>
                         </div>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p1}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p2}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p3}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p4}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p5}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p6}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p1}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p2}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p3}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p4}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p5}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p6}</p>
 
                         {/* Destaque de definição */}
                         <div className="bg-slate-50 dark:bg-slate-900/20 border-l-4 border-[#38889F] p-5 my-6 rounded-r-xl">
@@ -321,12 +321,12 @@ const ArticleSearch = () => {
                             </p>
                         </div>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p7}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p8}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p9}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p10}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p11}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p12}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p7}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p8}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p9}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p10}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p11}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p12}</p>
 
                         {/* Tabela de modularidade de busca */}
                         <div className="my-8 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800">
@@ -341,15 +341,15 @@ const ArticleSearch = () => {
                                     {c.tableRows.map((row, i) => (
                                         <tr key={i}>
                                             <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">{row.t}</td>
-                                            <td className="px-6 py-4 text-slate-600 dark:text-slate-450 font-medium">{row.d}</td>
+                                            <td className="px-6 py-4 text-slate-600 dark:text-slate-400 font-medium">{row.d}</td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
                         </div>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p13}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p14}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p13}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p14}</p>
                     </section>
 
                     {/* SEÇÃO 5 */}
@@ -361,23 +361,23 @@ const ArticleSearch = () => {
                             </h2>
                         </div>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s5p1}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s5p2}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s5p3}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s5p4}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s5p5}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s5p6}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s5p1}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s5p2}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s5p3}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s5p4}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s5p5}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s5p6}</p>
 
                         <div className="bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl text-center my-6">
                             <p className="text-xl font-extrabold text-[#2B6D80] dark:text-[#5FB4CC] m-0">{c.conclusionQuote1}</p>
                             <p className="text-lg font-bold text-slate-900 dark:text-white mt-3 mb-0">{c.conclusionQuote2}</p>
                         </div>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s5p7}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s5p8}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s5p9}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s5p10}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s5p11}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s5p7}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s5p8}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s5p9}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s5p10}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s5p11}</p>
 
                         {/* Callout Final e Conclusão */}
                         <div className="bg-[#38889F]/10 dark:bg-[#38889F]/5 border-l-4 border-[#38889F] p-8 rounded-r-2xl my-10">

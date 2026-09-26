@@ -173,7 +173,7 @@ const ArticleEducation = () => {
                 </header>
 
                 {/* Corpo do Artigo */}
-                <article className="prose prose-lg dark:prose-invert max-w-none text-slate-700 dark:text-slate-350 space-y-8 leading-[1.9]">  
+                <article className="prose prose-lg dark:prose-invert max-w-none text-slate-700 dark:text-slate-200 space-y-8 leading-[1.9]">  
                     
                     {/* Destaque Inicial / Introdução */}
                     <div className="border-l-4 border-[#38889F] pl-6 py-2 my-8">
@@ -185,15 +185,15 @@ const ArticleEducation = () => {
                         </p>
                     </div>
 
-                    <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.p1}</p>
-                    <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.p2}</p>
-                    <p className="text-lg md:text-xl text-pretty font-medium opacity-90">
+                    <p className="text-lg md:text-xl text-pretty font-medium">{c.p1}</p>
+                    <p className="text-lg md:text-xl text-pretty font-medium">{c.p2}</p>
+                    <p className="text-lg md:text-xl text-pretty font-medium">
                         {c.p3.split('alunos, professores, candidatos, áreas institucionais, cursos técnicos, graduação')[0]}
                         {language === 'pt' && <strong>alunos, professores, candidatos, áreas institucionais, cursos técnicos, graduação</strong>}
                         {language === 'en' && <strong>students, teachers, applicants, institutional departments, technical courses, undergraduate programs</strong>}
                         {c.p3.split(language === 'pt' ? 'graduação' : 'undergraduate programs')[1]}
                     </p>
-                    <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.p4}</p>
+                    <p className="text-lg md:text-xl text-pretty font-medium">{c.p4}</p>
 
                     {/* Destaque principal do desafio */}
                     <div className="bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl text-center my-8">
@@ -211,10 +211,10 @@ const ArticleEducation = () => {
                                 {c.s1Title}
                             </h2>
                         </div>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s1p1}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s1p2}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s1p3}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s1p4}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s1p1}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s1p2}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s1p3}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s1p4}</p>
 
                         <div className="bg-amber-500/5 border-l-4 border-amber-500 p-6 rounded-r-2xl my-6 dark:bg-amber-500/10">
                             <p className="text-lg text-slate-800 dark:text-slate-200 font-medium m-0">
@@ -225,8 +225,8 @@ const ArticleEducation = () => {
                             </p>
                         </div>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s1p5}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s1p6}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s1p5}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s1p6}</p>
                     </section>
 
                     {/* SEÇÃO 2 */}
@@ -237,21 +237,21 @@ const ArticleEducation = () => {
                                 {c.s2Title}
                             </h2>
                         </div>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s2p1}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s2p2}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s2p1}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s2p2}</p>
 
                         <div className="bg-[#38889F]/5 border border-[#38889F]/20 rounded-2xl p-6 my-8">
                             <h4 className="text-lg font-bold text-slate-950 dark:text-white flex items-center gap-2 mb-3">
                                 <Users className="w-5 h-5 text-[#38889F]" />
                                 {c.s2cardTitle}
                             </h4>
-                            <p className="text-lg text-slate-700 dark:text-slate-350 italic m-0">{c.s2cardQuote}</p>
-                            <p className="text-base text-slate-650 dark:text-slate-400 mt-4 m-0 font-medium">{c.s2cardDesc}</p>
+                            <p className="text-lg text-slate-700 dark:text-slate-400 italic m-0">{c.s2cardQuote}</p>
+                            <p className="text-base text-slate-600 dark:text-slate-400 mt-4 m-0 font-medium">{c.s2cardDesc}</p>
                         </div>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s2p3}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s2p4}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s2p5}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s2p3}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s2p4}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s2p5}</p>
                     </section>
 
                     {/* SEÇÃO 3 */}
@@ -262,10 +262,10 @@ const ArticleEducation = () => {
                                 {c.s3Title}
                             </h2>
                         </div>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s3p1}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s3p2}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s3p3}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s3p4}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s3p1}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s3p2}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s3p3}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s3p4}</p>
                     </section>
 
                     {/* SEÇÃO 4 */}
@@ -276,14 +276,14 @@ const ArticleEducation = () => {
                                 {c.s4Title}
                             </h2>
                         </div>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p1}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p2}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p3}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p4}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p5}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p6}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p7}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s4p8}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p1}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p2}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p3}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p4}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p5}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p6}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p7}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s4p8}</p>
                     </section>
 
                     {/* SEÇÃO 5 */}
@@ -294,20 +294,20 @@ const ArticleEducation = () => {
                                 {c.s5Title}
                             </h2>
                         </div>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90 font-semibold text-slate-800 dark:text-slate-200">{c.s5p1}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s5p2}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s5p3}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium font-semibold text-slate-800 dark:text-slate-200">{c.s5p1}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s5p2}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s5p3}</p>
 
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 my-8">
                             {c.gridItems.map((item, idx) => (
                                 <div key={idx} className="bg-slate-50 dark:bg-slate-900/30 border border-slate-200 dark:border-slate-800 p-4 rounded-xl text-center flex items-center justify-center">
-                                    <span className="font-bold text-slate-800 dark:text-slate-250 text-sm">{item}</span>
+                                    <span className="font-bold text-slate-800 dark:text-slate-200 text-sm">{item}</span>
                                 </div>
                             ))}
                         </div>
 
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s5p4}</p>
-                        <p className="text-lg md:text-xl text-pretty font-medium opacity-90">{c.s5p5}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s5p4}</p>
+                        <p className="text-lg md:text-xl text-pretty font-medium">{c.s5p5}</p>
 
                         <div className="bg-[#38889F]/10 dark:bg-[#38889F]/5 border-l-4 border-[#38889F] p-8 rounded-r-2xl my-10">
                             <p className="text-xl md:text-2xl font-extrabold text-slate-900 dark:text-white leading-relaxed m-0 italic text-pretty">

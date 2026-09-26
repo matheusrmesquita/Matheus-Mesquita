@@ -11,7 +11,7 @@ import ArticleTOC from '@/components/ui/ArticleTOC';
 
 const ICONS = { Layers, Target, Users, ClipboardList, AlertCircle, Eye, Palette, Cpu, ClipboardCheck, CheckCircle2, Rocket, Lightbulb };
 
-const PARA_CLASS = 'text-lg md:text-xl text-pretty font-medium opacity-90';
+const PARA_CLASS = 'text-lg md:text-xl text-pretty font-medium';
 
 // Divide um texto em partes normais e em **negrito**, sem precisar de markdown completo.
 const renderInline = (text) => {
@@ -131,7 +131,7 @@ const ArticleCongresso = () => {
                         </header>
 
                         {/* Article Body */}
-                        <article className="prose prose-lg dark:prose-invert max-w-none text-slate-700 dark:text-slate-350 space-y-8 leading-[1.9]">
+                        <article className="prose prose-lg dark:prose-invert max-w-none text-slate-700 dark:text-slate-200 space-y-8 leading-[1.9]">
                             {c.intro.map(renderBlock)}
 
                             {c.sections.map((section) => {
