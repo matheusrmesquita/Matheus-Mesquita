@@ -110,8 +110,29 @@ const ProjectDetails = () => {
             <section className="w-full bg-slate-50 dark:bg-[#0a0a0c] pt-20 border-t border-slate-100 dark:border-white/5">
                 <div className="max-w-7xl mx-auto px-4 flex flex-col items-center space-y-24 pb-24">
 
-                    {/* Site publicado: prévia ao vivo, o bloco inteiro é um link para o site */}
-                    {project.siteLink ? (
+                    {/* Vídeo de apresentação com o botão do site por cima */}
+                    {project.showcaseVideo && project.siteLink ? (
+                        <div className="w-full relative rounded-[16px] overflow-hidden border border-slate-200 dark:border-white/10 shadow-2xl bg-black">
+                            <video
+                                src={project.showcaseVideo}
+                                poster={project.showcasePoster}
+                                controls
+                                playsInline
+                                preload="metadata"
+                                className="w-full h-auto block"
+                            />
+                            <a
+                                href={project.siteLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`${language === 'en' ? 'Visit site' : 'Visitar site'} ${title}`}
+                                className="absolute top-3 right-3 inline-flex items-center gap-1.5 px-3 h-9 rounded-[10px] bg-black/40 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium transition-colors duration-300 hover:bg-[#38889F] hover:border-[#38889F] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                            >
+                                {language === 'en' ? 'Visit site' : 'Visitar site'}
+                                <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                            </a>
+                        </div>
+                    ) : project.siteLink ? (
                         <a
                             href={project.siteLink}
                             target="_blank"

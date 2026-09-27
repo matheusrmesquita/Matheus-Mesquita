@@ -65,6 +65,8 @@ export const projects = [
         image: wolverineCapa,
         video: "/wolverine/claws.mp4",
         siteLink: "https://wolverine-beta.vercel.app/",
+        showcaseVideo: "/wolverine/apresentacao.mp4",
+        showcasePoster: "/wolverine/apresentacao-capa.jpg",
         gallery: []
     },
     {
