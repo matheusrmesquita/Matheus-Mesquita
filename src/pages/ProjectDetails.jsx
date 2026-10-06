@@ -65,42 +65,42 @@ const ProjectDetails = () => {
                 {context && (
                     <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start border-t border-slate-100 dark:border-white/5 pt-12">
                         <h3 className="text-slate-900 dark:text-white text-2xl font-bold w-full md:w-1/3 flex items-center gap-3"><LayoutTemplate className="text-[#38889F]" /> {t('projectDetails.context')}</h3>
-                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed md:w-2/3">{context}</p>
+                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line md:w-2/3">{context}</p>
                     </div>
                 )}
 
                 {highlight && (
                     <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start border-t border-slate-100 dark:border-white/5 pt-12">
                         <h3 className="text-slate-900 dark:text-white text-2xl font-bold w-full md:w-1/3 flex items-center gap-3"><Sparkles className="text-[#38889F]" /> {language === 'en' ? 'Highlight' : 'O Destaque'}</h3>
-                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed md:w-2/3">{highlight}</p>
+                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line md:w-2/3">{highlight}</p>
                     </div>
                 )}
 
                 {solution && (
                     <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start border-t border-slate-100 dark:border-white/5 pt-12">
                         <h3 className="text-slate-900 dark:text-white text-2xl font-bold w-full md:w-1/3 flex items-center gap-3"><Lightbulb className="text-[#38889F]" /> {language === 'en' ? 'The Solution' : 'A Solução'}</h3>
-                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed md:w-2/3">{solution}</p>
+                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line md:w-2/3">{solution}</p>
                     </div>
                 )}
 
                 {process && (
                     <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start border-t border-slate-100 dark:border-white/5 pt-12">
                         <h3 className="text-slate-900 dark:text-white text-2xl font-bold w-full md:w-1/3 flex items-center gap-3"><Zap className="text-[#38889F]" /> {t('projectDetails.process')}</h3>
-                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed md:w-2/3">{process}</p>
+                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line md:w-2/3">{process}</p>
                     </div>
                 )}
 
                 {aesthetics && (
                     <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start border-t border-slate-100 dark:border-white/5 pt-12">
                         <h3 className="text-slate-900 dark:text-white text-2xl font-bold w-full md:w-1/3 flex items-center gap-3"><Palette className="text-[#38889F]" /> {language === 'en' ? 'The Aesthetics' : 'A Estética'}</h3>
-                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed md:w-2/3">{aesthetics}</p>
+                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line md:w-2/3">{aesthetics}</p>
                     </div>
                 )}
 
                 {technique && (
                     <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start border-t border-slate-100 dark:border-white/5 pt-12">
                         <h3 className="text-slate-900 dark:text-white text-2xl font-bold w-full md:w-1/3 flex items-center gap-3"><MonitorSmartphone className="text-[#38889F]" /> {t('projectDetails.technique')}</h3>
-                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed md:w-2/3">{technique}</p>
+                        <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line md:w-2/3">{technique}</p>
                     </div>
                 )}
 

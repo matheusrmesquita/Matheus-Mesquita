@@ -19,7 +19,7 @@ import { getWhatsAppLink } from '@/utils/whatsapp';
 // Projetos em destaque na Home (curadoria manual, não "mais recentes") — ordem do mais
 // recente pro mais antigo. Os 4 primeiros aparecem no mobile; os 2 últimos entram a
 // partir do md, onde a grade já tem espaço para 6 cards.
-const FEATURED_HOME_PROJECT_IDS = [16, 15, 14, 5, 12, 4];
+const FEATURED_HOME_PROJECT_IDS = [17, 16, 15, 14, 5, 12];
 
 // Revelação por índice ao rolar — mesmo padrão usado no resto do site (Sobre, ArticlesSection)
 const reveal = (i = 0) => ({
