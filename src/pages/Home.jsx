@@ -40,7 +40,7 @@ const heroSlides = {
         {
             eyebrow: 'Front-end Ágil',
             lines: ['Interfaces rápidas,', 'acessíveis e', 'bem construídas.'],
-            description: 'React, Design Systems e componentização para transformar o design em produto funcional sem perder qualidade.',
+            description: 'Design Systems e componentização para transformar o design em produto funcional sem perder qualidade.',
         },
         {
             eyebrow: 'IA Aplicada a Produtos',
@@ -57,7 +57,7 @@ const heroSlides = {
         {
             eyebrow: 'Agile Front-end',
             lines: ['Fast, accessible', 'and well-built', 'interfaces.'],
-            description: 'React, Design Systems and componentization to turn design into a working product without losing quality.',
+            description: 'Design Systems and componentization to turn design into a working product without losing quality.',
         },
         {
             eyebrow: 'AI Applied to Products',
@@ -284,8 +284,8 @@ const Home = () => {
                     {[...Array(2)].map((_, i) => (
                         <React.Fragment key={i}>
                             {(language === 'en'
-                                ? ["UX Engineering", "Agile Front-end", "Applied AI", "Design Systems", "Figma", "Framer", "React"]
-                                : ["UX Engineering", "Front-end Ágil", "IA Aplicada", "Design Systems", "Figma", "Framer", "React"]
+                                ? ["UX Engineering", "Agile Front-end", "Applied AI", "Design Systems", "Figma", "Framer"]
+                                : ["UX Engineering", "Front-end Ágil", "IA Aplicada", "Design Systems", "Figma", "Framer"]
                             ).map((skill, index) => (
                                 <div key={`${i}-${index}`} className="flex items-center gap-6 md:gap-14 pr-6 md:pr-14 text-sm font-semibold tracking-widest uppercase text-slate-400 dark:text-slate-600 whitespace-nowrap">
                                     {skill}

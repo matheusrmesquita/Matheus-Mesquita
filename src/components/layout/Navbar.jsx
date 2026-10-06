@@ -40,7 +40,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Desktop Nav (Centralizado) */}
-                <div className="hidden xl:flex col-span-4 items-center justify-center gap-2 2xl:gap-6 font-medium text-[13px] 2xl:text-sm text-slate-900 dark:text-white whitespace-nowrap">
+                <div className="hidden xl:flex col-span-4 items-center justify-center gap-6 font-medium text-[13px] 2xl:text-sm text-slate-900 dark:text-white whitespace-nowrap">
                     <Link to="/" className={`transition-colors ${isActive('/') ? 'text-[#38889F]' : 'hover:text-[#38889F]'}`}>{t('nav.home')}</Link>
                     <Link to="/sobre" className={`transition-colors ${isActive('/sobre') ? 'text-[#38889F]' : 'hover:text-[#38889F]'}`}>{t('nav.about')}</Link>
                     <Link to="/projetos" className={`transition-colors ${isActive('/projetos') ? 'text-[#38889F]' : 'hover:text-[#38889F]'}`}>{t('nav.projects')}</Link>
