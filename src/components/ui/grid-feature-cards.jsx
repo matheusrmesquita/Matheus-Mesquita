@@ -11,7 +11,7 @@ export function FeatureCard({ feature, className, ...props }) {
     const Icon = feature.icon;
 
     return (
-        <div className={cn('relative overflow-hidden p-6', className)} {...props}>
+        <div className={cn('group relative overflow-hidden p-6 transition-colors duration-300 hover:bg-slate-50 dark:hover:bg-white/[0.03]', className)} {...props}>
             <div className="pointer-events-none absolute top-0 left-1/2 -mt-2 -ml-20 h-full w-full [mask-image:linear-gradient(white,transparent)]">
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-900/5 to-slate-900/[0.02] dark:from-white/5 dark:to-white/[0.02] [mask-image:radial-gradient(farthest-side_at_top,white,transparent)] opacity-100">
                     <GridPattern
@@ -27,7 +27,7 @@ export function FeatureCard({ feature, className, ...props }) {
 
             {feature.logo ? (
                 <div className={cn(
-                    'relative z-20 w-20 h-14 rounded-lg flex items-center justify-center p-2.5 shadow-lg',
+                    'relative z-20 w-20 h-14 rounded-lg flex items-center justify-center p-2.5 shadow-lg transition-transform duration-300 group-hover:-translate-y-0.5',
                     feature.logoBg === 'blue' ? 'bg-[#0F2A52]' : feature.logoBg === 'dark' ? 'bg-[#111]' : 'bg-white'
                 )}>
                     <img src={feature.logo} alt={feature.institution || feature.title} className="w-full h-full object-contain" />

@@ -52,7 +52,6 @@ const ServicesSection = () => {
                     <FeatureCard
                         key={item.title}
                         feature={{ title: item.title, icon: item.icon, description: item.desc }}
-                        className="group transition-colors duration-300 hover:bg-slate-50 dark:hover:bg-white/[0.03]"
                     />
                 ))}
             </div>
