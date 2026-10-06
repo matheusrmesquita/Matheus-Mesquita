@@ -145,7 +145,7 @@ const Home = () => {
                     {/* Figma — na altura da cabeça, ao lado esquerdo, sem tocar no cabelo/corpo */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }}
-                        className="absolute top-[30%] left-[9%] z-20"
+                        className="absolute top-[30%] left-[3%] min-[1580px]:left-[9%] z-20"
                     >
                         <div className="w-[70px] h-[70px] md:w-[84px] md:h-[84px] flex items-center justify-center rounded-[1.3rem] bg-[#2C2D2E]/80 backdrop-blur-md border border-white/10 shadow-2xl transform -rotate-12 animate-bounce" style={{ animationDuration: '4.5s' }}>
                             <img src={figmaLogo} alt="Figma Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain drop-shadow-md" />
