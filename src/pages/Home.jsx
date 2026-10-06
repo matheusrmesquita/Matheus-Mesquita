@@ -182,14 +182,14 @@ const Home = () => {
                 <div className="relative z-10 self-stretch flex flex-col items-start mx-4 md:mx-8 xl:mx-[150px] mt-4 mb-12">
 
                     {/* Linha: Texto (esquerda) + Ícones Flutuantes (direita, centralizados ao texto) */}
-                    <div className="w-full flex flex-col lg:flex-row items-center lg:items-center justify-between gap-10 lg:gap-6">
+                    <div className="w-full flex flex-col xl:flex-row items-start xl:items-center justify-between gap-10 xl:gap-6">
 
                         {/* 2. Texto — alinhado à esquerda */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="relative z-10 w-full max-w-md lg:max-w-sm xl:max-w-xl 2xl:max-w-4xl space-y-3 md:space-y-5 flex flex-col items-start text-left"
+                            className="relative z-10 w-full max-w-md md:max-w-2xl xl:max-w-xl 2xl:max-w-4xl space-y-3 md:space-y-5 flex flex-col items-start text-left"
                         >
                             <p className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-slate-400 select-none">
                                 <span className="w-1.5 h-1.5 rounded-full bg-[#38889F]"></span>
@@ -222,13 +222,13 @@ const Home = () => {
                     </div>
                 </div>
 
-                {/* Foto + ícones — versão mobile/tablet, abaixo do texto, no fluxo normal (a versão de cima é só lg+).
+                {/* Foto + ícones — versão mobile/tablet, abaixo do texto, no fluxo normal (a versão de cima é só xl+).
                     Fica fora do grupo de texto (z-10) e em z-0, pra ficar ATRÁS do glow (z-5) e do scroll (z-10). */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.3 }}
-                    className="lg:hidden self-stretch relative z-0 mx-4 sm:mx-6 h-[78vh] sm:h-[82vh] mt-4 mb-0 rounded-2xl overflow-hidden"
+                    className="xl:hidden self-stretch relative z-0 mx-4 sm:mx-6 md:mx-8 h-[78vh] sm:h-[82vh] mt-4 mb-0 rounded-2xl overflow-hidden"
                 >
                         <img
                             src={heroPortrait}
