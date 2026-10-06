@@ -33,7 +33,7 @@ export function FeatureCard({ feature, className, ...props }) {
                     <img src={feature.logo} alt={feature.institution || feature.title} className="w-full h-full object-contain" />
                 </div>
             ) : (
-                Icon && <Icon className="relative z-20 size-6 text-[#38889F]" strokeWidth={1.5} aria-hidden />
+                Icon && <Icon className="relative z-20 size-6 text-[#38889F] transition-transform duration-300 group-hover:-translate-y-0.5" strokeWidth={1.5} aria-hidden />
             )}
 
             <h3 className="relative z-20 mt-10 text-sm font-bold text-slate-900 dark:text-white md:text-base">{feature.title}</h3>
