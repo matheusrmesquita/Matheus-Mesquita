@@ -14,6 +14,7 @@ import ArticlesSection from '@/components/sections/ArticlesSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import ProjectCard from '@/components/ui/ProjectCard';
 import TypewriterTitle from '@/components/ui/TypewriterTitle';
+import { getWhatsAppLink } from '@/utils/whatsapp';
 
 // Projetos em destaque na Home (curadoria manual, não "mais recentes") — ordem do mais
 // recente pro mais antigo. Os 4 primeiros aparecem no mobile; os 2 últimos entram a
@@ -86,33 +87,35 @@ const Home = () => {
 
     // Efeito de digitação da Hero (mesma lógica da Hero da Brand)
     const [heroSlideIndex, setHeroSlideIndex] = useState(0);
-    const [heroTypedCount, setHeroTypedCount] = useState(0);
+    const [isBrowserTranslated, setIsBrowserTranslated] = useState(() =>
+        document.documentElement.classList.contains('translated-ltr') ||
+        document.documentElement.classList.contains('translated-rtl')
+    );
     const activeHeroSlides = heroSlides[language] || heroSlides.pt;
     const activeHeroSlide = activeHeroSlides[heroSlideIndex % activeHeroSlides.length];
-    const activeHeroTotalChars = activeHeroSlide.lines.reduce((total, line) => total + line.length, 0);
 
     useEffect(() => {
-        queueMicrotask(() => {
-            setHeroSlideIndex(0);
-            setHeroTypedCount(0);
-        });
+        const root = document.documentElement;
+        const updateTranslationState = () => setIsBrowserTranslated(
+            root.classList.contains('translated-ltr') || root.classList.contains('translated-rtl')
+        );
+        const observer = new MutationObserver(updateTranslationState);
+        observer.observe(root, { attributes: true, attributeFilter: ['class'] });
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        queueMicrotask(() => setHeroSlideIndex(0));
     }, [language]);
 
     useEffect(() => {
-        let delay = 45;
-        let nextAction = () => setHeroTypedCount(prev => prev + 1);
-
-        if (heroTypedCount >= activeHeroTotalChars) {
-            delay = 4600;
-            nextAction = () => {
-                setHeroSlideIndex(prev => (prev + 1) % activeHeroSlides.length);
-                setHeroTypedCount(0);
-            };
-        }
-
-        const timeout = window.setTimeout(nextAction, delay);
+        if (isBrowserTranslated) return undefined;
+        const timeout = window.setTimeout(
+            () => setHeroSlideIndex(prev => (prev + 1) % activeHeroSlides.length),
+            6000,
+        );
         return () => window.clearTimeout(timeout);
-    }, [activeHeroTotalChars, language, activeHeroSlides.length, heroTypedCount]);
+    }, [language, activeHeroSlides.length, heroSlideIndex, isBrowserTranslated]);
 
     return (
         <div className="animate-in fade-in duration-700">
@@ -200,7 +203,7 @@ const Home = () => {
                                 transition={{ duration: 0.7 }}
                                 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.2] text-white text-left"
                             >
-                                <TypewriterTitle lines={activeHeroSlide.lines} typedCount={heroTypedCount} />
+                                <TypewriterTitle lines={activeHeroSlide.lines} />
                             </motion.h1>
 
                             <p className="text-base md:text-lg text-slate-400 font-medium max-w-2xl leading-relaxed text-pretty text-left">
@@ -208,7 +211,7 @@ const Home = () => {
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 pt-2 w-full sm:w-auto items-start sm:items-center">
-                                <a href="https://wa.me/5561982863674?text=Ol%C3%A1%2C%20Matheus%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20%F0%9F%9A%80" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                                <a href={getWhatsAppLink(language)} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                                     <InteractiveHoverButton text={t('hero.ctaWork')} className="w-full sm:w-auto bg-[#38889F] border-[#38889F] text-white" />
                                 </a>
                                 <a href="#projects" className="w-full sm:w-auto flex sm:inline-flex items-center justify-center sm:justify-start gap-2 text-sm font-medium text-slate-400 hover:text-white border-b border-zinc-800 hover:border-zinc-500 pb-1 transition-colors">
@@ -280,7 +283,10 @@ const Home = () => {
                 <div className="marquee-track-scroll">
                     {[...Array(2)].map((_, i) => (
                         <React.Fragment key={i}>
-                            {["UX Engineering", "Front-end Ágil", "IA Aplicada", "Design Systems", "Figma", "Framer", "React"].map((skill, index) => (
+                            {(language === 'en'
+                                ? ["UX Engineering", "Agile Front-end", "Applied AI", "Design Systems", "Figma", "Framer", "React"]
+                                : ["UX Engineering", "Front-end Ágil", "IA Aplicada", "Design Systems", "Figma", "Framer", "React"]
+                            ).map((skill, index) => (
                                 <div key={`${i}-${index}`} className="flex items-center gap-6 md:gap-14 pr-6 md:pr-14 text-sm font-semibold tracking-widest uppercase text-slate-400 dark:text-slate-600 whitespace-nowrap">
                                     {skill}
                                     <div className="w-1.5 h-1.5 rounded-full bg-[#38889F] flex-shrink-0"></div>
@@ -334,16 +340,11 @@ const Home = () => {
 
             {/* CTA Section (Footer CTA) — atmosfera da Brand (grão, glow, EtheralShadow),
                 cores do portfólio. Conteúdo estático por enquanto — a ser reestruturada. */}
-            <section className="relative w-full min-h-[70vh] md:min-h-[85vh] flex flex-col justify-center overflow-hidden bg-black hero-grain mt-24 py-20 md:py-28">
+            <section className="relative w-full min-h-[70vh] md:min-h-[85vh] flex flex-col justify-center overflow-hidden hero-grain mt-24 py-20 md:py-28">
 
                 {/* Grid de fundo sutil (igual à Hero) */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)] z-0"></div>
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#0000000a_1px,transparent_1px),linear-gradient(to_bottom,#0000000a_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)] z-0"></div>
 
-                {/* Feixes de luz atmosféricos respirando (mesma paleta teal da Hero) */}
-                <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-[90%] max-w-[1000px] h-[55%] bg-[radial-gradient(ellipse_at_50%_100%,rgba(56,136,159,0.24)_0%,rgba(56,136,159,0.12)_30%,transparent_75%)] pointer-events-none animate-glow-breath z-0"></div>
-                <div className="absolute bottom-[20%] left-[15%] w-[30%] h-[40%] bg-[radial-gradient(ellipse,rgba(56,136,159,0.09)_0%,transparent_65%)] pointer-events-none animate-glow-breath-accent z-0"></div>
-
-                {/* Etheral Shadow Background (movido da Hero) */}
                 <EtheralShadow
                     sizing="fill"
                     color="rgba(56, 136, 159, 0.4)"
@@ -352,21 +353,21 @@ const Home = () => {
                 />
 
                 <div className="relative z-10 self-stretch mx-4 md:mx-8 xl:mx-[150px]">
-                    <motion.p {...reveal(0)} className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-slate-400 mb-6 select-none">
+                    <motion.p {...reveal(0)} className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-slate-500 dark:text-slate-400 mb-6 select-none">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#38889F]"></span>
                         {t('hero.eyebrow')}
                     </motion.p>
 
-                    <motion.h2 {...reveal(1)} className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-[1.1] text-white" dangerouslySetInnerHTML={{ __html: t('cta.title') }}></motion.h2>
-                    <motion.p {...reveal(2)} className="text-slate-400 text-lg md:text-xl mb-10 max-w-2xl font-medium leading-relaxed">
+                    <motion.h2 {...reveal(1)} className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-[1.1] text-slate-900 dark:text-white" dangerouslySetInnerHTML={{ __html: t('cta.title') }}></motion.h2>
+                    <motion.p {...reveal(2)} className="text-slate-600 dark:text-slate-400 text-lg md:text-xl mb-10 max-w-2xl font-medium leading-relaxed">
                         {t('cta.description')}
                     </motion.p>
 
                     <motion.div {...reveal(3)} className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                        <a href="https://wa.me/5561982863674?text=Ol%C3%A1%2C%20Matheus%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20%F0%9F%9A%80" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                        <a href={getWhatsAppLink(language)} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                             <InteractiveHoverButton text={t('cta.button')} className="w-full sm:w-auto bg-[#38889F] border-[#38889F] text-white text-sm sm:text-base px-5 sm:px-8 py-4" />
                         </a>
-                        <a href="#projects" className="w-full sm:w-auto flex sm:inline-flex items-center justify-center sm:justify-start gap-2 text-sm font-medium text-slate-400 hover:text-white border-b border-zinc-800 hover:border-zinc-500 pb-1 transition-colors">
+                        <a href="#projects" className="w-full sm:w-auto flex sm:inline-flex items-center justify-center sm:justify-start gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white border-b border-slate-300 dark:border-zinc-800 hover:border-slate-500 dark:hover:border-zinc-500 pb-1 transition-colors">
                             {t('hero.ctaPortfolio')}
                         </a>
                     </motion.div>

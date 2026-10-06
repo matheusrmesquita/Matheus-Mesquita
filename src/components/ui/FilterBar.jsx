@@ -1,14 +1,14 @@
 import React from 'react';
 import { Filter, X } from 'lucide-react';
 
-const FilterBar = ({ yearTags, categoryTags, selectedTags, toggleTag, clearFilters, searchQuery }) => {
+const FilterBar = ({ yearTags, categoryTags, selectedTags, toggleTag, clearFilters, searchQuery, language }) => {
     return (
         <div className="flex flex-col gap-4">
             {/* Filtros de Ano */}
             <div className="flex flex-wrap gap-2 items-center">
                 <div className="flex items-center gap-2 mr-2 text-slate-500 dark:text-slate-400 font-medium w-full md:w-auto">
                     <Filter className="w-4 h-4" />
-                    <span>Ano:</span>
+                    <span>{language === 'en' ? 'Year:' : 'Ano:'}</span>
                 </div>
                 {yearTags.map(tag => {
                     const isSelected = selectedTags.includes(tag);
@@ -32,7 +32,7 @@ const FilterBar = ({ yearTags, categoryTags, selectedTags, toggleTag, clearFilte
             <div className="flex flex-wrap gap-2 items-center">
                 <div className="flex items-center gap-2 mr-2 text-slate-500 dark:text-slate-400 font-medium w-full md:w-auto">
                     <Filter className="w-4 h-4" />
-                    <span>Categoria:</span>
+                    <span>{language === 'en' ? 'Category:' : 'Categoria:'}</span>
                 </div>
                 {categoryTags.map(tag => {
                     const isSelected = selectedTags.includes(tag);
@@ -57,7 +57,7 @@ const FilterBar = ({ yearTags, categoryTags, selectedTags, toggleTag, clearFilte
                         className="px-4 py-1.5 text-sm font-medium text-red-500 hover:text-red-600 transition-colors md:ml-auto flex items-center gap-1 w-full md:w-auto mt-2 md:mt-0"
                     >
                         <X className="w-4 h-4" />
-                        Limpar filtros
+                        {language === 'en' ? 'Clear filters' : 'Limpar filtros'}
                     </button>
                 )}
             </div>

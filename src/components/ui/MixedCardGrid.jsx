@@ -8,7 +8,7 @@ const MixedCardGrid = ({ items, language, t }) => {
         return (
             <div className="text-center py-20">
                 <p className="text-xl text-slate-500 dark:text-slate-400">
-                    Nenhum resultado encontrado com os filtros atuais.
+                    {language === 'en' ? 'No results found with the current filters.' : 'Nenhum resultado encontrado com os filtros atuais.'}
                 </p>
             </div>
         );
@@ -30,7 +30,7 @@ const MixedCardGrid = ({ items, language, t }) => {
                             {/* Badge identificador */}
                             <div className="absolute top-3 left-3 z-20 pointer-events-none">
                                 <span className="bg-black/60 backdrop-blur-md text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full border border-white/10 shadow-lg">
-                                    Projeto
+                                    {language === 'en' ? 'Project' : 'Projeto'}
                                 </span>
                             </div>
                             <ProjectCard project={item} language={language} ctaLabel={t('projects.cardBtn') || 'Ver detalhes'} />
@@ -49,7 +49,7 @@ const MixedCardGrid = ({ items, language, t }) => {
                             {/* Badge identificador */}
                             <div className="absolute top-3 left-3 z-20 pointer-events-none">
                                 <span className="bg-black/60 backdrop-blur-md text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full border border-white/10 shadow-lg">
-                                    Artigo
+                                    {language === 'en' ? 'Article' : 'Artigo'}
                                 </span>
                             </div>
                             <ArticleCard article={item} index={index} language={language} ctaLabel={t('articles.readMore') || 'Ler artigo completo'} />

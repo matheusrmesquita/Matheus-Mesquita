@@ -1,149 +1,71 @@
-import React, { useRef, useId, useEffect } from 'react';
-import { animate, useMotionValue } from 'framer-motion';
+import React from 'react';
+
+const MASK_URL = "url('https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png')";
+const NOISE_URL = 'url("https://framerusercontent.com/images/g0QcWrxr87K0ufOxIUFBakwYA8.png")';
 
 function mapRange(value, fromLow, fromHigh, toLow, toHigh) {
-    if (fromLow === fromHigh) {
-        return toLow;
-    }
+    if (fromLow === fromHigh) return toLow;
     const percentage = (value - fromLow) / (fromHigh - fromLow);
     return toLow + percentage * (toHigh - toLow);
 }
 
-const useInstanceId = () => {
-    const id = useId();
-    const cleanId = id.replace(/:/g, "");
-    return `shadowoverlay-${cleanId}`;
-};
-
+// Névoa teal com máscara + ruído. A animação é só transform em CSS (keyframes `etheralDrift`
+// em index.css), que roda no compositor da GPU: o filtro SVG original (feTurbulence +
+// feDisplacementMap) travava a rolagem a cada repintura.
 export function EtheralShadow({
     sizing = 'fill',
-    color = 'rgba(56, 136, 159, 1)', // Adaptado para #38889F (Teal)
+    color = 'rgba(56, 136, 159, 1)',
     animation = { scale: 100, speed: 90 },
     noise = { opacity: 1, scale: 1.2 },
     style,
-    className
+    className,
 }) {
-    const id = useInstanceId();
     const animationEnabled = animation && animation.scale > 0;
-    const feColorMatrixRef = useRef(null);
-    const hueRotateMotionValue = useMotionValue(180);
-    const hueRotateAnimation = useRef(null);
-
-    const displacementScale = animation ? mapRange(animation.scale, 1, 100, 20, 100) : 0;
-    const animationDuration = animation ? mapRange(animation.speed, 1, 100, 1000, 50) : 1;
-
-    useEffect(() => {
-        if (feColorMatrixRef.current && animationEnabled) {
-            if (hueRotateAnimation.current) {
-                hueRotateAnimation.current.stop();
-            }
-            hueRotateMotionValue.set(0);
-            hueRotateAnimation.current = animate(hueRotateMotionValue, 360, {
-                duration: animationDuration / 25,
-                repeat: Infinity,
-                repeatType: "loop",
-                repeatDelay: 0,
-                ease: "linear",
-                delay: 0,
-                onUpdate: (value) => {
-                    if (feColorMatrixRef.current) {
-                        feColorMatrixRef.current.setAttribute("values", String(value));
-                    }
-                }
-            });
-
-            return () => {
-                if (hueRotateAnimation.current) {
-                    hueRotateAnimation.current.stop();
-                }
-            };
-        }
-    }, [animationEnabled, animationDuration, hueRotateMotionValue]);
+    // speed 1..100 → ciclo de 60s..12s
+    const duration = animationEnabled ? mapRange(animation.speed, 1, 100, 60, 12) : 0;
+    const maskSize = sizing === 'stretch' ? '100% 100%' : 'cover';
 
     return (
         <div
             className={`absolute inset-0 pointer-events-none z-0 ${className || ''}`}
-            style={{
-                overflow: "hidden",
-                width: "100%",
-                height: "100%",
-                ...style
-            }}
+            style={{ overflow: 'hidden', contain: 'strict', ...style }}
         >
             <div
+                className={animationEnabled ? 'etheral-drift' : undefined}
                 style={{
-                    position: "absolute",
-                    inset: -displacementScale,
-                    filter: animationEnabled ? `url(#${id}) blur(4px)` : "none"
+                    position: 'absolute',
+                    inset: '-15%',
+                    filter: 'blur(4px)',
+                    animationDuration: `${duration}s`,
                 }}
             >
-                {animationEnabled && (
-                    <svg style={{ position: "absolute", width: 0, height: 0 }}>
-                        <defs>
-                            <filter id={id}>
-                                <feTurbulence
-                                    result="undulation"
-                                    numOctaves="2"
-                                    baseFrequency={`${mapRange(animation.scale, 0, 100, 0.001, 0.0005)},${mapRange(animation.scale, 0, 100, 0.004, 0.002)}`}
-                                    seed="0"
-                                    type="turbulence"
-                                />
-                                <feColorMatrix
-                                    ref={feColorMatrixRef}
-                                    in="undulation"
-                                    type="hueRotate"
-                                    values="180"
-                                />
-                                <feColorMatrix
-                                    in="dist"
-                                    result="circulation"
-                                    type="matrix"
-                                    values="4 0 0 0 1  4 0 0 0 1  4 0 0 0 1  1 0 0 0 0"
-                                />
-                                <feDisplacementMap
-                                    in="SourceGraphic"
-                                    in2="circulation"
-                                    scale={displacementScale}
-                                    result="dist"
-                                />
-                                <feDisplacementMap
-                                    in="dist"
-                                    in2="undulation"
-                                    scale={displacementScale}
-                                    result="output"
-                                />
-                            </filter>
-                        </defs>
-                    </svg>
-                )}
                 <div
                     style={{
+                        width: '100%',
+                        height: '100%',
                         backgroundColor: color,
-                        maskImage: `url('https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png')`,
-                        WebkitMaskImage: `url('https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png')`,
-                        maskSize: sizing === "stretch" ? "100% 100%" : "cover",
-                        WebkitMaskSize: sizing === "stretch" ? "100% 100%" : "cover",
-                        maskRepeat: "no-repeat",
-                        WebkitMaskRepeat: "no-repeat",
-                        maskPosition: "center",
-                        WebkitMaskPosition: "center",
-                        width: "100%",
-                        height: "100%",
-                        opacity: 0.8
+                        opacity: 0.8,
+                        maskImage: MASK_URL,
+                        WebkitMaskImage: MASK_URL,
+                        maskSize,
+                        WebkitMaskSize: maskSize,
+                        maskRepeat: 'no-repeat',
+                        WebkitMaskRepeat: 'no-repeat',
+                        maskPosition: 'center',
+                        WebkitMaskPosition: 'center',
                     }}
                 />
             </div>
-
             {noise && noise.opacity > 0 && (
                 <div
                     style={{
-                        position: "absolute",
+                        position: 'absolute',
                         inset: 0,
-                        backgroundImage: `url("https://framerusercontent.com/images/g0QcWrxr87K0ufOxIUFBakwYA8.png")`,
+                        backgroundImage: NOISE_URL,
                         backgroundSize: noise.scale * 200,
-                        backgroundRepeat: "repeat",
+                        backgroundRepeat: 'repeat',
                         opacity: noise.opacity / 2,
-                        mixBlendMode: 'overlay'
+                        mixBlendMode: 'overlay',
                     }}
                 />
             )}

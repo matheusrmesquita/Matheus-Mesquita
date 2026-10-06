@@ -11,6 +11,7 @@ import unyleyaLogo from '../assets/unyleya-logo.png';
 import mentoramaLogo from '../assets/mentorama-logo.svg';
 import academySkillsLogo from '../assets/academyskills-logo.svg';
 import { FeatureCard, AnimatedContainer } from '@/components/ui/grid-feature-cards';
+import { getWhatsAppLink } from '@/utils/whatsapp';
 
 // Revelação por índice — mesmo padrão usado no resto do site (ArticlesSection, grade de Projetos)
 const reveal = (i = 0) => ({
@@ -79,7 +80,7 @@ const Sobre = () => {
                         </motion.div>
 
                         <motion.div {...reveal(3)} className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-8 mt-10">
-                            <a href="https://wa.me/5561982863674?text=Ol%C3%A1%2C%20Matheus%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20%F0%9F%9A%80" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                            <a href={getWhatsAppLink(language)} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                                 <InteractiveHoverButton text={t('hero.ctaWork')} className="w-full sm:w-auto bg-[#38889F] border-[#38889F] text-white" />
                             </a>
                             <div>

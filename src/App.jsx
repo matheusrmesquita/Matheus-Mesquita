@@ -18,6 +18,7 @@ const ProjectDetails = lazy(() => import('./pages/ProjectDetails'));
 const ArticleSearch = lazy(() => import('./pages/ArticleSearch'));
 const ArticleEducation = lazy(() => import('./pages/ArticleEducation'));
 const ArticleCongresso = lazy(() => import('./pages/ArticleCongresso'));
+const ArticleNewsEditor = lazy(() => import('./pages/ArticleNewsEditor'));
 const RotinaeCase = lazy(() => import('./pages/RotinaeCase'));
 const SelectedProjects = lazy(() => import('./pages/SelectedProjects'));
 
@@ -44,6 +45,7 @@ function App() {
                 <Route path="/artigos/busca" element={<ArticleSearch />} />
                 <Route path="/artigos/dxp-educacao" element={<ArticleEducation />} />
                 <Route path="/artigos/congresso" element={<ArticleCongresso />} />
+                <Route path="/artigos/editor-de-noticias" element={<ArticleNewsEditor />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </Suspense>

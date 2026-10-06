@@ -1,7 +1,7 @@
 import React from 'react';
 import { ClipboardList, Compass, Layers, Cpu, Code2, Database } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
-import { FeatureCard, AnimatedContainer } from '@/components/ui/grid-feature-cards';
+import { FeatureCard } from '@/components/ui/grid-feature-cards';
 
 // Serviços — copy própria baseada no currículo/competências reais, organizada pelas etapas do
 // processo (requisitos, arquitetura, sistema, IA, implementação, integração), não por categoria
@@ -44,8 +44,8 @@ const ServicesSection = () => {
                 <p className="text-slate-600 dark:text-slate-400 text-xl font-medium">{c.subtitle}</p>
             </div>
 
-            <AnimatedContainer
-                delay={0.2}
+            {/* Sem animação de entrada: a única animação no fim da Home é o fundo da CTA */}
+            <div
                 className="grid grid-cols-1 divide-x divide-y divide-dashed divide-slate-200 dark:divide-white/10 border border-dashed border-slate-200 dark:border-white/10 sm:grid-cols-2 xl:grid-cols-3"
             >
                 {c.items.map((item) => (
@@ -54,7 +54,7 @@ const ServicesSection = () => {
                         feature={{ title: item.title, icon: item.icon, description: item.desc }}
                     />
                 ))}
-            </AnimatedContainer>
+            </div>
         </section>
     );
 };

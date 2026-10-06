@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
-
-const WA_NUMBER = '5561982863674';
-const WA_DEFAULT_MSG = encodeURIComponent('Olá, Matheus! Vi seu portfólio e gostaria de conversar sobre um projeto. 🚀');
-const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${WA_DEFAULT_MSG}`;
+import { useLanguage } from '@/context/LanguageContext';
+import { getWhatsAppLink } from '@/utils/whatsapp';
 
 const WhatsAppFloat = () => {
     const [showTooltip, setShowTooltip] = useState(false);
+    const { language } = useLanguage();
+    const whatsappLink = getWhatsAppLink(language);
 
     return (
         <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-3">
@@ -22,8 +22,8 @@ const WhatsAppFloat = () => {
                         className="flex items-center gap-2 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-white/10 shadow-xl rounded-[14px] px-4 py-3 mb-1"
                     >
                         <div className="flex flex-col leading-tight">
-                            <span className="text-sm font-bold text-slate-900 dark:text-white">Fale comigo</span>
-                            <span className="text-xs text-slate-500 dark:text-slate-400">Respondido em até 1h útil</span>
+                            <span className="text-sm font-bold text-slate-900 dark:text-white">{language === 'en' ? 'Talk to me' : 'Fale comigo'}</span>
+                            <span className="text-xs text-slate-500 dark:text-slate-400">{language === 'en' ? 'Replies within 1 business hour' : 'Resposta em até 1 hora útil'}</span>
                         </div>
                         <button
                             onClick={() => setShowTooltip(false)}
@@ -37,10 +37,10 @@ const WhatsAppFloat = () => {
 
             {/* Botão Principal */}
             <motion.a
-                href={WA_LINK}
+                href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Fale comigo pelo WhatsApp"
+                aria-label={language === 'en' ? 'Talk to me on WhatsApp' : 'Fale comigo pelo WhatsApp'}
                 onMouseEnter={() => setShowTooltip(true)}
                 onMouseLeave={() => setShowTooltip(false)}
                 whileHover={{ scale: 1.1 }}

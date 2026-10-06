@@ -77,9 +77,9 @@ const renderBlock = (block, i) => {
     }
 };
 
-const ArticleCongresso = () => {
+export const StructuredArticle = ({ content }) => {
     const { language } = useLanguage();
-    const c = articleCongressoContent[language] || articleCongressoContent.pt;
+    const c = content[language] || content.pt;
 
     const tocLabel = language === 'en' ? 'In this article' : 'Neste artigo';
     const sections = c.sections.map((s) => ({ id: s.id, label: s.title }));
@@ -157,5 +157,7 @@ const ArticleCongresso = () => {
         </motion.div>
     );
 };
+
+const ArticleCongresso = () => <StructuredArticle content={articleCongressoContent} />;
 
 export default ArticleCongresso;

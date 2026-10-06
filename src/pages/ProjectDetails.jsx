@@ -174,7 +174,7 @@ const ProjectDetails = () => {
                                 <div className="absolute -inset-4 bg-gradient-to-r from-[#38889F]/10 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-1000 -z-10 rounded-[16px]"></div>
                                 <img
                                     src={media}
-                                    alt={`${title} - Visualização ${idx + 1}`}
+                                    alt={`${title} - ${language === 'en' ? 'View' : 'Visualização'} ${idx + 1}`}
                                     className="w-full h-auto rounded-[14px] shadow-2xl border border-slate-200 dark:border-white/10"
                                     loading={idx === 0 ? "eager" : "lazy"}
                                 />
@@ -239,7 +239,10 @@ const ProjectDetails = () => {
                     className="flex items-center gap-2 px-6 h-14 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-white/10 rounded-[16px] shadow-2xl hover:border-[#38889F] hover:text-[#38889F] text-slate-700 dark:text-white transition-colors font-bold"
                 >
                     <ExternalLink className="w-5 h-5" />
-                    <span>{project.framerLink ? 'Ver no Framer' : 'Ver site'}</span>
+                    <span>{language === 'en'
+                        ? (project.framerLink ? 'View on Framer' : 'View website')
+                        : (project.framerLink ? 'Ver no Framer' : 'Ver site')}
+                    </span>
                 </motion.a>
             </div>
         )}

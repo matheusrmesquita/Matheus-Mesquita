@@ -12,7 +12,7 @@ const getDisplayTags = (project) => {
     return (project.tags || []).filter((tag) => tag !== 'Landing Page' && !/^\d{4}$/.test(tag));
 };
 
-const ProjectCard = ({ project, language, ctaLabel = 'Ver projeto', className = '' }) => {
+const ProjectCard = ({ project, language, ctaLabel, className = '' }) => {
     const title = language === 'en' && project.title_en ? project.title_en : project.title;
     const description = language === 'en' && project.context_en ? project.context_en : project.context;
     const year = getYear(project);
@@ -23,7 +23,7 @@ const ProjectCard = ({ project, language, ctaLabel = 'Ver projeto', className = 
             to={project.path || `/projetos/${project.id}`}
             className={`proj-card group block outline-none focus-visible:ring-4 focus-visible:ring-[#38889F] ${className}`}
             role="article"
-            aria-label={`Projeto ${title}`}
+            aria-label={`${language === 'en' ? 'Project' : 'Projeto'} ${title}`}
         >
             <div className="proj-cover">
                 {project.video ? (
@@ -54,7 +54,7 @@ const ProjectCard = ({ project, language, ctaLabel = 'Ver projeto', className = 
                 <div className="proj-detail">
                     {description && <p className="proj-desc">{description}</p>}
                     <span className="proj-cta">
-                        {ctaLabel}
+                        {ctaLabel || (language === 'en' ? 'View project' : 'Ver projeto')}
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                             <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>

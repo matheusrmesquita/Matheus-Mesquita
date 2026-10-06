@@ -115,6 +115,10 @@ const content = {
 const ArticleEducation = () => {
     const { language } = useLanguage();
     const c = content[language] || content.pt;
+    const audiencePhrase = language === 'en'
+        ? 'students, teachers, applicants, institutional departments, technical courses, undergraduate programs'
+        : 'alunos, professores, candidatos, áreas institucionais, cursos técnicos, graduação';
+    const coherencePhrase = language === 'en' ? 'a lack of coherence' : 'falta de coerência';
 
     const tocLabel = language === 'en' ? 'In this article' : 'Neste artigo';
     const sections = [
@@ -188,10 +192,9 @@ const ArticleEducation = () => {
                     <p className="text-lg md:text-xl text-pretty font-medium">{c.p1}</p>
                     <p className="text-lg md:text-xl text-pretty font-medium">{c.p2}</p>
                     <p className="text-lg md:text-xl text-pretty font-medium">
-                        {c.p3.split('alunos, professores, candidatos, áreas institucionais, cursos técnicos, graduação')[0]}
-                        {language === 'pt' && <strong>alunos, professores, candidatos, áreas institucionais, cursos técnicos, graduação</strong>}
-                        {language === 'en' && <strong>students, teachers, applicants, institutional departments, technical courses, undergraduate programs</strong>}
-                        {c.p3.split(language === 'pt' ? 'graduação' : 'undergraduate programs')[1]}
+                        {c.p3.split(audiencePhrase)[0]}
+                        <strong>{audiencePhrase}</strong>
+                        {c.p3.split(audiencePhrase)[1]}
                     </p>
                     <p className="text-lg md:text-xl text-pretty font-medium">{c.p4}</p>
 
@@ -218,10 +221,9 @@ const ArticleEducation = () => {
 
                         <div className="bg-amber-500/5 border-l-4 border-amber-500 p-6 rounded-r-2xl my-6 dark:bg-amber-500/10">
                             <p className="text-lg text-slate-800 dark:text-slate-200 font-medium m-0">
-                                {c.s1callout.split('falta de coerência')[0]}
-                                {language === 'pt' && <strong>falta de coerência</strong>}
-                                {language === 'en' && <strong>a lack of coherence</strong>}
-                                {c.s1callout.split(language === 'pt' ? 'falta de coerência' : 'a lack of coherence')[1]}
+                                {c.s1callout.split(coherencePhrase)[0]}
+                                <strong>{coherencePhrase}</strong>
+                                {c.s1callout.split(coherencePhrase)[1]}
                             </p>
                         </div>
 

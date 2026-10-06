@@ -113,6 +113,21 @@
         .headline-stroke { -webkit-text-stroke-width: 1px; }
     }
 
+    /* Deriva da névoa do EtheralShadow — só transform, roda no compositor (sem repintura) */
+    @keyframes etheralDrift {
+        0%   { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+        33%  { transform: translate3d(-4%, 3%, 0) scale(1.08) rotate(2deg); }
+        66%  { transform: translate3d(3%, -2%, 0) scale(1.04) rotate(-2deg); }
+        100% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+    }
+    .etheral-drift {
+        animation: etheralDrift 20s ease-in-out infinite;
+        will-change: transform;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .etheral-drift { animation: none; }
+    }
+
     /* Respiração dos feixes de luz atmosféricos da Hero */
     @keyframes glowBreath {
         0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
@@ -515,17 +530,31 @@
     }
 
     /* Cursor de máquina de escrever (efeito de digitação no headline) */
-    .hero-type-cursor {
+    .hero-type-line {
+        position: relative;
         display: inline-block;
+    }
+    .hero-type-content {
+        display: inline-block;
+        clip-path: inset(-0.2em 100% -0.3em 0);
+        animation: heroTypeReveal var(--type-duration) steps(var(--type-chars), end) var(--type-delay) forwards;
+    }
+    .hero-type-cursor {
+        position: absolute;
+        top: 0.12em;
+        left: 0;
         width: 0.08em;
         height: 0.78em;
-        margin-left: 0.08em;
-        background: currentColor;
-        transform: translateY(0.08em);
-        animation: typeCursorBlink 0.9s steps(1, end) infinite;
+        background: #38889F;
+        animation: heroTypeCursorMove var(--type-duration) steps(var(--type-chars), end) var(--type-delay) forwards;
     }
-    @keyframes typeCursorBlink {
-        0%, 45% { opacity: 1; }
-        46%, 100% { opacity: 0; }
+    @keyframes heroTypeReveal {
+        to { clip-path: inset(-0.2em 0 -0.3em 0); }
     }
+    @keyframes heroTypeCursorMove {
+        0% { left: 0; opacity: 1; }
+        99% { opacity: 1; }
+        100% { left: 100%; opacity: 0; }
+    }
+
 }

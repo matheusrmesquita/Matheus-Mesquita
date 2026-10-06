@@ -8,13 +8,13 @@ import ArticleCard from '@/components/ui/ArticleCard';
 import { useLanguage } from '@/context/LanguageContext';
 
 const ArticlesSection = () => {
-    const { language } = useLanguage();
+    const { t, language } = useLanguage();
     return (
         <section className="mx-4 md:mx-8 xl:mx-[150px] mt-24 scroll-mt-32" id="artigos">
             <div className="grid grid-cols-12 gap-6 mb-12">
                 <div className="col-span-12 md:col-span-8">
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">Artigos de Projetos</h2>
-                    <p className="text-slate-600 dark:text-slate-400 text-xl font-medium">Reflexões e estudos de caso de projetos reais sobre design e arquitetura da informação.</p>
+                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">{t('articles.title')}</h2>
+                    <p className="text-slate-600 dark:text-slate-400 text-xl font-medium">{t('articles.subtitle')}</p>
                 </div>
             </div>
 
@@ -27,7 +27,7 @@ const ArticlesSection = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                     >
-                        <ArticleCard article={article} index={index} language={language} />
+                        <ArticleCard article={article} index={index} language={language} ctaLabel={t('articles.readMore')} />
                     </motion.div>
                 ))}
             </div>
@@ -35,8 +35,8 @@ const ArticlesSection = () => {
             {/* Ver todos os artigos Button */}
             {articles.length > 3 && (
                 <div className="mt-12 flex justify-center">
-                    <Link to="/artigos" className="inline-flex items-center gap-2 px-8 py-4 bg-slate-100 dark:bg-zinc-800 hover:bg-[#38889F] hover:text-white text-slate-900 dark:text-white font-bold rounded-full transition-all duration-300 border border-slate-200 dark:border-white/10 hover:border-[#38889F] group/btn">
-                        Ver todos os artigos
+                    <Link to="/artigos" className="inline-flex items-center gap-2 px-8 py-4 bg-slate-100 dark:bg-zinc-800 hover:bg-[#38889F] hover:text-white text-slate-900 dark:text-white font-bold rounded transition-all duration-300 border border-slate-200 dark:border-white/10 hover:border-[#38889F] group/btn">
+                        {language === 'en' ? 'View all articles' : 'Ver todos os artigos'}
                         <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
                     </Link>
                 </div>

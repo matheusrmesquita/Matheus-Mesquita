@@ -72,6 +72,7 @@ const Projects = () => {
                         toggleTag={toggleTag} 
                         clearFilters={clearFilters} 
                         searchQuery={searchQuery} 
+                        language={language}
                     />
                 </div>
 

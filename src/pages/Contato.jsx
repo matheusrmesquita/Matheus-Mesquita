@@ -5,7 +5,7 @@ import { InteractiveHoverButton } from '@/components/ui/InteractiveHoverButton';
 const WA_NUMBER = '5561982863674';
 
 const Contato = () => {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const [form, setForm] = useState({ name: '', email: '', message: '' });
 
     const handleChange = (e) => {
@@ -15,7 +15,9 @@ const Contato = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const { name, email, message } = form;
-        const text = `*Nome:* ${name}\n*E-mail:* ${email}\n\n*Mensagem:*\n${message}`;
+        const text = language === 'en'
+            ? `*Name:* ${name}\n*Email:* ${email}\n\n*Message:*\n${message}`
+            : `*Nome:* ${name}\n*E-mail:* ${email}\n\n*Mensagem:*\n${message}`;
         const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
         window.open(url, '_blank');
     };

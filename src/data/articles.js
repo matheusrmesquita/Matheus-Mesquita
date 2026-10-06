@@ -1,5 +1,16 @@
 export const articles = [
     {
+        id: 'editor-de-noticias',
+        type: 'article',
+        date: '2026-10-05',
+        title: 'Editor de Notícias: quando uma melhoria pontual se transforma em um fluxo editorial completo',
+        title_en: 'News Editor: When a Small Improvement Becomes a Complete Editorial Workflow',
+        excerpt: 'Uma evolução que começou com ajustes na edição e revelou um sistema completo de papéis, permissões, metadados, taxonomia, aprovação e publicação.',
+        excerpt_en: 'An evolution that began with editing improvements and revealed a complete system of roles, permissions, metadata, taxonomy, approval, and publishing.',
+        tags: ['2026', 'Product Design', 'UX Design', 'Fluxos Editoriais'],
+        slug: '/artigos/editor-de-noticias'
+    },
+    {
         id: 'congresso',
         type: 'article',
         date: '2026-09-15',

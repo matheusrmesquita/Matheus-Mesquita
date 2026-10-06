@@ -112,7 +112,7 @@ const ArticleSearch = () => {
 
                     {/* Bloco de Citação - Exemplo visual */}
                     <blockquote className="pl-6 border-l-4 border-[#38889F] my-10 italic text-slate-800 dark:text-slate-200 text-xl md:text-2xl font-semibold bg-slate-50 dark:bg-slate-900/30 py-4 pr-4 rounded-r-xl">
-                        "Era como pesquisar “tipos de gatos” e receber “tigres” como principal correspondência, acompanhado de documentos chamados algo como “XX-AB-Z17-v2”. Tecnicamente, talvez existisse alguma relação textual. Mas semanticamente, a busca falhava completamente em entender intenção."
+                        {c.blockquote1}
                     </blockquote>
 
                     {/* SEÇÃO 1 */}
@@ -148,10 +148,12 @@ const ArticleSearch = () => {
                         <div className="bg-amber-500/5 border-l-4 border-amber-500 p-6 rounded-r-2xl my-8 dark:bg-amber-500/10">
                             <div className="flex items-center gap-3 mb-2">
                                 <AlertCircle className="w-6 h-6 text-amber-500" />
-                                <span className="font-bold text-amber-800 dark:text-amber-400 text-lg">Descoberta Crítica</span>
+                                <span className="font-bold text-amber-800 dark:text-amber-400 text-lg">
+                                    {c.calloutLabel}
+                                </span>
                             </div>
                             <p className="text-lg text-slate-800 dark:text-slate-200 font-medium m-0">
-                                Na prática, havia uma grande camada de <strong>"conteúdos invisíveis"</strong> ao crawler dentro do portal.
+                                {c.callout}
                             </p>
                         </div>
 
@@ -399,4 +401,3 @@ const ArticleSearch = () => {
 };
 
 export default ArticleSearch;
-
