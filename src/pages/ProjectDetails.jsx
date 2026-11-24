@@ -242,13 +242,13 @@ const ProjectDetails = () => {
                     {/* TELAS DO SITE (uma captura por viewport) */}
                     {project.pages?.length > 0 && (
                         <div className="w-full">
-                            <SectionTitle icon={Layers} title={language === 'en' ? 'Screens' : 'As telas'} />
+                            <SectionTitle icon={Layers} title={language === 'en' ? 'Pages' : 'As páginas'} />
                             <div className="flex flex-col gap-6 md:gap-10">
                                 {project.pages.map((src, idx) => (
                                     <img
                                         key={src}
                                         src={src}
-                                        alt={`${title} - ${language === 'en' ? 'Screen' : 'Tela'} ${idx + 1}`}
+                                        alt={`${title} - ${language === 'en' ? 'Page' : 'Página'} ${idx + 1}`}
                                         className="w-full h-auto rounded-[14px] shadow-2xl border border-slate-200 dark:border-white/10"
                                         loading="lazy"
                                         decoding="async"
