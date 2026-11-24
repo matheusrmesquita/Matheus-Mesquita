@@ -1,10 +1,58 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { projects } from '@/data/projects';
-import { ArrowLeft, ExternalLink, LayoutTemplate, Zap, MonitorSmartphone, MonitorPlay, Sparkles, Lightbulb, Palette } from 'lucide-react';
+import { ArrowLeft, ExternalLink, LayoutTemplate, Zap, MonitorSmartphone, MonitorPlay, Sparkles, Lightbulb, Palette, Layers, Image as ImageIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 import { InteractiveHoverButton } from '@/components/ui/InteractiveHoverButton';
+
+const SectionTitle = ({ icon, title }) => {
+    const Icon = icon;
+    return (
+        <h3 className="mb-10 text-3xl text-slate-900 dark:text-white font-bold flex items-center justify-center gap-3">
+            <Icon className="text-[#38889F]" aria-hidden="true" /> {title}
+        </h3>
+    );
+};
+
+// Board de identidade no estilo Behance: logo, paleta com HEX e espécime tipográfico na fonte da marca.
+const IdentityBoard = ({ identity, language }) => {
+    const { bg, fg, accent, logo, logoAlt, font, colors } = identity;
+    const fontFamily = `'${font.name}', sans-serif`;
+    return (
+        <div className="w-full">
+            {/* React 19 eleva o <link> para o <head> */}
+            <link rel="stylesheet" href={font.href} precedence="default" />
+            <SectionTitle icon={Palette} title={language === 'en' ? 'Identity' : 'A identidade'} />
+            <div className="w-full rounded-[16px] overflow-hidden shadow-2xl" style={{ background: bg, color: fg, fontFamily }}>
+                <div className="grid md:grid-cols-2">
+                    <div className="p-8 md:p-14 flex items-center justify-center min-h-[220px] md:min-h-[360px]">
+                        {logo ? (
+                            <img src={logo} alt={logoAlt} className="w-3/4 max-w-[360px] h-auto" />
+                        ) : (
+                            <span className="text-4xl md:text-6xl font-light tracking-tight text-center">{logoAlt}</span>
+                        )}
+                    </div>
+                    <div className="p-8 md:p-14 flex flex-col justify-center border-t md:border-t-0 md:border-l" style={{ borderColor: `${fg}22` }}>
+                        <p className="text-xs uppercase tracking-[0.2em] opacity-60 mb-4">{language === 'en' ? 'Typeface' : 'Tipografia'}</p>
+                        <p className="text-8xl md:text-9xl leading-none font-medium" style={{ color: accent }}>Aa</p>
+                        <p className="mt-6 text-2xl font-semibold">{font.name}</p>
+                        <p className="mt-2 text-sm opacity-70">{font.weights}</p>
+                        <p className="mt-6 text-lg font-light break-words opacity-90">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />abcdefghijklmnopqrstuvwxyz<br />0123456789</p>
+                    </div>
+                </div>
+                <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6" aria-label={language === 'en' ? 'Color palette' : 'Paleta de cores'}>
+                    {colors.map((c) => (
+                        <li key={c.hex} className="h-40 md:h-56 p-4 flex flex-col justify-end" style={{ background: c.hex, color: c.text }}>
+                            <span className="text-sm font-semibold">{c.name}</span>
+                            <span className="text-xs opacity-80 uppercase">{c.hex}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+    );
+};
 
 const ProjectDetails = () => {
     const { id } = useParams();
@@ -110,8 +158,8 @@ const ProjectDetails = () => {
             <section className="w-full bg-slate-50 dark:bg-[#0a0a0c] pt-20 border-t border-slate-100 dark:border-white/5">
                 <div className="max-w-7xl mx-auto px-4 flex flex-col items-center space-y-24 pb-24">
 
-                    {/* Vídeo de apresentação com o botão do site por cima */}
-                    {project.showcaseVideo && project.siteLink ? (
+                    {/* Vídeo de apresentação com o botão do site por cima (quando publicado) */}
+                    {project.showcaseVideo ? (
                         <div className="w-full relative rounded-[16px] overflow-hidden border border-slate-200 dark:border-white/10 shadow-2xl bg-black">
                             <video
                                 src={project.showcaseVideo}
@@ -121,7 +169,7 @@ const ProjectDetails = () => {
                                 preload="metadata"
                                 className="w-full h-auto block"
                             />
-                            <a
+                            {project.siteLink && <a
                                 href={project.siteLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -130,7 +178,7 @@ const ProjectDetails = () => {
                             >
                                 {language === 'en' ? 'Visit site' : 'Visitar site'}
                                 <ExternalLink className="w-4 h-4" aria-hidden="true" />
-                            </a>
+                            </a>}
                         </div>
                     ) : project.siteLink ? (
                         <a
@@ -190,6 +238,54 @@ const ProjectDetails = () => {
                             />
                         </div>
                     ) : null}
+
+                    {/* TELAS DO SITE (uma captura por viewport) */}
+                    {project.pages?.length > 0 && (
+                        <div className="w-full">
+                            <SectionTitle icon={Layers} title={language === 'en' ? 'Screens' : 'As telas'} />
+                            <div className="flex flex-col gap-6 md:gap-10">
+                                {project.pages.map((src, idx) => (
+                                    <img
+                                        key={src}
+                                        src={src}
+                                        alt={`${title} - ${language === 'en' ? 'Screen' : 'Tela'} ${idx + 1}`}
+                                        className="w-full h-auto rounded-[14px] shadow-2xl border border-slate-200 dark:border-white/10"
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* IDENTIDADE: logo, cores e tipografia */}
+                    {project.identity && <IdentityBoard identity={project.identity} language={language} />}
+
+                    {/* CRIATIVOS: cada linha vira uma grade com o número de colunas da própria linha */}
+                    {project.creatives?.length > 0 && (
+                        <div className="w-full">
+                            <SectionTitle icon={ImageIcon} title={language === 'en' ? 'Creatives' : 'Os criativos'} />
+                            <div className="flex flex-col gap-4 md:gap-6">
+                                {project.creatives.map((row, r) => (
+                                    <div key={r} className="grid items-start gap-4 md:gap-6 grid-cols-2 md:grid-cols-[repeat(var(--cols),minmax(0,1fr))]" style={{ '--cols': row.length }}>
+                                        {row.map((item) => {
+                                            const media = typeof item === 'string' ? { src: item } : item;
+                                            const cls = "w-full h-auto block rounded-[14px] border border-slate-200 dark:border-white/10 shadow-xl";
+                                            return (
+                                                <div key={media.src} className={`${row.length === 1 ? 'col-span-2' : ''} md:col-span-1`}>
+                                                    {media.src.endsWith('.mp4') ? (
+                                                        <video src={media.src} poster={media.poster} className={cls} autoPlay muted loop playsInline preload="metadata" aria-label={`${title} - Reel`} />
+                                                    ) : (
+                                                        <img src={media.src} alt={`${title} - ${language === 'en' ? 'Creative' : 'Criativo'}`} className={cls} loading="lazy" decoding="async" />
+                                                    )}
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
 
                     {/* FIGMA / PROTOTYPE IFRAME */}
                     {project.figmaLink && (
