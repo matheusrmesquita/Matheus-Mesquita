@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, LayoutTemplate, Sparkles, Lightbulb, Zap, Palette, MonitorSmartphone } from 'lucide-react';
 
 // Case editorial (referência: Awwwards SOTD) — texto e mídia alternados em capítulos,
 // mídia em molduras escuras com legenda curta.
@@ -85,13 +85,39 @@ const Creatives = ({ rows, title }) => (
 
 
 const FIELDS = [
-    ['context', 'Contexto', 'Context'],
-    ['highlight', 'O Destaque', 'Highlight'],
-    ['solution', 'A Solução', 'The Solution'],
-    ['process', 'Processo', 'Process'],
-    ['aesthetics', 'Estética', 'Aesthetics'],
-    ['technique', 'Técnica', 'Technique'],
+    ['context', 'Contexto', 'Context', LayoutTemplate],
+    ['highlight', 'O Destaque', 'Highlight', Sparkles],
+    ['solution', 'A Solução', 'The Solution', Lightbulb],
+    ['process', 'Processo', 'Process', Zap],
+    ['aesthetics', 'Estética', 'Aesthetics', Palette],
+    ['technique', 'Técnica', 'Technique', MonitorSmartphone],
 ];
+
+// Card de apoio (logo + ícone do capítulo + tags) nas cores da marca, para capítulos sem imagem
+const Spot = ({ project, title, icon, label, compact }) => {
+    const Icon = icon;
+    const { bg = '#161618', fg = '#f8fafc', accent = '#38889F', logo } = project.identity || {};
+    return (
+        <div className={`w-full rounded-[20px] p-6 md:p-10 flex flex-col justify-between gap-8 shadow-2xl overflow-hidden relative ${compact ? 'aspect-[16/9]' : 'aspect-[4/3]'}`}
+            style={{ background: bg, color: fg }} aria-hidden="true">
+            <Icon className="absolute -right-6 -bottom-6 w-48 h-48 md:w-64 md:h-64 opacity-[0.07]" strokeWidth={1} />
+            <div className="flex items-center justify-between gap-4">
+                {logo ? <img src={logo} alt="" className="h-8 md:h-10 w-auto" /> : <span className="text-lg md:text-xl font-bold tracking-tight">{title}</span>}
+                <span className="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center" style={{ background: `${accent}26`, color: accent }}>
+                    <Icon className="w-6 h-6 md:w-7 md:h-7" />
+                </span>
+            </div>
+            <div>
+                <p className="text-3xl md:text-5xl font-bold tracking-tight leading-none mb-5" style={{ color: accent }}>{label}</p>
+                <div className="flex flex-wrap gap-2">
+                    {(project.tags || []).map((t) => (
+                        <span key={t} className="px-3 py-1 rounded-full text-xs font-semibold border" style={{ borderColor: `${fg}33` }}>{t}</span>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
 
 const EditorialCase = ({ project, title, en }) => {
     const L = (pt, eng) => (en ? eng : pt);
@@ -107,7 +133,7 @@ const EditorialCase = ({ project, title, en }) => {
         ...(project.gallery || []).map((g) => img(g)),
     ].filter(Boolean);
 
-    const texts = FIELDS.map(([k, pt, eng]) => ({ label: L(pt, eng), body: txt(project, k, en) })).filter((t) => t.body);
+    const texts = FIELDS.map(([k, pt, eng, icon]) => ({ label: L(pt, eng), icon, body: txt(project, k, en) })).filter((t) => t.body);
     // capítulo i recebe a mídia i; as que sobram vão para o último capítulo
     const chapters = texts.map((t, i) => ({ ...t, media: i === texts.length - 1 ? media.slice(i) : media.slice(i, i + 1) }));
 
@@ -141,15 +167,27 @@ const EditorialCase = ({ project, title, en }) => {
 
     let n = 0;
     return (
-        <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col gap-24 md:gap-36 pb-24">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col gap-20 md:gap-28 pb-24">
             {chapters.map((c, i) => {
                 const text = <ChapterText n={++n} label={c.label}>{c.body}</ChapterText>;
                 const right = i % 2 === 1; // alterna o lado do texto a cada capítulo
                 const imgs = c.media.filter((m) => m.kind === 'img');
-                // uma imagem só: texto fixo ao lado (acompanha o scroll de telas longas)
+                const spot = (compact) => <Spot project={project} title={title} icon={c.icon} label={c.label} compact={compact} />;
+                // sem mídia: texto ao lado do card de apoio, para não sobrar vazio
+                if (c.media.length === 0) return (
+                    <section key={c.label} className="grid md:grid-cols-12 gap-10 md:gap-14 items-center">
+                        <div className={`md:col-span-6 ${right ? 'md:order-2' : ''}`}>{text}</div>
+                        <div className="md:col-span-6">{spot(false)}</div>
+                    </section>
+                );
+                // uma imagem só: texto fixo ao lado (acompanha o scroll de telas longas);
+                // texto curto ganha o card embaixo para preencher a coluna
                 if (c.media.length === 1 && imgs.length === 1) return (
                     <section key={c.label} className="grid md:grid-cols-12 gap-10 md:gap-14 items-start">
-                        <div className={`md:col-span-5 md:sticky md:top-24 ${right ? 'md:order-2' : ''}`}>{text}</div>
+                        <div className={`md:col-span-5 md:sticky md:top-24 flex flex-col gap-10 ${right ? 'md:order-2' : ''}`}>
+                            {text}
+                            {c.body.length < 800 && <div className="hidden md:block">{spot(true)}</div>}
+                        </div>
                         <div className="md:col-span-7">{renderMedia(imgs[0], i)}</div>
                     </section>
                 );
