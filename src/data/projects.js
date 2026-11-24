@@ -140,6 +140,7 @@ export const projects = [
     {
         id: 17,
         type: 'project',
+        editorial: true,
         date: '2026-10-06',
         title: "Nike Pegasus Plus 2: Interactive Product Experience",
         title_en: "Nike Pegasus Plus 2: Interactive Product Experience",
@@ -161,7 +162,14 @@ export const projects = [
         siteLink: "https://nike-pegasus-plus-2.vercel.app/",
         showcaseVideo: "/nike-pegasus/apresentacao.mp4",
         showcasePoster: "/nike-pegasus/apresentacao-capa.jpg",
-        gallery: []
+        gallery: [
+            { src: '/nike-pegasus/tela-01.webp', label: 'Leve, reativo, rápido', detail: 'abertura do produto' },
+            { src: '/nike-pegasus/tela-02.webp', label: 'Sinta o impulso', detail: 'amortecimento ZoomX' },
+            { src: '/nike-pegasus/tela-03.webp', label: 'Respira, segura, acelera', detail: 'cabedal' },
+            { src: '/nike-pegasus/tela-04.webp', label: 'Feito para agarrar o asfalto', detail: 'tração' },
+            { src: '/nike-pegasus/tela-05.webp', label: '215 g', detail: 'leveza' },
+            { src: '/nike-pegasus/tela-06.webp', label: 'Energia para ir além', detail: 'fechamento' },
+        ]
     },
     {
         id: 16,
@@ -198,6 +206,7 @@ export const projects = [
     {
         id: 14,
         type: 'project',
+        editorial: true,
         date: '2026-05-19',
         title: "Jotaka Cozinha e Bar",
         title_en: "Jotaka Restaurant and Bar",
@@ -211,11 +220,12 @@ export const projects = [
         technique_en: "In addition to the complete visual redesign of the website, the project involved creating an internal reservation management system to centralize data, organize tables, and link reservations to billing. We also structured periodic reports (Meta Ads, Google My Business, etc.) for continuous analysis, transforming the digital presence into a truly functional and integrated structure for the business.",
         tags: ["2026", "UX Design", "Branding", "Sistemas"],
         image: jotakaCapa,
-        gallery: [jotakaCard, jotakaReservas]
+        gallery: [{ src: jotakaCard, label: 'Landing', detail: 'página inteira' }, { src: jotakaReservas, label: 'Reservas' }]
     },
     {
         id: 13,
         type: 'project',
+        editorial: true,
         date: '2026-05-10',
         title: "Clínica Bem Estar",
         title_en: "Clínica Bem Estar",
@@ -229,7 +239,7 @@ export const projects = [
         technique_en: "Artificial intelligence was actively integrated during the creative process to explore visual possibilities, accelerate layout tests, and assist in defining the new website's aesthetic direction. The final result was a modern, refined, and highly functional website, which is already published, in operation, and continuously generating qualified leads/clients for the clinic.",
         tags: ["2026", "AI Design", "UI Design"],
         image: clinicaCapa,
-        gallery: [clinicaCard]
+        gallery: [{ src: clinicaCard, label: 'Landing', detail: 'página inteira' }]
     },
     {
         id: 11,
