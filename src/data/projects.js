@@ -55,6 +55,7 @@ export const projects = [
     {
         id: 19,
         type: 'project',
+        editorial: true,
         date: '2026-11-23',
         title: "ATHOS Comunicação Estratégica",
         title_en: "ATHOS Strategic Communication",
@@ -73,7 +74,7 @@ export const projects = [
         siteLink: "https://somosathos.com.br/",
         showcaseVideo: "/athos/apresentacao.mp4",
         showcasePoster: "/athos/apresentacao-capa.jpg",
-        pages: ['/athos/pagina-01.webp'],
+        pages: [{ src: '/athos/pagina-01.webp', label: 'Home' }],
         identity: {
             bg: '#0c1131', fg: '#f9f7f0', accent: '#8e9be6',
             logo: '/athos/logo.svg', logoAlt: 'athos',
@@ -97,6 +98,7 @@ export const projects = [
     {
         id: 18,
         type: 'project',
+        editorial: true,
         date: '2026-11-12',
         title: "Jannia Macedo Studios",
         title_en: "Jannia Macedo Studios",
@@ -114,7 +116,12 @@ export const projects = [
         image: "/jannia/apresentacao-capa.jpg",
         showcaseVideo: "/jannia/apresentacao.mp4",
         showcasePoster: "/jannia/apresentacao-capa.jpg",
-        pages: ['/jannia/pagina-01.webp', '/jannia/pagina-02.webp', '/jannia/pagina-03.webp', '/jannia/pagina-04.webp'],
+        pages: [
+            { src: '/jannia/pagina-01.webp', label: 'Home' },
+            { src: '/jannia/pagina-02.webp', label: 'Leblon' },
+            { src: '/jannia/pagina-03.webp', label: 'Copacabana' },
+            { src: '/jannia/pagina-04.webp', label: 'Quadra Copa' },
+        ],
         identity: {
             bg: '#EFE9DF', fg: '#241D18', accent: '#493A30',
             logoAlt: 'Jannia Macedo',
