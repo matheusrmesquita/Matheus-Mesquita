@@ -220,7 +220,8 @@ export const projects = [
         technique_en: "In addition to the complete visual redesign of the website, the project involved creating an internal reservation management system to centralize data, organize tables, and link reservations to billing. We also structured periodic reports (Meta Ads, Google My Business, etc.) for continuous analysis, transforming the digital presence into a truly functional and integrated structure for the business.",
         tags: ["2026", "UX Design", "Branding", "Sistemas"],
         image: jotakaCapa,
-        gallery: [{ src: jotakaCard, label: 'Landing', detail: 'página inteira' }, { src: jotakaReservas, label: 'Reservas', detail: 'sistema interno' }, { src: jotakaCapa, label: 'Home', detail: 'primeira dobra' }]
+        pages: [{ src: jotakaCard, label: 'Landing' }],
+        gallery: [{ src: jotakaReservas, label: 'Reservas', detail: 'sistema interno' }]
     },
     {
         id: 13,
@@ -239,7 +240,8 @@ export const projects = [
         technique_en: "Artificial intelligence was actively integrated during the creative process to explore visual possibilities, accelerate layout tests, and assist in defining the new website's aesthetic direction. The final result was a modern, refined, and highly functional website, which is already published, in operation, and continuously generating qualified leads/clients for the clinic.",
         tags: ["2026", "AI Design", "UI Design"],
         image: clinicaCapa,
-        gallery: [{ src: clinicaCard, label: 'Landing', detail: 'página inteira' }, { src: clinicaCapa, label: 'Desktop e mobile', detail: 'nova interface' }]
+        pages: [{ src: clinicaCard, label: 'Landing' }],
+        gallery: []
     },
     {
         id: 11,
